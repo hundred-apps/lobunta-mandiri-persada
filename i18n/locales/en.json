@@ -1,0 +1,247 @@
+{
+  "nav": {
+    "home": "Home",
+    "profile": "Profile",
+    "products": "Products",
+    "services": "Services",
+    "customers": "Clients",
+    "blog": "Blog",
+    "career": "Career",
+    "privacy": "Privacy Policy",
+    "contact": "Contact",
+    "menu": "Menu",
+    "faq": "FAQ",
+    "terms": "Terms & Conditions",
+    "close": "Close",
+    "open": "Open menu",
+    "primary": "Business lines"
+  },
+  "common": {
+    "learnMore": "Learn more",
+    "viewAll": "View all",
+    "readMore": "Read more",
+    "back": "Back",
+    "loading": "Loading...",
+    "comingSoon": "This content is not available yet.",
+    "language": "Language",
+    "theme": "Theme",
+    "lightMode": "Light mode",
+    "darkMode": "Dark mode",
+    "openHours": "Opening hours",
+    "callUs": "Phone",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "address": "Address",
+    "downloadProfile": "Download Company Profile (PDF)",
+    "viewOnMap": "View on Google Maps"
+  },
+  "home": {
+    "statsLabel": "In numbers",
+    "servicesTitle": "Services",
+    "categoriesTitle": "Business lines",
+    "categoriesBody": "LMP mining, civil construction, and heavy equipment rental divisions.",
+    "customersTitle": "Few of our customers",
+    "blogTitle": "Latest articles",
+    "promoTitle": "Promotions and programs",
+    "contactTitle": "Contact us",
+    "aboutHeading": "Our history",
+    "aboutBody": "Established in 1973 and grown into one of the leading earth works and construction contractors in Indonesia.",
+    "ctaHeading": "Looking for an earth works, mining, or civil construction partner?",
+    "ctaBody": "Send your project details, location, and production targets. The LMP team will prepare the work approach and fleet plan.",
+    "ctaButton": "Contact Us",
+    "divisionsTitle": "Our business lines",
+    "divisionsBody": "Three LMP divisions: mining and plant, civil construction, and heavy equipment rental with trucking.",
+    "scopeTitle": "Scope of work",
+    "scopeBody": "Mining and civil construction scopes delivered by LMP across Indonesia.",
+    "scopeMining": "Mining & Plant",
+    "scopeCivil": "Civil Construction",
+    "fleetTitle": "Fleet & documentation",
+    "fleetBody": "Heavy equipment and dump trucks ready to operate for mining, construction, and rental projects.",
+    "projectsTitle": "Project experience",
+    "projectsBody": "Project owners and contract values taken from the LMP company profile.",
+    "projectsAll": "See all project experience"
+  },
+  "products": {
+    "title": "Products",
+    "heading": "Product categories",
+    "intro": "LMP business lines cover ore mining contracting, general contracting, plant hire, and heavy equipment rental for industrial, mining, and energy clients.",
+    "applications": "Applications",
+    "catalogNote": "The full product list and specifications are managed through our catalogue. Contact our team for stock availability and quotations.",
+    "itemsCount": "{count} products",
+    "empty": "No products have been published yet.",
+    "searchPlaceholder": "Search products...",
+    "allCategories": "All categories",
+    "sku": "SKU",
+    "detailHeading": "Product details",
+    "packaging": "Packaging",
+    "weight": "Weight/Volume",
+    "specTitle": "Technical specifications",
+    "relatedTitle": "Related products",
+    "backToProducts": "Back to products",
+    "seeMore": "See more"
+  },
+  "services": {
+    "title": "Services",
+    "heading": "Business lines & services",
+    "intro": "Mining contractor, general contractor, plant hire, and heavy equipment rental backed by a workforce of more than 600 people.",
+    "highlights": "What you get",
+    "relatedTitle": "Other services",
+    "contactCta": "Need this service? Discuss it with our team."
+  },
+  "customers": {
+    "title": "Our clients",
+    "heading": "Our clients",
+    "intro": "Project owners and contractors who entrust their mining and civil construction work to LMP.",
+    "viewAll": "See other customers"
+  },
+  "blog": {
+    "title": "Blog",
+    "heading": "Articles and insights",
+    "intro": "Information, perspectives, and updates on mining, civil construction, and heavy equipment operations.",
+    "empty": "No articles yet.",
+    "publishedOn": "Published",
+    "readingTime": "{minutes} min read",
+    "backToBlog": "All articles",
+    "viewAll": "See other articles"
+  },
+  "career": {
+    "title": "Career",
+    "heading": "Build your career with us",
+    "intro": "We are opening positions for professionals in mining, civil construction, heavy equipment operations, and project support.",
+    "openPositions": "Open positions",
+    "requirements": "Requirements",
+    "location": "Location",
+    "type": "Type",
+    "department": "Department",
+    "postedOn": "Posted",
+    "empty": "No open positions at the moment.",
+    "apply": "Apply by email",
+    "requestProfile": "Request the company profile",
+    "sendCv": "Send your CV"
+  },
+  "profile": {
+    "contactTitle": "Contact and operational information",
+    "fax": "Fax",
+    "legalName": "Legal entity",
+    "aboutTitle": "About us",
+    "businessLines": "Business lines",
+    "founded": "Founded",
+    "agency": "Agency number",
+    "categories": "Product categories",
+    "customers": "Customers",
+    "valuesTitle": "Values & commitment",
+    "valuesBody": "The principles that guide how we serve industrial customers across Indonesia.",
+    "value1": "Guaranteed genuine quality",
+    "value2": "Ready stock",
+    "value3": "Competitive pricing",
+    "value4": "On-time delivery",
+    "value5": "Nationwide distribution",
+    "value6": "Technical support",
+    "downloadBody": "Download the official LMP company profile for partnership and procurement needs.",
+    "galleryTitle": "Gallery",
+    "galleryBody": "Operational documentation of LMP mining, construction, and fleet activities.",
+    "visionMissionTitle": "Vision, mission & philosophy",
+    "visionMissionBody": "The foundation LOBUNTA Group applies across all of its divisions and projects.",
+    "vision": "Vision",
+    "mission": "Mission",
+    "philosophy": "Philosophy",
+    "scopeTitle": "Scope of work",
+    "scopeBody": "Mining, civil construction, and plant hire scopes as listed in the LMP company profile.",
+    "fleetTitle": "Fleet & equipment",
+    "fleetBody": "Ready-to-use heavy equipment, dump trucks, and trucking units plus the brands that support them.",
+    "projectsTitle": "Project experience",
+    "projectsBody": "Mining and civil construction projects with their owners, locations, and contract values."
+  },
+  "contact": {
+    "title": "Contact",
+    "heading": "Get in touch",
+    "intro": "Product enquiries, quotations, or technical support. Our team is ready to help during opening hours.",
+    "formTitle": "Send a message",
+    "name": "Name",
+    "namePlaceholder": "Full name",
+    "email": "Email",
+    "emailPlaceholder": "name {'@'} company.com",
+    "phone": "Phone number",
+    "phonePlaceholder": "08xx xxxx xxxx",
+    "company": "Company",
+    "companyPlaceholder": "Company name",
+    "subject": "Subject",
+    "subjectPlaceholder": "For example: Delo quotation for a 500 kVA genset",
+    "message": "Message",
+    "messagePlaceholder": "Tell us about your project, production targets, and work location",
+    "submit": "Send message",
+    "sending": "Sending...",
+    "success": "Thank you. Your message has been received and will be answered during opening hours.",
+    "error": "The message could not be sent. Please try again or reach us on WhatsApp.",
+    "validation": "Please provide your name, a valid email, and a message.",
+    "orWa": "Faster on WhatsApp",
+    "officeTitle": "Office and warehouse"
+  },
+  "footer": {
+    "tagline": "Part of the LOBUNTA Group: mining and civil construction contractor.",
+    "explore": "Explore",
+    "services": "Services",
+    "contact": "Contact",
+    "rights": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "official": "Mining & Civil Construction Contractor"
+  },
+  "milestones": [
+    {
+      "year": "1973",
+      "title": "CV. Lobunta",
+      "description": "CV. Lobunta was established on 27 January 1973 at Jl. Pintu Air No. 31-B, Jakarta Pusat."
+    },
+    {
+      "year": "1977",
+      "title": "PT. Lobunta Kencana Raya",
+      "description": "Became a limited liability company on 30 September 1977 and the parent of the LOBUNTA Group."
+    },
+    {
+      "year": "1994",
+      "title": "PLTU Pasuruan Site Development",
+      "description": "Site development for the PLTU Pasuruan power plant with PLN and Mitsubishi Corporation."
+    },
+    {
+      "year": "1995",
+      "title": "Jagorawi Toll Road",
+      "description": "Road development of the Jagorawi Toll Road (TMII – Cibubur) for PT Jasa Marga (Persero)."
+    },
+    {
+      "year": "2014",
+      "title": "Smelter Site Development",
+      "description": "Site development of 63.87 ha for PT Well Harvest Wining Alumina Refinery in Kendawangan."
+    },
+    {
+      "year": "2025",
+      "title": "Kayong Aluminium Nusantara",
+      "description": "Smelter site development and heavy equipment rental for PT Kayong Aluminium Nusantara in Kendawangan."
+    }
+  ],
+  "staticPages": {
+    "faq": {
+      "title": "FAQ â€” PT Lobunta Mandiri Persada",
+      "heading": "Frequently asked questions",
+      "intro": "Questions we most often receive from project owners and partners.",
+      "body": "<details><summary>Which business lines does PT Lobunta Mandiri Persada run?</summary><p>We run three divisions: the Mining & Plant Division (ore and coal mining contracting), the Civil Construction Division (general contracting for roads, bridges, irrigation, buildings, and site development), and heavy equipment rental with trucking. We also provide general supply, crushing plant, and mixer plant.</p></details>\n<details><summary>Do you hold a mining service licence?</summary><p>Yes. PT Lobunta Mandiri Persada holds mining service licence No. 26032401765630001 with NIB 9120002171281 and Grade 6 civil work contractor qualification.</p></details>\n<details><summary>Which equipment is available for rental?</summary><p>Bulldozers, compactor dozers, excavators, wheel loaders, track loaders, vibrating rollers, pad foot rollers, motor graders, hydraulic breakers, 6x4 20 and 24 ton dump trucks, and barges for large volume delivery. Unit availability is maintained at a minimum of 85%.</p></details>\n<details><summary>Do you take site development work?</summary><p>Yes. We have delivered smelter site development in Kendawangan for PT Well Harvest Wining Alumina Refinery and PT Kayong Aluminium Nusantara, plus the PLTU Pasuruan power plant site development with PLN and Mitsubishi Corporation.</p></details>\n<details><summary>How long has the company been operating?</summary><p>It started as CV. Lobunta on 27 January 1973 and became PT. Lobunta Kencana Raya on 30 September 1977. LMP is the mining and civil construction division of the LOBUNTA Group.</p></details>\n<details><summary>How do I request a quotation or the company profile?</summary><p>Send your project details through the Contact page or WhatsApp, or download our official company profile for procurement and partnership purposes.</p></details>"
+    },
+    "privacyPolicy": {
+      "title": "Privacy Policy",
+      "heading": "Privacy Policy",
+      "intro": "This page explains how PT Lobunta Mandiri Persada collects, uses, and protects your personal data.",
+      "body": "<p><strong>Data we collect.</strong> We collect the name, phone number, email address, company, and message you send through the contact form or WhatsApp.</p>\n<p><strong>How we use it.</strong> The data is used to answer questions, prepare quotations, and manage project administration.</p>\n<p><strong>Sharing.</strong> We do not sell or rent your personal data to third parties.</p>\n<p><strong>Security.</strong> Data is stored on servers with restricted access and used only by authorised personnel.</p>\n<p><strong>Your rights.</strong> You may request access to, correction of, or deletion of your data by contacting us through the contact page.</p>"
+    },
+    "termsConditions": {
+      "title": "Terms & Conditions",
+      "heading": "Terms & Conditions",
+      "intro": "By using our services and browsing this site, you agree to the following terms and conditions.",
+      "body": "<p><strong>1. Scope.</strong> These terms govern the use of this site and the contracting services for mining, civil construction, and heavy equipment rental provided by PT Lobunta Mandiri Persada.</p>\n<p><strong>2. Quotations and contracts.</strong> A quotation is valid for the period stated. The work order becomes binding once signed by both parties, with the scope, volume, and contract value in writing.</p>\n<p><strong>3. Contract value.</strong> The contract value follows the site survey, production target, and work specification. Any change of scope may adjust the value.</p>\n<p><strong>4. Payment.</strong> Payment follows the scheme agreed in the contract, using bank transfer, letter of credit, or another method agreed in writing.</p>\n<p><strong>5. Execution time.</strong> The work schedule follows the agreed target and depends on site conditions, weather, and permits applicable at the project location.</p>\n<p><strong>6. HSE and environment.</strong> All work is executed with a zero accident principle, ISO and OHSAS compliance, and social and environmental contribution for communities around the site.</p>\n<p><strong>7. Limitation of liability.</strong> We are not liable for indirect losses arising from delays outside our control, including force majeure and third party disruptions.</p>\n<p><strong>8. Governing law.</strong> These terms are governed by and construed in accordance with the laws in force in the Republic of Indonesia.</p>"
+    }
+  },
+  "meta": {
+    "homeTitle": "PT Lobunta Mandiri Persada - Mining & Civil Construction Contractor",
+    "homeDescription": "LMP is part of the LOBUNTA Group, running ore mining contracting, general contracting, plant hire, and heavy equipment rental with a workforce of more than 600 people.",
+    "blogTitle": "Blog & Articles | PT Lobunta Mandiri Persada",
+    "blogDescription": "Insights and updates on mining, civil construction, and heavy equipment industries."
+  }
+}

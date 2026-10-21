@@ -1,0 +1,247 @@
+{
+  "nav": {
+    "home": "Beranda",
+    "profile": "Profil",
+    "products": "Produk",
+    "services": "Layanan",
+    "customers": "Klien",
+    "blog": "Blog",
+    "career": "Karier",
+    "privacy": "Kebijakan Privasi",
+    "contact": "Kontak",
+    "menu": "Menu",
+    "faq": "FAQ",
+    "terms": "Syarat & Ketentuan",
+    "close": "Tutup",
+    "open": "Buka menu",
+    "primary": "Bidang usaha"
+  },
+  "common": {
+    "learnMore": "Selengkapnya",
+    "viewAll": "Lihat semua",
+    "readMore": "Baca selengkapnya",
+    "back": "Kembali",
+    "loading": "Memuat...",
+    "comingSoon": "Konten ini belum tersedia.",
+    "language": "Bahasa",
+    "theme": "Tema",
+    "lightMode": "Mode terang",
+    "darkMode": "Mode gelap",
+    "openHours": "Jam operasional",
+    "callUs": "Telepon",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "address": "Alamat",
+    "downloadProfile": "Unduh Company Profile (PDF)",
+    "viewOnMap": "Lihat di Google Maps"
+  },
+  "home": {
+    "statsLabel": "Dalam angka",
+    "servicesTitle": "Layanan",
+    "categoriesTitle": "Bidang usaha",
+    "categoriesBody": "Divisi pertambangan, konstruksi teknik, dan penyewaan alat berat LMP.",
+    "customersTitle": "Beberapa customer kami",
+    "blogTitle": "Artikel terbaru",
+    "promoTitle": "Promo-program",
+    "contactTitle": "Hubungi kami",
+    "aboutHeading": "Sejarah kami",
+    "aboutBody": "Berdiri sejak 1973 dan berkembang menjadi salah satu kontraktor pekerjaan tanah dan konstruksi terkemuka di Indonesia.",
+    "ctaHeading": "Butuh mitra earth works, pertambangan, atau konstruksi teknik?",
+    "ctaBody": "Kirimkan detail proyek, lokasi, dan target produksi Anda. Tim LMP akan menyusun approach pekerjaan dan rencana armada yang sesuai.",
+    "ctaButton": "Hubungi Kami",
+    "divisionsTitle": "Bidang usaha kami",
+    "divisionsBody": "Tiga divisi utama LMP: pertambangan dan plant, konstruksi teknik, serta penyewaan alat berat dan trucking.",
+    "scopeTitle": "Ruang lingkup pekerjaan",
+    "scopeBody": "Ruang lingkup pekerjaan pertambangan dan konstruksi teknik yang dikerjakan LMP di seluruh Indonesia.",
+    "scopeMining": "Pertambangan & Plant",
+    "scopeCivil": "Konstruksi Teknik",
+    "fleetTitle": "Armada & dokumentasi",
+    "fleetBody": "Alat berat dan dump truck siap dioperasikan untuk mendukung proyek pertambangan, konstruksi, dan penyewaan.",
+    "projectsTitle": "Pengalaman proyek",
+    "projectsBody": "Pemilik proyek dan nilai kontrak dari company profile LMP.",
+    "projectsAll": "Lihat semua pengalaman proyek"
+  },
+  "products": {
+    "title": "Produk",
+    "heading": "Kategori produk",
+    "intro": "Bidang usaha LMP mencakup kontraktor pertambangan bijih, kontraktor umum, plant hire, dan penyewaan alat berat untuk industri, pertambangan, dan energi.",
+    "applications": "Aplikasi",
+    "catalogNote": "Daftar produk dan spesifikasi lengkap dikelola melalui katalog. Hubungi tim kami untuk ketersediaan stok dan penawaran harga.",
+    "itemsCount": "{count} produk",
+    "empty": "Belum ada produk yang dipublikasikan.",
+    "searchPlaceholder": "Cari produk...",
+    "allCategories": "Semua kategori",
+    "sku": "SKU",
+    "detailHeading": "Detail produk",
+    "packaging": "Kemasan",
+    "weight": "Berat/Volume",
+    "specTitle": "Spesifikasi teknis",
+    "relatedTitle": "Produk terkait",
+    "backToProducts": "Kembali ke produk",
+    "seeMore": "Lihat selengkapnya"
+  },
+  "services": {
+    "title": "Layanan",
+    "heading": "Bidang usaha & layanan",
+    "intro": "Kontraktor pertambangan, kontraktor umum, plant hire, dan penyewaan alat berat dengan dukungan armada dan tenaga kerja lebih dari 600 orang.",
+    "highlights": "Yang Anda dapatkan",
+    "relatedTitle": "Layanan lainnya",
+    "contactCta": "Butuh layanan ini? Konsultasikan dengan tim kami."
+  },
+  "customers": {
+    "title": "Klien kami",
+    "heading": "Klien kami",
+    "intro": "Pemilik proyek dan kontraktor yang mempercayakan pekerjaan pertambangan dan konstruksi teknik kepada LMP.",
+    "viewAll": "Lihat customer lainnya"
+  },
+  "blog": {
+    "title": "Blog",
+    "heading": "Artikel dan informasi",
+    "intro": "Informasi, covariate, dan pembaruan seputar pertambangan, konstruksi teknik, dan operasi alat berat.",
+    "empty": "Belum ada artikel.",
+    "publishedOn": "Terbit",
+    "readingTime": "{minutes} menit baca",
+    "backToBlog": "Semua artikel",
+    "viewAll": "Lihat artikel lainnya"
+  },
+  "career": {
+    "title": "Karier",
+    "heading": "Bekerja bersama kami",
+    "intro": "Kami membuka lowongan bagi profesional di bidang pertambangan, konstruksi teknik, operasi alat berat, dan dukungançš„é¡¹ç›® projects.",
+    "openPositions": "Lowongan terbuka",
+    "requirements": "Kualifikasi",
+    "location": "Lokasi",
+    "type": "Tipe",
+    "department": "Departemen",
+    "postedOn": "Dirilis",
+    "empty": "Belum ada lowongan terbuka saat ini.",
+    "apply": "Lamar via email",
+    "sendCv": "Kirim CV",
+    "requestProfile": "Minta company profile"
+  },
+  "profile": {
+    "contactTitle": "Kontak & informasi operasional",
+    "fax": "Faks",
+    "legalName": "Badan hukum",
+    "aboutTitle": "Tentang kami",
+    "businessLines": "Bidang usaha",
+    "founded": "Tahun berdiri",
+    "agency": "Nomor agen",
+    "categories": "Kategori produk",
+    "customers": "Customer",
+    "valuesTitle": "Nilai & komitmen",
+    "valuesBody": "Prinsip yang kami pegang dalam melayani pelanggan industri di seluruh Indonesia.",
+    "value1": "Kualitas orisinal terjamin",
+    "value2": "Stok siap kirim",
+    "value3": "Harga kompetitif",
+    "value4": "Pengiriman tepat waktu",
+    "value5": "Distribusi ke seluruh Indonesia",
+    "value6": "Dukungan teknis",
+    "downloadBody": "Unduh company profile resmi LMP untuk kebutuhan kerja sama dan pengadaan.",
+    "galleryTitle": "Dokumentasi",
+    "galleryBody": "Dokumentasi operasional pertambangan, konstruksi, dan armada LMP.",
+    "visionMissionTitle": "Visi, misi & falsafah",
+    "visionMissionBody": "Landasan LOBUNTA Group dalam menjalankan seluruh divisi dan proyeknya.",
+    "vision": "Visi",
+    "mission": "Misi",
+    "philosophy": "Falsafah",
+    "scopeTitle": "Ruang lingkup pekerjaan",
+    "scopeBody": "Lingkup pekerjaan mining, civil construction, dan plant hire sesuai company profile LMP.",
+    "fleetTitle": "Armada & peralatan",
+    "fleetBody": "Populasi unit alat berat, dump truck, dan trucking yang siap digunakan beserta merek pendukungnya.",
+    "projectsTitle": "Pengalaman proyek",
+    "projectsBody": "Daftar proyek pertambangan dan konstruksi teknik beserta pemilik proyek, lokasi, dan nilai kontrak."
+  },
+  "contact": {
+    "title": "Kontak",
+    "heading": "Hubungi kami",
+    "intro": "Konsultasi produk, penawaran harga, atau dukungan teknis. Tim kami siap membantu pada jam kerja.",
+    "formTitle": "Kirim pesan",
+    "name": "Nama",
+    "namePlaceholder": "Nama lengkap",
+    "email": "Email",
+    "emailPlaceholder": "nama {'@'} perusahaan.com",
+    "phone": "Nomor telepon",
+    "phonePlaceholder": "08xx xxxx xxxx",
+    "company": "Perusahaan",
+    "companyPlaceholder": "Nama perusahaan",
+    "subject": "Perihal",
+    "subjectPlaceholder": "Misal: penawaran Delo untuk genset 500 kVA",
+    "message": "Pesan",
+    "messagePlaceholder": "Ceritakan kebutuhan proyek, target produksi, dan lokasi pekerjaan Anda",
+    "submit": "Kirim pesan",
+    "sending": "Mengirim...",
+    "success": "Terima kasih. Pesan Anda sudah kami terima dan akan dibalas pada jam kerja.",
+    "error": "Pesan gagal terkirim. Silakan coba lagi atau hubungi kami via WhatsApp.",
+    "validation": "Mohon lengkapi nama, email valid, dan pesan Anda.",
+    "orWa": "Lebih cepat lewat WhatsApp",
+    "officeTitle": "Kantor & gudang"
+  },
+  "footer": {
+    "tagline": "Bagian dari LOBUNTA Group: kontraktor pertambangan dan konstruksi teknik.",
+    "explore": "Jelajahi",
+    "services": "Layanan",
+    "contact": "Kontak",
+    "rights": "Seluruh hak cipta dilindungi.",
+    "privacy": "Kebijakan Privasi",
+    "official": "Kontraktor Pertambangan & Konstruksi Teknik"
+  },
+  "milestones": [
+    {
+      "year": "1973",
+      "title": "CV. Lobunta",
+      "description": "CV. Lobunta didirikan pada 27 Januari 1973 di Jl. Pintu Air No. 31-B, Jakarta Pusat."
+    },
+    {
+      "year": "1977",
+      "title": "PT. Lobunta Kencana Raya",
+      "description": "Berubah menjadi Perseroan Terbatas pada 30 September 1977 dan menjadi induk LOBUNTA Group."
+    },
+    {
+      "year": "1994",
+      "title": "Site Development PLTU Pasuruan",
+      "description": "Proyek site development pembangkit listrik PLTU Pasuruan bersama PLN dan Mitsubishi Corporation."
+    },
+    {
+      "year": "1995",
+      "title": "Jagorawi Toll Road",
+      "description": "Pembangunan jalan Tol Jagorawi (TMII Ã¢â‚¬â€œ Cibubur) untuk PT Jasa Marga (Persero)."
+    },
+    {
+      "year": "2014",
+      "title": "Site Development Smelter",
+      "description": "Pekerjaan site development 63,87 ha untuk PT Well Harvest Wining Alumina Refinery di Kendawangan."
+    },
+    {
+      "year": "2025",
+      "title": "Kayong Aluminium Nusantara",
+      "description": "Site development smelter dan penyewaan alat berat untuk PT Kayong Aluminium Nusantara di Kendawangan."
+    }
+  ],
+  "staticPages": {
+    "faq": {
+      "title": "FAQ Ã¢â‚¬â€ PT Lobunta Mandiri Persada",
+      "heading": "Pertanyaan yang sering diajukan",
+      "intro": "Beberapa pertanyaan yang paling sering kami terima dari pemilik proyek dan mitra kerja.",
+      "body": "<details><summary>Bidang usaha apa saja yang dikerjakan PT Lobunta Mandiri Persada?</summary><p>Kami menjalankan tiga divisi: Mining & Plant Division (kontraktor pertambangan bijih dan batubara), Civil Construction Division (kontraktor umum untuk jalan, jembatan, irigasi, gedung, dan site development), serta penyewaan alat berat dan trucking. Kami juga menyediakan general supplier, crushing plant, dan mixer plant.</p></details>\n<details><summary>Apakah memiliki izin jasa pertambangan?</summary><p>Ya. PT Lobunta Mandiri Persada memiliki izin jasa pertambangan Nomor 26032401765630001 dengan NIB 9120002171281 dan kualifikasi kontraktor pekerjaan teknik Grade 6.</p></details>\n<details><summary>Alat apa saja yang siap disewa?</summary><p>Bulldozer, compactor dozer, excavator, wheel loader, track loader, vibrating roller, pad foot roller, motor grader, hydraulic breaker, dump truck 6x4 20 ton dan 24 ton, serta tongkang untuk pengiriman volume besar. Ketersediaan unit dijaga minimal 85%.</p></details>\n<details><summary>Apakah menerima pekerjaan site development?</summary><p>Ya. Kami telah mengerjakan site development smelter di Kendawangan untuk PT Well Harvest Wining Alumina Refinery dan PT Kayong Aluminium Nusantara, serta site development pembangkit listrik PLTU Pasuruan bersama PLN dan Mitsubishi Corporation.</p></details>\n<details><summary>Berapa lama perusahaan ini beroperasi?</summary><p>Dimulai sebagai CV. Lobunta pada 27 Januari 1973 dan berubah menjadi PT. Lobunta Kencana Raya pada 30 September 1977. LMP adalah divisi pertambangan dan konstruksi teknik dari LOBUNTA Group.</p></details>\n<details><summary>Bagaimana cara memperoleh penawaran dan dokumen profil?</summary><p>Kirimkan detail proyek melalui halaman Kontak atau WhatsApp, atau unduh company profile resmi kami untuk kebutuhan pengadaan dan kerja sama.</p></details>"
+    },
+    "privacyPolicy": {
+      "title": "Kebijakan Privasi",
+      "heading": "Kebijakan Privasi",
+      "intro": "Halaman ini menjelaskan bagaimana PT Lobunta Mandiri Persada mengumpulkan, menggunakan, dan melindungi data pribadi Anda.",
+      "body": "<p><strong>Data yang kami kumpulkan.</strong> Kami mengumpulkan nama, nomor telepon, alamat email, perusahaan, dan pesan yang Anda kirimkan melalui formulir kontak atau WhatsApp.</p>\n<p><strong>Penggunaan data.</strong> Data tersebut digunakan untuk menjawab pertanyaan, menyusun penawaran, danyraikanÃ¥â€ â€ºÃ¥Å’Âºtoothhill proyek.</p>\n<p><strong>Berbagi data.</strong> Kami tidak menjual atau menyewakan data pribadi Anda kepada pihak ketiga.</p>\n<p><strong>Keamanan.</strong> Data disimpan pada server dengan akses terbatas dan hanya digunakan oleh personel yang berwenang.</p>\n<p><strong>Hak Anda.</strong> Anda dapat meminta akses, koreksi, atau penghapusan data Anda dengan menghubungi kami melalui halaman kontak.</p>"
+    },
+    "termsConditions": {
+      "title": "Syarat & Ketentuan",
+      "heading": "Syarat & Ketentuan",
+      "intro": "Dengan menggunakan layanan dan menjajaki situs ini, Anda menyetujui syarat dan ketentuan berikut.",
+      "body": "<p><strong>1. Ruang lingkup.</strong> Syarat dan ketentuan ini mengatur penggunaan situs serta jasa kontraktor pertambangan, konstruksi teknik, dan penyewaan alat berat oleh PT Lobunta Mandiri Persada.</p>\n<p><strong>2. Penawaran dan kontrak.</strong> Penawaran berlaku sesuai masa berlaku yang tercantum. Perjanjian kerja menjadi sah setelah ditandatangani kedua belah pihak, dengan jadwal, volume, dan nilai kontrak tertulis.</p>\n<p><strong>3. Nilai kontrak.</strong> Nilai kontrak mengikuti hasil survey lokasi, target produksi, dan spesifikasi pekerjaan. Perubahan lingkup kerja dapat menimbulkan penyesuaian nilai.</p>\n<p><strong>4. Pembayaran.</strong> Pembayaran dilakukan sesuai skema yang disepakati dalam kontrak, menggunakan transfer bank, letter of credit, atau cara pembayaran lain yang disepakati tertulis.</p>\n<p><strong>5. Waktu Pelaksanaan.</strong> Jadwal kerja mengikuti target yang disepakati dan bergantung pada kondisi lapangan, cuaca, serta permit yang berlaku di lokasi proyek.</p>\n<p><strong>6. K3 dan lingkungan.</strong> Seluruh pekerjaan dilaksanakan dengan prinsip zero accident, kepatuhan ISO dan OHSAS, serta upaya kontribusi sosial dan lingkungan bagi masyarakat sekitar lokasi.</p>\n<p><strong>7. Keterbatasan tanggung jawab.</strong> Kami tidak bertanggung jawab atas kerugian tidak langsung yang timbul dari penundaan yang disebabkan di luar kendali perusahaan, termasuk keadaan kahar dan gangguan pihak ketiga.</p>\n<p><strong>8. Hukum yang berlaku.</strong> Syarat dan ketentuan ini diatur dan ditafsirkan sesuai hukum yang berlaku di Republik Indonesia.</p>"
+    }
+  },
+  "meta": {
+    "homeTitle": "PT Lobunta Mandiri Persada - Kontraktor Pertambangan & Konstruksi Teknik",
+    "homeDescription": "LMP adalah bagian dari LOBUNTA Group yang menjalankan kontraktor pertambangan bijih, kontraktor umum, plant hire, dan penyewaan alat berat dengan tenaga kerja lebih dari 600 orang.",
+    "blogTitle": "Blog & Artikel | PT Lobunta Mandiri Persada",
+    "blogDescription": "Wawasan dan pembaruan seputar pertambangan, konstruksi teknik, dan industri alat berat."
+  }
+}
