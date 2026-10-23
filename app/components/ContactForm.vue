@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const { t } = useI18n()
 const { locale } = useI18n()
+const { data: company } = useStaticCompany()
 
 const form = reactive({
   name: '',
@@ -53,7 +54,29 @@ async function submit() {
   } catch {
     state.value = 'error'
     feedback.value = t('contact.error')
+    openWhatsappFallback()
   }
+}
+
+/**
+ * Backend belum menyediakan endpoint /contact, jadi pesan dialihkan ke
+ * WhatsApp agar tetap terkirim.
+ */
+function openWhatsappFallback() {
+  const number = String(company.value?.whatsapp || '').replace(/[^0-9]/g, '')
+  if (!number) return
+  const lines = [
+    `${t('contact.formTitle')} - ${form.name}`,
+    `${t('contact.email')}: ${form.email}`,
+    form.phone ? `${t('contact.phone')}: ${form.phone}` : '',
+    form.company ? `${t('contact.company')}: ${form.company}` : '',
+    form.subject ? `${t('contact.subject')}: ${form.subject}` : '',
+    '',
+    form.message
+  ].filter(Boolean)
+  const url = whatsappLink(number, lines.join('\n'))
+  if (typeof window !== 'undefined') window.open(url, '_blank', 'noopener')
+  feedback.value = t('contact.errorWhatsapp')
 }
 </script>
 

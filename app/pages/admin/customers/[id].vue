@@ -1,4 +1,4 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
 import type { FieldDef } from '~/admin/types'
 
 definePageMeta({ layout: 'admin' })
@@ -13,8 +13,8 @@ const fields: FieldDef[] = [
 <template>
   <AdminResourceForm
     resource="customers"
-    label="Customer"
-    singular="Customer"
+    label="Klien"
+    singular="Klien"
     base-path="/admin/customers"
     :fields="fields"
   />

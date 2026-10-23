@@ -1,4 +1,4 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
 import type { ColumnDef } from '~/admin/types'
 
 definePageMeta({ layout: 'admin' })
@@ -12,8 +12,8 @@ const columns: ColumnDef[] = [
 <template>
   <AdminResourceList
     resource="customers"
-    label="Customer"
-    singular="Customer"
+    label="Klien"
+    singular="Klien"
     help="Logo perusahaan yang menampilkan di beranda."
     base-path="/admin/customers"
     :columns="columns"

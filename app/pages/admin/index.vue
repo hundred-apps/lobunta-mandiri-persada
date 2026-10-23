@@ -8,7 +8,7 @@ const countable = [
   { key: 'products', label: 'Produk', icon: 'lab' },
   { key: 'services', label: 'Layanan', icon: 'lab' },
   { key: 'articles', label: 'Artikel', icon: 'document' },
-  { key: 'customers', label: 'Customer', icon: 'factory' }
+  { key: 'customers', label: 'Klien', icon: 'factory' }
 ]
 const counts = reactive<Record<string, number | null>>({})
 const loading = ref(true)

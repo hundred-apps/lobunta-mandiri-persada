@@ -24,7 +24,7 @@ const groups = computed(() => [
       { to: '/admin/products', label: 'Produk', icon: 'lab' },
       { to: '/admin/services', label: 'Layanan', icon: 'lab' },
       { to: '/admin/articles', label: 'Artikel', icon: 'document' },
-      { to: '/admin/customers', label: 'Customer', icon: 'factory' }
+      { to: '/admin/customers', label: 'Klien', icon: 'factory' }
     ]
   },
   ...(isSuperUser.value ? [{

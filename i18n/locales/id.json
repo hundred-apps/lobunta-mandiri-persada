@@ -40,7 +40,7 @@
     "servicesTitle": "Layanan",
     "categoriesTitle": "Bidang usaha",
     "categoriesBody": "Divisi pertambangan, konstruksi teknik, dan penyewaan alat berat LMP.",
-    "customersTitle": "Beberapa customer kami",
+    "customersTitle": "Beberapa klien kami",
     "blogTitle": "Artikel terbaru",
     "promoTitle": "Promo-program",
     "contactTitle": "Hubungi kami",
@@ -92,7 +92,7 @@
     "title": "Klien kami",
     "heading": "Klien kami",
     "intro": "Pemilik proyek dan kontraktor yang mempercayakan pekerjaan pertambangan dan konstruksi teknik kepada LMP.",
-    "viewAll": "Lihat customer lainnya"
+    "viewAll": "Lihat klien lainnya"
   },
   "blog": {
     "title": "Blog",
@@ -107,7 +107,7 @@
   "career": {
     "title": "Karier",
     "heading": "Bekerja bersama kami",
-    "intro": "Kami membuka lowongan bagi profesional di bidang pertambangan, konstruksi teknik, operasi alat berat, dan dukungançš„é¡¹ç›® projects.",
+    "intro": "Kami membuka lowongan bagi profesional di bidang pertambangan, konstruksi teknik, operasi alat berat, dan dukungan proyek.",
     "openPositions": "Lowongan terbuka",
     "requirements": "Kualifikasi",
     "location": "Lokasi",
@@ -128,9 +128,9 @@
     "founded": "Tahun berdiri",
     "agency": "Nomor agen",
     "categories": "Kategori produk",
-    "customers": "Customer",
+    "customers": "Klien",
     "valuesTitle": "Nilai & komitmen",
-    "valuesBody": "Prinsip yang kami pegang dalam melayani pelanggan industri di seluruh Indonesia.",
+    "valuesBody": "Prinsip yang kami pegang dalam melayani klien industri di seluruh Indonesia.",
     "value1": "Kualitas orisinal terjamin",
     "value2": "Stok siap kirim",
     "value3": "Harga kompetitif",
@@ -175,7 +175,8 @@
     "error": "Pesan gagal terkirim. Silakan coba lagi atau hubungi kami via WhatsApp.",
     "validation": "Mohon lengkapi nama, email valid, dan pesan Anda.",
     "orWa": "Lebih cepat lewat WhatsApp",
-    "officeTitle": "Kantor & gudang"
+    "officeTitle": "Kantor & gudang",
+    "errorWhatsapp": "Pesan gagal terkirim ke server. Kami membuka WhatsApp agar pesan Anda tetap terkirim."
   },
   "footer": {
     "tagline": "Bagian dari LOBUNTA Group: kontraktor pertambangan dan konstruksi teknik.",
@@ -205,7 +206,7 @@
     {
       "year": "1995",
       "title": "Jagorawi Toll Road",
-      "description": "Pembangunan jalan Tol Jagorawi (TMII Ã¢â‚¬â€œ Cibubur) untuk PT Jasa Marga (Persero)."
+      "description": "Pembangunan jalan Tol Jagorawi (TMII – Cibubur) untuk PT Jasa Marga (Persero)."
     },
     {
       "year": "2014",
@@ -220,7 +221,7 @@
   ],
   "staticPages": {
     "faq": {
-      "title": "FAQ Ã¢â‚¬â€ PT Lobunta Mandiri Persada",
+      "title": "FAQ — PT Lobunta Mandiri Persada",
       "heading": "Pertanyaan yang sering diajukan",
       "intro": "Beberapa pertanyaan yang paling sering kami terima dari pemilik proyek dan mitra kerja.",
       "body": "<details><summary>Bidang usaha apa saja yang dikerjakan PT Lobunta Mandiri Persada?</summary><p>Kami menjalankan tiga divisi: Mining & Plant Division (kontraktor pertambangan bijih dan batubara), Civil Construction Division (kontraktor umum untuk jalan, jembatan, irigasi, gedung, dan site development), serta penyewaan alat berat dan trucking. Kami juga menyediakan general supplier, crushing plant, dan mixer plant.</p></details>\n<details><summary>Apakah memiliki izin jasa pertambangan?</summary><p>Ya. PT Lobunta Mandiri Persada memiliki izin jasa pertambangan Nomor 26032401765630001 dengan NIB 9120002171281 dan kualifikasi kontraktor pekerjaan teknik Grade 6.</p></details>\n<details><summary>Alat apa saja yang siap disewa?</summary><p>Bulldozer, compactor dozer, excavator, wheel loader, track loader, vibrating roller, pad foot roller, motor grader, hydraulic breaker, dump truck 6x4 20 ton dan 24 ton, serta tongkang untuk pengiriman volume besar. Ketersediaan unit dijaga minimal 85%.</p></details>\n<details><summary>Apakah menerima pekerjaan site development?</summary><p>Ya. Kami telah mengerjakan site development smelter di Kendawangan untuk PT Well Harvest Wining Alumina Refinery dan PT Kayong Aluminium Nusantara, serta site development pembangkit listrik PLTU Pasuruan bersama PLN dan Mitsubishi Corporation.</p></details>\n<details><summary>Berapa lama perusahaan ini beroperasi?</summary><p>Dimulai sebagai CV. Lobunta pada 27 Januari 1973 dan berubah menjadi PT. Lobunta Kencana Raya pada 30 September 1977. LMP adalah divisi pertambangan dan konstruksi teknik dari LOBUNTA Group.</p></details>\n<details><summary>Bagaimana cara memperoleh penawaran dan dokumen profil?</summary><p>Kirimkan detail proyek melalui halaman Kontak atau WhatsApp, atau unduh company profile resmi kami untuk kebutuhan pengadaan dan kerja sama.</p></details>"
@@ -229,7 +230,7 @@
       "title": "Kebijakan Privasi",
       "heading": "Kebijakan Privasi",
       "intro": "Halaman ini menjelaskan bagaimana PT Lobunta Mandiri Persada mengumpulkan, menggunakan, dan melindungi data pribadi Anda.",
-      "body": "<p><strong>Data yang kami kumpulkan.</strong> Kami mengumpulkan nama, nomor telepon, alamat email, perusahaan, dan pesan yang Anda kirimkan melalui formulir kontak atau WhatsApp.</p>\n<p><strong>Penggunaan data.</strong> Data tersebut digunakan untuk menjawab pertanyaan, menyusun penawaran, danyraikanÃ¥â€ â€ºÃ¥Å’Âºtoothhill proyek.</p>\n<p><strong>Berbagi data.</strong> Kami tidak menjual atau menyewakan data pribadi Anda kepada pihak ketiga.</p>\n<p><strong>Keamanan.</strong> Data disimpan pada server dengan akses terbatas dan hanya digunakan oleh personel yang berwenang.</p>\n<p><strong>Hak Anda.</strong> Anda dapat meminta akses, koreksi, atau penghapusan data Anda dengan menghubungi kami melalui halaman kontak.</p>"
+      "body": "<p><strong>Data yang kami kumpulkan.</strong> Kami mengumpulkan nama, nomor telepon, alamat email, perusahaan, dan pesan yang Anda kirimkan melalui formulir kontak atau WhatsApp.</p>\n<p><strong>Penggunaan data.</strong> Data tersebut digunakan untuk menjawab pertanyaan, menyusun penawaran, serta administrasi proyek.</p>\n<p><strong>Berbagi data.</strong> Kami tidak menjual atau menyewakan data pribadi Anda kepada pihak ketiga.</p>\n<p><strong>Keamanan.</strong> Data disimpan pada server dengan akses terbatas dan hanya digunakan oleh personel yang berwenang.</p>\n<p><strong>Hak Anda.</strong> Anda dapat meminta akses, koreksi, atau penghapusan data Anda dengan menghubungi kami melalui halaman kontak.</p>"
     },
     "termsConditions": {
       "title": "Syarat & Ketentuan",

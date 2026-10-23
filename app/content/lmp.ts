@@ -61,8 +61,8 @@ export const lmpSettings: SiteSettings = {
   whatsapp: '62813816181546',
   email: 'mining@lobunta.com',
   officeHours: loc(
-    'Seninâ€“Jumat, 08.00â€“17.00 WIB',
-    'Mondayâ€“Friday, 08.00â€“17.00 WIB'
+    'Senin–Jumat, 08.00–17.00 WIB',
+    'Monday–Friday, 08.00–17.00 WIB'
   ),
   logo: '/img/logo.svg',
   profile: '/img/lmp/mining-2.jpg',
@@ -92,7 +92,7 @@ export const lmpFacts: LmpFact[] = [
   },
   {
     label: loc('Tanggal berdiri', 'Date established'),
-    value: loc('27 Januari 1973 (CV. Lobunta) Â· 30 September 1977 (PT. Lobunta Kencana Raya)', '27 January 1973 (CV. Lobunta) Â· 30 September 1977 (PT. Lobunta Kencana Raya)')
+    value: loc('27 Januari 1973 (CV. Lobunta) · 30 September 1977 (PT. Lobunta Kencana Raya)', '27 January 1973 (CV. Lobunta) · 30 September 1977 (PT. Lobunta Kencana Raya)')
   },
   {
     label: loc('Bidang usaha', 'Main line of business'),
@@ -103,7 +103,7 @@ export const lmpFacts: LmpFact[] = [
   },
   {
     label: loc('Kualifikasi', 'Qualification'),
-    value: loc('Grade 6 Â· Kontraktor Pekerjaan Teknik (Spesifikasi 22001â€“22103)', 'Grade 6 Â· Civil Work Contractor (Specification 22001â€“22103)')
+    value: loc('Grade 6 · Kontraktor Pekerjaan Teknik (Spesifikasi 22001–22103)', 'Grade 6 · Civil Work Contractor (Specification 22001–22103)')
   },
   {
     label: loc('NIB', 'NIB'),
@@ -119,11 +119,11 @@ export const lmpFacts: LmpFact[] = [
   },
   {
     label: loc('Asosiasi', 'Associations'),
-    value: loc('Aspindo (B-098/STA/096/X/2018) Â· Appaksi (01.001)', 'Aspindo (B-098/STA/096/X/2018) Â· Appaksi (01.001)')
+    value: loc('Aspindo (B-098/STA/096/X/2018) · Appaksi (01.001)', 'Aspindo (B-098/STA/096/X/2018) · Appaksi (01.001)')
   },
   {
     label: loc('Kantor pusat', 'Head office'),
-    value: loc('Jl. Raya Bekasi Km. 31, Bekasi Selatan Â· Jl. Pintu Air No. 31-B, Jakarta Pusat', 'Jl. Raya Bekasi Km. 31, Bekasi Selatan Â· Jl. Pintu Air No. 31-B, Jakarta Pusat')
+    value: loc('Jl. Raya Bekasi Km. 31, Bekasi Selatan · Jl. Pintu Air No. 31-B, Jakarta Pusat', 'Jl. Raya Bekasi Km. 31, Bekasi Selatan · Jl. Pintu Air No. 31-B, Jakarta Pusat')
   }
 ]
 
@@ -191,7 +191,7 @@ export const lmpMiningScope: Localized[] = [
   loc('Overburden removal', 'Overburden removal'),
   loc('Selective mining', 'Selective mining'),
   loc('Coal/ore getting', 'Coal/ore getting'),
-  loc('Hauling jarak pendekâ€“menengah', 'Shortâ€“medium distance hauling'),
+  loc('Hauling jarak pendek–menengah', 'Short–medium distance hauling'),
   loc('Manajemen stockpile', 'Stockpile management'),
   loc('Pemeliharaan jalan', 'Road maintenance'),
   loc('Barging (angi)', 'Barging')
@@ -214,29 +214,29 @@ export const lmpMiningProjects: LmpProject[] = [
   {
     title: loc('Kontraktor Pertambangan Nikel', 'Nickel Ore Mining Contractor'),
     client: loc('PT. GPS (Harita Group)', 'PT. GPS (Harita Group)'),
-    location: loc('Obi â€“ Halmahera', 'Obi â€“ Halmahera'),
+    location: loc('Obi – Halmahera', 'Obi – Halmahera'),
     period: loc('Kontraktor pertambangan', 'Mining contractor'),
-    scope: loc('100.000 MT/bulan bijih Â· 200.000 Bcm/bulan overburden', '100,000 MT/month of ore Â· 200,000 Bcm/month of overburden')
+    scope: loc('100.000 MT/bulan bijih · 200.000 Bcm/bulan overburden', '100,000 MT/month of ore · 200,000 Bcm/month of overburden')
   },
   {
     title: loc('Kontraktor Pertambangan Bijih Besi', 'Iron Ore Mining Contractor'),
     client: loc('PT. Karya Wijaya Aneka Mineral', 'PT. Karya Wijaya Aneka Mineral'),
     location: loc('Marau, Kalimantan Barat', 'Marau, West Kalimantan'),
     period: loc('Kontraktor pertambangan', 'Mining contractor'),
-    scope: loc('150.000 MT/bulan bijih Â· 100.000 Bcm/bulan overburden', '150,000 MT/month of ore Â· 100,000 Bcm/month of overburden')
+    scope: loc('150.000 MT/bulan bijih · 100.000 Bcm/bulan overburden', '150,000 MT/month of ore · 100,000 Bcm/month of overburden')
   },
   {
     title: loc('Kontraktor Pertambangan Bauxite', 'Bauxite Ore Mining Contractor'),
     client: loc('PT. Harita Prima Abadi Mineral', 'PT. Harita Prima Abadi Mineral'),
     location: loc('Kendawangan, Kalimantan Barat', 'Kendawangan, West Kalimantan'),
     period: loc('Kontraktor pertambangan', 'Mining contractor'),
-    scope: loc('200.000 MT/bulan bijih washing Â· 250.000 Bcm/bulan overburden', '200,000 MT/month of washed ore Â· 250,000 Bcm/month of overburden')
+    scope: loc('200.000 MT/bulan bijih washing · 250.000 Bcm/bulan overburden', '200,000 MT/month of washed ore · 250,000 Bcm/month of overburden')
   },
   {
-    title: loc('Pertambangan Batubara Rank Tinggiâ€“Rendah', 'High to Low Rank Coal Mining'),
+    title: loc('Pertambangan Batubara Rank Tinggi–Rendah', 'High to Low Rank Coal Mining'),
     client: loc(
-      'PT. Sumber Kurnia Buana Â· PT. Pesona Khatulistiwa Nusantara Â· PT. Banua Delta Kencana Â· PT. Gorby Putra Utama',
-      'PT. Sumber Kurnia Buana Â· PT. Pesona Khatulistiwa Nusantara Â· PT. Banua Delta Kencana Â· PT. Gorby Putra Utama'
+      'PT. Sumber Kurnia Buana · PT. Pesona Khatulistiwa Nusantara · PT. Banua Delta Kencana · PT. Gorby Putra Utama',
+      'PT. Sumber Kurnia Buana · PT. Pesona Khatulistiwa Nusantara · PT. Banua Delta Kencana · PT. Gorby Putra Utama'
     ),
     location: loc('Kalimantan Selatan, Kalimantan Timur, Sumatera Selatan', 'South Kalimantan, East Kalimantan, South Sumatera'),
     period: loc('Kontraktor aktif', 'Active contractor'),
@@ -250,43 +250,43 @@ export const lmpCivilProjects: LmpProject[] = [
     title: loc('Site Development Smelter', 'Site Development Smelter'),
     client: loc('PT Well Harvest Wining Alumina Refinery (WHW)', 'PT Well Harvest Wining Alumina Refinery (WHW)'),
     location: loc('Kendawangan, Kalimantan Tengah', 'Kendawangan, Central Kalimantan'),
-    period: loc('2014 â€“ 2015', '2014 â€“ 2015'),
-    scope: loc('Land clearing 63,87 Ha Â· excavasi 5.447.247,58 Bcm Â· spreading 5.691.024,00 Bcm', 'Land clearing 63.87 ha Â· 5,447,247.58 Bcm of excavation Â· 5,691,024.00 Bcm of spreading')
+    period: loc('2014 – 2015', '2014 – 2015'),
+    scope: loc('Land clearing 63,87 Ha · excavasi 5.447.247,58 Bcm · spreading 5.691.024,00 Bcm', 'Land clearing 63.87 ha · 5,447,247.58 Bcm of excavation · 5,691,024.00 Bcm of spreading')
   },
   {
     title: loc('Site Development Smelter', 'Site Development Smelter'),
     client: loc('PT Kayong Aluminium Nusantara (KAN)', 'PT Kayong Aluminium Nusantara (KAN)'),
     location: loc('Kendawangan, Kalimantan Tengah', 'Kendawangan, Central Kalimantan'),
-    period: loc('2025 â€“ berjalan', '2025 â€“ ongoing'),
-    scope: loc('Rental equipment & dump truck Â· 13.081,95 M3', 'Rental equipment & dump truck Â· 13,081.95 m3')
+    period: loc('2025 – berjalan', '2025 – ongoing'),
+    scope: loc('Rental equipment & dump truck · 13.081,95 M3', 'Rental equipment & dump truck · 13,081.95 m3')
   },
   {
     title: loc('Pembangunan Jalan Tol Jagorawi', 'Road Development Jagorawi Toll Road'),
     client: loc('PT Jasa Marga (Persero)', 'PT Jasa Marga (Persero)'),
-    location: loc('TMII â€“ Cibubur', 'TMII â€“ Cibubur'),
-    period: loc('Januari 1995 â€“ Februari 1996', 'January 1995 â€“ February 1996'),
-    scope: loc('Unsuitable material 75.972,00 Bcm Â· sub grade 219.921,00 M3 Â· sub base 159.416,00 M3', '75,972.00 Bcm of unsuitable material Â· 219,921.00 m3 of sub grade Â· 159,416.00 m3 of sub base'),
+    location: loc('TMII – Cibubur', 'TMII – Cibubur'),
+    period: loc('Januari 1995 – Februari 1996', 'January 1995 – February 1996'),
+    scope: loc('Unsuitable material 75.972,00 Bcm · sub grade 219.921,00 M3 · sub base 159.416,00 M3', '75,972.00 Bcm of unsuitable material · 219,921.00 m3 of sub grade · 159,416.00 m3 of sub base'),
     value: loc('Nilai kontrak Rp 12.502.414.036,72', 'Contract value Rp 12,502,414,036.72')
   },
   {
     title: loc('Rel Lingkar & TLS III (F199)', 'Rel Lingkar & TLS III (F199)'),
     client: loc('PT Tambang Batubara Bukit Asam', 'PT Tambang Batubara Bukit Asam'),
     location: loc('Tanjung Enim, Sumatera Selatan', 'Tanjung Enim, South Sumatera'),
-    period: loc('Januari 1996 â€“ Februari 1998', 'January 1996 â€“ February 1998'),
-    scope: loc('Land clearing 63,87 Ha Â· base course 13.081,95 M3 Â· reinforced concrete pipe dia. 1000 mm', '63.87 ha of land clearing Â· 13,081.95 m3 of base course Â· 1000 mm reinforced concrete pipe'),
+    period: loc('Januari 1996 – Februari 1998', 'January 1996 – February 1998'),
+    scope: loc('Land clearing 63,87 Ha · base course 13.081,95 M3 · reinforced concrete pipe dia. 1000 mm', '63.87 ha of land clearing · 13,081.95 m3 of base course · 1000 mm reinforced concrete pipe'),
     value: loc('Nilai kontrak US$ 4.552.819', 'Contract value US$ 4,552,819')
   },
   {
     title: loc('Site Development PLTU Pasuruan', 'Site Development PLTU Pasuruan'),
-    client: loc('PLN (Persero) Â· Mitsubishi Corporation', 'PLN (Persero) Â· Mitsubishi Corporation'),
+    client: loc('PLN (Persero) · Mitsubishi Corporation', 'PLN (Persero) · Mitsubishi Corporation'),
     location: loc('Pasuruan, Jawa Timur', 'Pasuruan, East Java'),
-    period: loc('Januari 1994 â€“ Juli 1995', 'January 1994 â€“ July 1995'),
-    scope: loc('Cut & fill 1.250.000,00 Bcm Â· bandwall 650,00 M1 Â· roads 9,00 Km', '1,250,000.00 Bcm of cut and fill Â· 650.00 m1 of band wall Â· 9.00 km of roads'),
+    period: loc('Januari 1994 – Juli 1995', 'January 1994 – July 1995'),
+    scope: loc('Cut & fill 1.250.000,00 Bcm · bandwall 650,00 M1 · roads 9,00 Km', '1,250,000.00 Bcm of cut and fill · 650.00 m1 of band wall · 9.00 km of roads'),
     value: loc('Nilai kontrak US$ 6.886.562,75', 'Contract value US$ 6,886,562.75')
   },
   {
     title: loc('Jembatan Girder Baja Kelas B Bentang 20 M', 'Class B Steel Girder Bridge, 20 m Span'),
-    client: loc('Dinas Pekerjaan Umum Tk. II Kab. Nagan â€“ Provinsi Aceh', 'Dinas Pekerjaan Umum Tk. II Kab. Nagan â€“ Aceh Province'),
+    client: loc('Dinas Pekerjaan Umum Tk. II Kab. Nagan – Provinsi Aceh', 'Dinas Pekerjaan Umum Tk. II Kab. Nagan – Aceh Province'),
     location: loc('Nagan Raya, Provinsi Aceh', 'Nagan Raya, Aceh Province'),
     period: loc('2009', '2009'),
     scope: loc('Pembangunan jembatan baja kelas B bentang 20 meter', 'Construction of a class B steel bridge with a 20 m span'),
@@ -310,7 +310,7 @@ export const lmpCivilProjects: LmpProject[] = [
   },
   {
     title: loc('Jembatan Lengkung Baja Sungai Lulut Kelas C Bentang 21 M', 'Class C Sungai Lulut Steel Arch Bridge, 21 m Span'),
-    client: loc('Dinas Pekerjaan Umum Tk. II Kab. Banjar â€“ Kalimantan Selatan', 'Dinas Pekerjaan Umum Tk. II Kab. Banjar â€“ South Kalimantan'),
+    client: loc('Dinas Pekerjaan Umum Tk. II Kab. Banjar – Kalimantan Selatan', 'Dinas Pekerjaan Umum Tk. II Kab. Banjar – South Kalimantan'),
     location: loc('Kabupaten Banjar, Kalimantan Selatan', 'Banjar Regency, South Kalimantan'),
     period: loc('2010', '2010'),
     scope: loc('Pembangunan jembatan lengkung baja kelas C bentang 21 meter', 'Construction of a class C steel arch bridge with a 21 m span'),
@@ -337,9 +337,9 @@ export const lmpFleet: LmpFleetGroup[] = [
   {
     title: loc('Alat berat pertambangan', 'Mining heavy equipment'),
     items: [
-      loc('Hydraulic excavator & breaker 20â€“50 ton', 'Hydraulic excavator & breaker 20â€“50 tons'),
-      loc('Bulldozer & ripper 19â€“40 ton', 'Bulldozer & ripper 19â€“40 tons'),
-      loc('Motor grader 10â€“20 ton', 'Motor grader 10â€“20 tons'),
+      loc('Hydraulic excavator & breaker 20–50 ton', 'Hydraulic excavator & breaker 20–50 tons'),
+      loc('Bulldozer & ripper 19–40 ton', 'Bulldozer & ripper 19–40 tons'),
+      loc('Motor grader 10–20 ton', 'Motor grader 10–20 tons'),
       loc('Vibrating roller', 'Vibrating roller'),
       loc('Crawler drill', 'Crawler drill')
     ]
@@ -348,17 +348,17 @@ export const lmpFleet: LmpFleetGroup[] = [
     title: loc('Dump truck', 'Dump truck'),
     items: [
       loc('Mercedes Benz Actros MB4043 6x6', 'Mercedes Benz Actros MB4043 6x6'),
-      loc('Mercedes Benz Axor 2528 6x4 â€“ 20 ton', 'Mercedes Benz Axor 2528 6x4 â€“ 20 tons'),
-      loc('MAN Sitrak 6x4 â€“ 30 ton', 'MAN Sitrak 6x4 â€“ 30 tons'),
-      loc('Scania P420 8x4 â€“ 35 ton', 'Scania P420 8x4 â€“ 35 tons'),
+      loc('Mercedes Benz Axor 2528 6x4 – 20 ton', 'Mercedes Benz Axor 2528 6x4 – 20 tons'),
+      loc('MAN Sitrak 6x4 – 30 ton', 'MAN Sitrak 6x4 – 30 tons'),
+      loc('Scania P420 8x4 – 35 ton', 'Scania P420 8x4 – 35 tons'),
       loc('Fuel truck, lube truck, dust suppression truck', 'Fuel truck, lube truck, dust suppression truck')
     ]
   },
   {
     title: loc('Trucking & tongkang', 'Trucking & barge'),
     items: [
-      loc('Dump truck 6x4 â€“ 20 ton', 'Dump truck 6x4 â€“ 20 tons'),
-      loc('Dump truck 6x4 â€“ 24 ton', 'Dump truck 6x4 â€“ 24 tons'),
+      loc('Dump truck 6x4 – 20 ton', 'Dump truck 6x4 – 20 tons'),
+      loc('Dump truck 6x4 – 24 ton', 'Dump truck 6x4 – 24 tons'),
       loc('Tongkang untuk pengiriman volume besar', 'Barge for large volume delivery')
     ]
   }
@@ -446,8 +446,8 @@ export const lmpDivisions: ServiceItem[] = [
     order: 3,
     title: loc('Penyewaan Alat Berat & Trucking', 'Heavy Equipment Rental & Trucking'),
     excerpt: loc(
-      'Sewa excavator, bulldozer, grader, dan dump truck 6x4 20â€“24 ton plus tongkang untuk stockpile, quarry, cut & fill, smelter, dan infrastruktur.',
-      'Rental of excavators, bulldozers, graders, and 6x4 20â€“24 ton dump trucks plus barges for stockpiles, quarries, cut and fill, smelters, and infrastructure.'
+      'Sewa excavator, bulldozer, grader, dan dump truck 6x4 20–24 ton plus tongkang untuk stockpile, quarry, cut & fill, smelter, dan infrastruktur.',
+      'Rental of excavators, bulldozers, graders, and 6x4 20–24 ton dump trucks plus barges for stockpiles, quarries, cut and fill, smelters, and infrastructure.'
     ),
     body: { id: '<p>Kami menyediakan penyewaan alat berat dan trucking untuk kebutuhan stockpile, tambang bauksit, proyek cut and fill, quarry batu split, proyek smelter, pabrik kelapa sawit, loading-unloading, serta proyek jalan dan infrastruktur lainnya.</p><p>Unit yang siap dipakai meliputi bulldozer, compactor dozer, excavator, wheel loader, track loader, vibrating roller, pad foot roller, motor grader, hydraulic breaker, dump truck 6x4 20 ton dan 24 ton, serta tongkang untuk pengiriman volume besar.</p>', en: '<p>We provide heavy equipment rental and trucking for stockpiles, bauxite mines, cut and fill projects, stone quarries, smelter projects, palm oil mills, loading and unloading, and other road and infrastructure projects.</p><p>Ready-to-use units include bulldozers, compactor dozers, excavators, wheel loaders, track loaders, vibrating rollers, pad foot rollers, motor graders, hydraulic breakers, 6x4 20 and 24 ton dump trucks, and barges for large volume delivery.</p>' },
     image: '/img/lmp/civil-3.jpg',

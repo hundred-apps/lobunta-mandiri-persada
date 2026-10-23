@@ -28,7 +28,7 @@
   },
   runtimeConfig: {
     public: {
-      apiBase: process.env.NUXT_PUBLIC_API_BASE || 'http://192.168.1.96:8900/api/',
+      apiBase: process.env.NUXT_PUBLIC_API_BASE || 'https://be.lobuntamandiri.com/api/',
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://www.lobunta.com'
     }
   },

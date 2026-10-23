@@ -40,7 +40,7 @@
     "servicesTitle": "Services",
     "categoriesTitle": "Business lines",
     "categoriesBody": "LMP mining, civil construction, and heavy equipment rental divisions.",
-    "customersTitle": "Few of our customers",
+    "customersTitle": "A few of our clients",
     "blogTitle": "Latest articles",
     "promoTitle": "Promotions and programs",
     "contactTitle": "Contact us",
@@ -92,7 +92,7 @@
     "title": "Our clients",
     "heading": "Our clients",
     "intro": "Project owners and contractors who entrust their mining and civil construction work to LMP.",
-    "viewAll": "See other customers"
+    "viewAll": "See other clients"
   },
   "blog": {
     "title": "Blog",
@@ -128,9 +128,9 @@
     "founded": "Founded",
     "agency": "Agency number",
     "categories": "Product categories",
-    "customers": "Customers",
+    "customers": "Clients",
     "valuesTitle": "Values & commitment",
-    "valuesBody": "The principles that guide how we serve industrial customers across Indonesia.",
+    "valuesBody": "The principles that guide how we serve industrial clients across Indonesia.",
     "value1": "Guaranteed genuine quality",
     "value2": "Ready stock",
     "value3": "Competitive pricing",
@@ -175,7 +175,8 @@
     "error": "The message could not be sent. Please try again or reach us on WhatsApp.",
     "validation": "Please provide your name, a valid email, and a message.",
     "orWa": "Faster on WhatsApp",
-    "officeTitle": "Office and warehouse"
+    "officeTitle": "Office and warehouse",
+    "errorWhatsapp": "The message could not be sent to the server. We opened WhatsApp so your message still gets through."
   },
   "footer": {
     "tagline": "Part of the LOBUNTA Group: mining and civil construction contractor.",
@@ -220,7 +221,7 @@
   ],
   "staticPages": {
     "faq": {
-      "title": "FAQ â€” PT Lobunta Mandiri Persada",
+      "title": "FAQ — PT Lobunta Mandiri Persada",
       "heading": "Frequently asked questions",
       "intro": "Questions we most often receive from project owners and partners.",
       "body": "<details><summary>Which business lines does PT Lobunta Mandiri Persada run?</summary><p>We run three divisions: the Mining & Plant Division (ore and coal mining contracting), the Civil Construction Division (general contracting for roads, bridges, irrigation, buildings, and site development), and heavy equipment rental with trucking. We also provide general supply, crushing plant, and mixer plant.</p></details>\n<details><summary>Do you hold a mining service licence?</summary><p>Yes. PT Lobunta Mandiri Persada holds mining service licence No. 26032401765630001 with NIB 9120002171281 and Grade 6 civil work contractor qualification.</p></details>\n<details><summary>Which equipment is available for rental?</summary><p>Bulldozers, compactor dozers, excavators, wheel loaders, track loaders, vibrating rollers, pad foot rollers, motor graders, hydraulic breakers, 6x4 20 and 24 ton dump trucks, and barges for large volume delivery. Unit availability is maintained at a minimum of 85%.</p></details>\n<details><summary>Do you take site development work?</summary><p>Yes. We have delivered smelter site development in Kendawangan for PT Well Harvest Wining Alumina Refinery and PT Kayong Aluminium Nusantara, plus the PLTU Pasuruan power plant site development with PLN and Mitsubishi Corporation.</p></details>\n<details><summary>How long has the company been operating?</summary><p>It started as CV. Lobunta on 27 January 1973 and became PT. Lobunta Kencana Raya on 30 September 1977. LMP is the mining and civil construction division of the LOBUNTA Group.</p></details>\n<details><summary>How do I request a quotation or the company profile?</summary><p>Send your project details through the Contact page or WhatsApp, or download our official company profile for procurement and partnership purposes.</p></details>"
