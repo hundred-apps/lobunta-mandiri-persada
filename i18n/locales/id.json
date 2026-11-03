@@ -1,9 +1,11 @@
-{
+﻿{
   "nav": {
     "home": "Beranda",
     "profile": "Profil",
     "products": "Produk",
     "services": "Layanan",
+    "projects": "Proyek",
+    "units": "Armada",
     "customers": "Klien",
     "blog": "Blog",
     "career": "Karier",
@@ -40,6 +42,7 @@
     "servicesTitle": "Layanan",
     "categoriesTitle": "Bidang usaha",
     "categoriesBody": "Divisi pertambangan, konstruksi teknik, dan penyewaan alat berat LMP.",
+    "servicesBody": "Layanan teknis komprehensif untuk pertambangan dan konstruksi yang memberikan hasil terbaik di kelasnya.",
     "customersTitle": "Beberapa klien kami",
     "blogTitle": "Artikel terbaru",
     "promoTitle": "Promo-program",
@@ -88,6 +91,39 @@
     "relatedTitle": "Layanan lainnya",
     "contactCta": "Butuh layanan ini? Konsultasikan dengan tim kami."
   },
+  "units": {
+    "title": "Armada & unit",
+    "eyebrow": "Armada",
+    "heading": "Armada & unit",
+    "intro": "Populasi unit alat berat, dump truck, dan trucking yang siap dioperasikan untuk proyek pertambangan, konstruksi, dan penyewaan.",
+    "homeIntro": "Daftar unit beserta status kesiapannya. Hubungi tim kami untuk ketersediaan dan skema penyewaan.",
+    "summary": "{total} unit terdaftar, {available} siap dioperasikan.",
+    "empty": "Belum ada unit yang ditampilkan.",
+    "status": "Status",
+    "statusAvailable": "Tersedia",
+    "statusMaintenance": "Perawatan",
+    "statusInactive": "Tidak aktif",
+    "ctaHeading": "Butuh unit untuk proyek Anda?",
+    "ctaBody": "Sampaikan jenis alat, volume pekerjaan, dan durasi sewa. Tim LMP akan menyiapkan rekomendasi armada dan penawaran."
+  },
+  "projects": {
+    "title": "Proyek",
+    "heading": "Pengalaman proyek",
+    "intro": "Proyek pertambangan dan konstruksi teknik yang telah dikerjakan PT Lobunta Mandiri Persada beserta pemilik proyek, lokasi, dan nilai kontraknya.",
+    "empty": "Belum ada proyek yang ditampilkan.",
+    "client": "Pemilik proyek",
+    "location": "Lokasi",
+    "year": "Tahun",
+    "contractValue": "Nilai kontrak",
+    "backToProjects": "Kembali ke proyek",
+    "viewFleet": "Lihat armada",
+    "relatedTitle": "Proyek lainnya",
+    "ctaHeading": "Punya proyek yang serupa?",
+    "ctaBody": "Kirimkan detail lokasi, volume pekerjaan, dan target produksi. Tim LMP akan menyusun pendekatan kerja dan rencana armada.",
+    "docMining": "Pertambangan & Plant",
+    "docCivil": "Konstruksi Teknik",
+    "docGeneral": "Umum"
+  },
   "customers": {
     "title": "Klien kami",
     "heading": "Klien kami",
@@ -123,10 +159,13 @@
     "contactTitle": "Kontak & informasi operasional",
     "fax": "Faks",
     "legalName": "Badan hukum",
+    "legalityTitle": "Legalitas perusahaan",
+    "legalityBody": "Dokumen badan usaha dan perizinan PT Lobunta Mandiri Persada per divisi, sesuai company profile resmi.",
+    "legalityDivision": "Divisi",
+    "kbliTitle": "Izin usaha khusus (KBLI)",
     "aboutTitle": "Tentang kami",
     "businessLines": "Bidang usaha",
     "founded": "Tahun berdiri",
-    "agency": "Nomor agen",
     "categories": "Kategori produk",
     "customers": "Klien",
     "valuesTitle": "Nilai & komitmen",
@@ -206,7 +245,7 @@
     {
       "year": "1995",
       "title": "Jagorawi Toll Road",
-      "description": "Pembangunan jalan Tol Jagorawi (TMII – Cibubur) untuk PT Jasa Marga (Persero)."
+      "description": "Pembangunan jalan Tol Jagorawi (TMII â€“ Cibubur) untuk PT Jasa Marga (Persero)."
     },
     {
       "year": "2014",
@@ -221,7 +260,7 @@
   ],
   "staticPages": {
     "faq": {
-      "title": "FAQ — PT Lobunta Mandiri Persada",
+      "title": "FAQ â€” PT Lobunta Mandiri Persada",
       "heading": "Pertanyaan yang sering diajukan",
       "intro": "Beberapa pertanyaan yang paling sering kami terima dari pemilik proyek dan mitra kerja.",
       "body": "<details><summary>Bidang usaha apa saja yang dikerjakan PT Lobunta Mandiri Persada?</summary><p>Kami menjalankan tiga divisi: Mining & Plant Division (kontraktor pertambangan bijih dan batubara), Civil Construction Division (kontraktor umum untuk jalan, jembatan, irigasi, gedung, dan site development), serta penyewaan alat berat dan trucking. Kami juga menyediakan general supplier, crushing plant, dan mixer plant.</p></details>\n<details><summary>Apakah memiliki izin jasa pertambangan?</summary><p>Ya. PT Lobunta Mandiri Persada memiliki izin jasa pertambangan Nomor 26032401765630001 dengan NIB 9120002171281 dan kualifikasi kontraktor pekerjaan teknik Grade 6.</p></details>\n<details><summary>Alat apa saja yang siap disewa?</summary><p>Bulldozer, compactor dozer, excavator, wheel loader, track loader, vibrating roller, pad foot roller, motor grader, hydraulic breaker, dump truck 6x4 20 ton dan 24 ton, serta tongkang untuk pengiriman volume besar. Ketersediaan unit dijaga minimal 85%.</p></details>\n<details><summary>Apakah menerima pekerjaan site development?</summary><p>Ya. Kami telah mengerjakan site development smelter di Kendawangan untuk PT Well Harvest Wining Alumina Refinery dan PT Kayong Aluminium Nusantara, serta site development pembangkit listrik PLTU Pasuruan bersama PLN dan Mitsubishi Corporation.</p></details>\n<details><summary>Berapa lama perusahaan ini beroperasi?</summary><p>Dimulai sebagai CV. Lobunta pada 27 Januari 1973 dan berubah menjadi PT. Lobunta Kencana Raya pada 30 September 1977. LMP adalah divisi pertambangan dan konstruksi teknik dari LOBUNTA Group.</p></details>\n<details><summary>Bagaimana cara memperoleh penawaran dan dokumen profil?</summary><p>Kirimkan detail proyek melalui halaman Kontak atau WhatsApp, atau unduh company profile resmi kami untuk kebutuhan pengadaan dan kerja sama.</p></details>"

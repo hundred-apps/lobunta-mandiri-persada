@@ -25,6 +25,8 @@ const nav = computed(() => {
     { key: 'profile', label: 'nav.profile', to: '/profile' },
     { key: 'products', label: 'nav.products', to: '/products' },
     { key: 'services', label: 'nav.services', to: '/services' },
+    { key: 'projects', label: 'nav.projects', to: '/projects' },
+    { key: 'units', label: 'nav.units', to: '/units' },
     { key: 'customers', label: 'nav.customers', to: '/customers' },
     { key: 'blog', label: 'nav.blog', to: '/blog' },
     { key: 'contact', label: 'nav.contact', to: '/contact' }

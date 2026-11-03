@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Pemetaan antara bentuk data API LKR (flat: nameId/nameEn, media bertingkat)
  * dengan bentuk yang dipakai panel admin (bilingual: { id, en }, media berupa URL).
  *
@@ -6,7 +6,7 @@
  * payload saat dibuat/diubah. Mengikuti dokumentasi Postman LKR JTW LUBRICANTS.
  */
 
-type Kind = 'bilingual' | 'mono' | 'media' | 'plain' | 'bool' | 'number' | 'gallery' | 'tags' | 'publish'
+type Kind = 'bilingual' | 'mono' | 'media' | 'plain' | 'bool' | 'number' | 'gallery' | 'tags' | 'publish' | 'list'
 
 interface FieldMap {
   /**
@@ -19,6 +19,16 @@ interface FieldMap {
   file?: string
   /** Nama field id media untuk connect media lama. Default: `${api}Id`. */
   connect?: string
+}
+
+/** Definisi `kind: 'list'`: array baris dari endpoint yang sama. */
+interface ListMap {
+  /** Prefix field teks. Baris dengan bentuk `{ id, en }` memakai `${prefix}Id`/`${prefix}En`. */
+  api: string
+  /** Field teks yang diteruskan apa adanya. */
+  plain?: string[]
+  /** Nama field multipart untuk unggahan berkas. */
+  file: string
 }
 
 /** entity key -> { field form -> definisi API } */
@@ -72,7 +82,6 @@ const MAPS: Record<string, Record<string, FieldMap>> = {
     legalName: { api: 'legalName', kind: 'plain' },
     tagline: { api: 'tagline', kind: 'bilingual' },
     description: { api: 'description', kind: 'bilingual' },
-    agencyNumber: { api: 'agencyNumber', kind: 'plain' },
     foundedYear: { api: 'foundedYear', kind: 'plain' },
     address: { api: 'address', kind: 'bilingual' },
     phone: { api: 'phone', kind: 'plain' },
@@ -80,9 +89,25 @@ const MAPS: Record<string, Record<string, FieldMap>> = {
     email: { api: 'email', kind: 'plain' },
     officeHours: { api: 'officeHours', kind: 'bilingual' },
     logo: { api: 'logoMedia', kind: 'media', file: 'media', connect: 'logoMediaId' },
-    companyProfile: { api: 'companyProfileMedia', kind: 'media', file: 'companyProfileMedia', connect: 'companyProfileMediaId' },
     profile: { api: 'profileMedia', kind: 'media', file: 'profileMedia', connect: 'profileMediaId' },
+    // Daftar dokumen company profile (PDF) per divisi. Backend memakai array
+    // companyProfiles berisi media + judul + tipe.
+    companyProfiles: { api: 'companyProfiles', kind: 'list' },
     gallery: { api: 'galleryImages', kind: 'gallery', file: 'galleryMedia', connect: 'galleryImagesId' }
+  },
+  projects: {
+    name: { api: 'name', kind: 'bilingual' },
+    clientName: { api: 'clientName', kind: 'plain' },
+    siteAddress: { api: 'siteAddress', kind: 'plain' },
+    year: { api: 'year', kind: 'number' },
+    contractValue: { api: 'contractValue', kind: 'plain' },
+    description: { api: 'description', kind: 'bilingual' },
+    images: { api: 'images[0].media', kind: 'media', file: 'media', connect: 'mediaId' }
+  },
+  units: {
+    name: { api: 'name', kind: 'plain' },
+    status: { api: 'status', kind: 'plain' },
+    images: { api: 'images[0].media', kind: 'media', file: 'media', connect: 'mediaId' }
   },
   articles: {
     title: { api: 'title', kind: 'bilingual' },
@@ -164,6 +189,49 @@ function toTagList(value: unknown): string[] {
   return []
 }
 
+/** Definisi `kind: 'list'` per entity. */
+const LISTS: Record<string, Record<string, ListMap>> = {
+  settings: {
+    companyProfiles: { api: 'title', plain: ['type'], file: 'media' }
+  }
+}
+
+function listMapOf(entityKey: string, field: string): ListMap | undefined {
+  return LISTS[entityKey]?.[field]
+}
+
+/** Satu baris list API -> { mediaId, url, ...teks }. */
+function toListRow(def: ListMap, raw: unknown): Record<string, unknown> {
+  const row = (raw ?? {}) as Record<string, unknown>
+  const media = row.media as { id?: number; url?: string } | null | undefined
+  const mediaId = media?.id ?? (typeof row.mediaId === 'number' ? row.mediaId : null)
+  const out: Record<string, unknown> = {
+    mediaId,
+    url: mediaUrl(media),
+    id: String(row[`${def.api}Id`] ?? ''),
+    en: String(row[`${def.api}En`] ?? '')
+  }
+  for (const key of def.plain ?? []) out[key] = String(row[key] ?? '')
+  return out
+}
+
+/** Satu baris form admin -> payload API (media lama cukup id-nya). */
+function fromListRow(def: ListMap, raw: unknown): Record<string, unknown> {
+  const row = (raw ?? {}) as Record<string, unknown>
+  const title = (row.title ?? {}) as { id?: unknown; en?: unknown }
+  const out: Record<string, unknown> = {
+    [`${def.api}Id`]: title.id ?? '',
+    [`${def.api}En`]: title.en ?? ''
+  }
+  for (const key of def.plain ?? []) out[key] = String(row[key] ?? '')
+  if (row.file instanceof File) {
+    out.media = row.file
+  } else if (row.mediaId !== undefined && row.mediaId !== null && row.mediaId !== '') {
+    out.mediaId = row.mediaId
+  }
+  return out
+}
+
 /** API row -> bentuk form admin. */
 export function normalizeRow(entityKey: string, row: Record<string, unknown>): Record<string, unknown> {
   const map = MAPS[entityKey]
@@ -206,6 +274,11 @@ export function normalizeRow(entityKey: string, row: Record<string, unknown>): R
         const mediaId = media?.id ?? entry?.mediaId ?? null
         return { id: mediaId, mediaId, url: mediaUrl(media) }
       })
+    } else if (def.kind === 'list') {
+      const def2 = listMapOf(entityKey, field)
+      const raw = resolvePath(row, def.api)
+      const items = Array.isArray(raw) ? raw : []
+      out[field] = items.map((item) => (def2 ? toListRow(def2, item) : item))
     } else if (entityKey === 'settings' && field === 'phone') {
       // API mengirim string tunggal, form memakai repeater (array).
       const phone = row[def.api]
@@ -277,6 +350,9 @@ export function buildPayload(entityKey: string, form: Record<string, unknown>): 
       if (value instanceof File) {
         // Berkas baru: kirim sebagai multipart.
         if (useJson) { json[fileKey] = value } else { fd.append(fileKey, value) }
+      } else if (value === '') {
+        // Admin menghapus berkas: kirim id kosong supaya relasi media dilepas.
+        set(connectKey, '')
       } else {
         // Tidak diganti: connect media lama lewat id-nya.
         const connectId = form[connectKey]
@@ -297,6 +373,18 @@ export function buildPayload(entityKey: string, form: Record<string, unknown>): 
         } else if (item && typeof item === 'object' && (item as { id?: unknown }).id != null) {
           fd.append(connectKey, String((item as { id?: unknown }).id))
         }
+      }
+    } else if (def.kind === 'list') {
+      // Dokumen: tiap baris dikirim sebagai satu field JSON (mediaId untuk
+      // dokumen lama); berkas baru ikut sebagai multipart pada key-nya.
+      const def2 = listMapOf(entityKey, field)
+      const list = Array.isArray(value) ? value : []
+      for (const item of list) {
+        const row = def2 ? fromListRow(def2, item) : (item as Record<string, unknown>)
+        const file = row.media
+        delete row.media
+        if (file instanceof File) fd.append(def2?.file ?? 'media', file)
+        fd.append(def.api, JSON.stringify(row))
       }
     } else if (def.kind === 'bool') {
       set(def.api, value ? 'true' : 'false')

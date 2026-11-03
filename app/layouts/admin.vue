@@ -1,8 +1,8 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
 const route = useRoute()
 const { profile, isAuthenticated, logout } = useAdminAuth()
 const { connected, lastError, baseUrl } = useAdminApi()
-const { data: company } = useCompany()
+const { data: company } = useStaticCompany()
 
 const collapsed = ref(false)
 
@@ -23,6 +23,8 @@ const groups = computed(() => [
       { to: '/admin/product-categories', label: 'Kategori Produk', icon: 'delivery' },
       { to: '/admin/products', label: 'Produk', icon: 'lab' },
       { to: '/admin/services', label: 'Layanan', icon: 'lab' },
+      { to: '/admin/projects', label: 'Proyek', icon: 'target' },
+      { to: '/admin/units', label: 'Unit', icon: 'truck' },
       { to: '/admin/articles', label: 'Artikel', icon: 'document' },
       { to: '/admin/customers', label: 'Klien', icon: 'factory' }
     ]

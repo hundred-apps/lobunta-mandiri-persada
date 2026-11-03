@@ -11,6 +11,8 @@ const props = defineProps<{
   modelValue?: unknown
   label?: string
   disabled?: boolean
+  /** Jenis berkas yang boleh dipilih. Default gambar + PDF. */
+  accept?: string
 }>()
 
 const emit = defineEmits<{ 'update:modelValue': [value: unknown] }>()

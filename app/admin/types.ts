@@ -22,10 +22,23 @@ export type FieldKind =
   | 'password'
   | 'tags'
   | 'gallery'
+  | 'list'
 
 export interface FieldOption {
   value: string
   label: string
+}
+
+/** Kolom satu baris pada field `list` (daftar dokumen/berkas). */
+export interface ListRowField {
+  name: string
+  label: string
+  kind: 'text' | 'bilingual' | 'select' | 'file'
+  required?: boolean
+  placeholder?: { id?: string; en?: string }
+  options?: FieldOption[]
+  /** Untuk kind `file`: atribut accept pada input berkas. */
+  accept?: string
 }
 
 export interface FieldDef {
@@ -45,6 +58,12 @@ export interface FieldDef {
   min?: number
   max?: number
   step?: number
+  /** Untuk kind `image`/`file`: jenis berkas yang diterima. */
+  accept?: string
+  /** Untuk kind `list`: definisi kolom tiap baris. */
+  listColumns?: ListRowField[]
+  /** Untuk kind `list`: batas jumlah baris. */
+  listMax?: number
 }
 
 export interface ColumnDef {

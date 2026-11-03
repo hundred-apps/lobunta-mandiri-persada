@@ -19,6 +19,21 @@ menggabungkan data API dengan data statis sebagai cadangan.
 Tema memakai warna logo LMP: hijau `#00b050` sebagai warna utama dan kuning `#ffcc00` sebagai aksen
 (`tailwind.config.ts`). Berkas company profile tersedia di `public/docs/`, foto di `public/img/lmp/`.
 
+## Company profile, proyek, dan unit
+
+- **Company profile**: diatur di admin → Pengaturan situs → *Company profile (PDF)* sebagai
+  daftar dokumen (`companyProfiles` pada `site-setting`). Setiap dokumen punya satu berkas PDF,
+  judul dua bahasa, dan divisi (`mining`/`civil`/`general`). Dokumen tampil **dikelompokkan per
+  divisi** di halaman profil, sehingga profil pertambangan dan konstruksi teknik tidak tercampur.
+- **Proyek**: admin → Proyek (`/admin/projects`, resource API `project`) dan halaman publik
+  `/projects` + `/projects/<slug>`. API belum menyimpan slug, jadi slug diturunkan dari nama proyek
+  lewat `app/utils/slug.ts` (dipakai admin dan halaman publik agar URL selalu cocok).
+- **Unit**: admin → Unit (`/admin/units`, resource API `unit`) dan halaman publik `/units`
+  (menu "Armada"). Status unit: `available`, `maintenance`, `inactive`.
+
+Endpoint `project-read`/`unit-read` membatasi `limit` maksimal 100, berbeda dari resource lain
+(`useContentSource.ts` → `PAGED_LIST_LIMIT`).
+
 ## Setup
 
 Make sure to install dependencies:

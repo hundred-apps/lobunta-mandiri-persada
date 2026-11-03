@@ -47,6 +47,8 @@ export const API_RESOURCE: Record<string, string> = {
   services: 'service',
   articles: 'post',
   customers: 'customer',
+  projects: 'project',
+  units: 'unit',
   'admin-users': 'admin-user',
   media: 'media'
 }

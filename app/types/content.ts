@@ -28,7 +28,6 @@ export interface SiteSettings {
   legalName: string
   tagline: Localized
   description: Localized
-  agencyNumber: string
   foundedYear: string
   address: Localized
   phone: string[]
@@ -37,7 +36,7 @@ export interface SiteSettings {
   officeHours: Localized
   logo: string
   profile: string
-  companyProfile: string
+  companyProfiles: CompanyProfileDoc[]
   gallery: string[]
   social: {
     facebook?: string
@@ -46,6 +45,40 @@ export interface SiteSettings {
     youtube?: string
   }
   menuVisibility?: Record<string, boolean>
+}
+
+/** Satu dokumen company profile (PDF) yang bisa diunduh publik. */
+export interface CompanyProfileDoc {
+  mediaId: number
+  title: Localized
+  /** Divisi pemilik dokumen: mining | civil | general. */
+  type: string
+  file: string
+}
+
+export interface ProjectItem {
+  id: number
+  /** Diturunkan dari nama proyek karena API belum menyimpan slug. */
+  slug: string
+  name: Localized
+  clientName: string
+  siteAddress: string
+  year: number
+  description: Localized
+  /** Nilai kontrak dalam rupiah. */
+  contractValue: number
+  image: string
+  images: string[]
+}
+
+export type UnitStatus = 'available' | 'maintenance' | 'inactive'
+
+export interface UnitItem {
+  id: number
+  name: string
+  status: UnitStatus
+  image: string
+  images: string[]
 }
 
 export interface HeroConfig {

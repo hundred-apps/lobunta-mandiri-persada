@@ -268,12 +268,7 @@ function setPairValue(index: number, side: "id" | "en", value: string) {
 
 /** Slug otomatis dari judul Bahasa Indonesia saat slug masih kosong. */
 function syncSlug(value: string): string {
-  return value
-    .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, "")
-    .trim()
-    .replace(/\s+/g, "-")
-    .replace(/-+/g, "-");
+  return slugify(value)
 }
 
 function abs(url: string): string {
@@ -475,6 +470,16 @@ function abs(url: string): string {
       v-else-if="field.kind === 'image'"
       v-model="imageModel"
       :label="field.label"
+      :accept="field.accept"
+      :disabled="disabled"
+    />
+
+    <AdminFileListField
+      v-else-if="field.kind === 'list'"
+      v-model="galleryModel"
+      :label="field.label"
+      :columns="field.listColumns"
+      :max="field.listMax"
       :disabled="disabled"
     />
 

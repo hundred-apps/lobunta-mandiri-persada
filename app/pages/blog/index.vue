@@ -1,11 +1,11 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
 import type { PostItem } from '~/types/content'
 
 const { locale, t } = useI18n()
 const route = useRoute()
 
 const { data: posts } = await useCms<PostItem[]>('posts', 'all')
-const { data: settings } = await useCompany()
+const { data: settings } = useStaticCompany()
 
 const page = ref(Number(route.query.page) || 1)
 const limit = 9

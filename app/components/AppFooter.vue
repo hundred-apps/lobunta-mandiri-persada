@@ -1,17 +1,19 @@
 ﻿<script setup lang="ts">
-import type { SiteSettings } from '~/types/content'
-import { lmpDivisions } from '~/content/lmp'
+import type { ServiceItem, SiteSettings } from '~/types/content'
 
 const props = defineProps<{ settings: SiteSettings | null }>()
 
 const { locale } = useI18n()
 
 const year = new Date().getFullYear()
-const topServices = computed(() => lmpDivisions.slice(0, 6))
+const { data: apiServices } = await useCms<ServiceItem[]>('services', 'all')
+const topServices = computed(() => (apiServices.value ?? []).slice(0, 6))
 const explore = computed(() => [
   { label: 'nav.home', to: '/' },
   { label: 'nav.profile', to: '/profile' },
   { label: 'nav.services', to: '/services' },
+  { label: 'nav.projects', to: '/projects' },
+  { label: 'nav.units', to: '/units' },
   { label: 'nav.customers', to: '/customers' },
   { label: 'nav.faq', to: '/faq' },
   { label: 'nav.terms', to: '/terms-conditions' },
@@ -52,7 +54,7 @@ const socials = computed(() => {
           {{ pick(settings.tagline) }}
         </p>
         <p v-if="settings" class="mt-3 text-xs text-brand-200">
-          {{ settings.legalName }} &middot; {{ $t('footer.official') }} {{ settings.agencyNumber ? `(${settings.agencyNumber})` : '' }}
+          {{ settings.legalName }} &middot; {{ $t('footer.official') }}
         </p>
       </div>
 

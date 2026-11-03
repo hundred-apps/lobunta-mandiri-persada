@@ -1,39 +1,23 @@
-import { computed, type Ref } from 'vue'
-import type { CustomerItem, ServiceItem, SiteSettings } from '~/types/content'
-import { lmpCustomers, lmpDivisions, lmpSettings } from '~/content/lmp'
+﻿import { computed, type Ref } from 'vue'
+import type { CustomerItem, ServiceItem } from '~/types/content'
+import { useCompany } from '~/composables/useContentSource'
 
 /**
- * Akses konten statis LMP (company profile) tanpa panggilan API.
- *
- * Dipakai halaman Beranda dan Profil, plus halaman lain yang memakai data
- * statis sebagai cadangan ketika backend tidak dapat dihubungi.
+ * Akses konten dari API (bisa dikosongkan saat backend belum diisi).
+ * Diganti nanti saat data backend sudah tersedia.
  */
 
-/** Identitas perusahaan dari company profile. */
+/** Identitas perusahaan. */
 export function useStaticCompany() {
-  return {
-    data: computed<SiteSettings>(() => lmpSettings),
-    source: computed<'static'>(() => 'static')
-  }
+  return useCompany()
 }
 
-/**
- * Daftar layanan: data API (bila ada) digabung dengan data statis LMP,
- * sehingga divisi dari company profile tetap tampil.
- */
+/** Daftar layanan dari API. */
 export function useStaticServices(api: Ref<ServiceItem[] | undefined | null>) {
-  return computed<ServiceItem[]>(() => {
-    const remote = api.value ?? []
-    const slugs = new Set(remote.map((item) => item.slug))
-    return [...remote, ...lmpDivisions.filter((item) => !slugs.has(item.slug))]
-  })
+  return computed<ServiceItem[]>(() => api.value ?? [])
 }
 
-/** Daftar klien statis LMP digabung dengan data API. */
+/** Daftar klien dari API. */
 export function useStaticCustomers(api: Ref<CustomerItem[] | undefined | null>) {
-  return computed<CustomerItem[]>(() => {
-    const remote = api.value ?? []
-    const names = new Set(remote.map((item) => item.name))
-    return [...remote, ...lmpCustomers.filter((item) => !names.has(item.name))]
-  })
+  return computed<CustomerItem[]>(() => api.value ?? [])
 }

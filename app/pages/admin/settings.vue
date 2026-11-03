@@ -5,20 +5,37 @@ definePageMeta({ layout: 'admin' })
 
 const { get, update, remove, lastError } = useAdminApi()
 
+/** Pilihan divisi dokumen company profile. */
+const docTypes = [
+  { value: 'mining', label: 'Pertambangan & Plant' },
+  { value: 'civil', label: 'Konstruksi Teknik' },
+  { value: 'general', label: 'Umum / korporat' }
+]
+
 const fields: FieldDef[] = [
   { name: 'companyName', label: 'Nama perusahaan', kind: 'text', bilingual: true, required: true },
   { name: 'legalName', label: 'Badan hukum', kind: 'text', required: true, help: 'Dipakai di footer, contoh: PT. Lobunta Kencana Raya.' },
   { name: 'tagline', label: 'Tagline', kind: 'text', bilingual: true, required: true },
   { name: 'description', label: 'Deskripsi perusahaan', kind: 'textarea', bilingual: true, required: true, rows: 4, help: 'Tampil di aside profil dan meta description.' },
-  { name: 'agencyNumber', label: 'Nomor agen Pertamina', kind: 'text', required: true, help: 'Contoh: C 705106' },
-  { name: 'foundedYear', label: 'Tahun berdiri', kind: 'text', required: true },
+{ name: 'foundedYear', label: 'Tahun berdiri', kind: 'text', required: true },
   { name: 'address', label: 'Alamat', kind: 'textarea', bilingual: true, required: true, rows: 2 },
   { name: 'phone', label: 'Nomor telepon', kind: 'repeater', required: true, help: 'Satu baris satu nomor. Baris pertama dipakai di header.' },
   { name: 'whatsapp', label: 'Nomor WhatsApp', kind: 'text', required: true, help: 'Format internasional tanpa tanda plus, contoh: 6285282400976' },
   { name: 'email', label: 'Email', kind: 'text', required: true },
   { name: 'officeHours', label: 'Jam operasional', kind: 'text', bilingual: true, required: true },
   { name: 'logo', label: 'Logo', kind: 'image', required: true, help: 'Wajib. Dipakai di header, footer, dan ikon tab browser (favicon).' },
-  { name: 'companyProfile', label: 'Company profile', kind: 'image', help: 'Opsional. Berkas PDF profil perusahaan untuk diunduh di halaman profil.' },
+  {
+    name: 'companyProfiles',
+    label: 'Company profile (PDF)',
+    kind: 'list',
+    listMax: 10,
+    help: 'Unggah dokumen per divisi: Pertambangan & Plant atau Konstruksi Teknik. Dokumen tampil dikelompokkan per divisi di halaman profil.',
+    listColumns: [
+      { name: 'file', label: 'Berkas PDF', kind: 'file', accept: 'application/pdf,.pdf' },
+      { name: 'title', label: 'Judul dokumen', kind: 'bilingual', placeholder: { id: 'Contoh: Profil Kontraktor Pertambangan', en: 'e.g. Mining Contractor Profile' } },
+      { name: 'type', label: 'Divisi', kind: 'select', options: docTypes }
+    ]
+  },
   { name: 'profile', label: 'Gambar halaman profil', kind: 'image', help: 'Opsional. Gambar utama (hero) pada halaman profil.' },
   { name: 'gallery', label: 'Galeri foto', kind: 'gallery', max: 10, help: 'Maksimal 10 foto. Bisa diurutkan; foto tampil di halaman profil.' }
 ]
@@ -31,7 +48,7 @@ const notice = ref<{ type: 'ok' | 'error'; text: string } | null>(null)
 function defaults(): Record<string, unknown> {
   const result: Record<string, unknown> = {}
   for (const field of fields) {
-    result[field.name] = field.kind === 'repeater' || field.kind === 'gallery'
+    result[field.name] = field.kind === 'repeater' || field.kind === 'gallery' || field.kind === 'list'
       ? []
       : field.bilingual ? { id: '', en: '' } : field.kind === 'image' ? '' : ''
   }
@@ -50,6 +67,7 @@ function isEmpty(field: FieldDef, value: unknown): boolean {
     return !String(bi.id ?? '').trim() || !String(bi.en ?? '').trim()
   }
   if (field.kind === 'repeater') return !Array.isArray(value) || value.length === 0
+  if (field.kind === 'list' || field.kind === 'gallery') return !Array.isArray(value) || value.length === 0
   return !String(value ?? '').trim()
 }
 
@@ -118,8 +136,8 @@ useSeoMeta({ title: 'Pengaturan situs | CMS Lobunta' })
     </form>
 
     <div class="card p-5 text-xs text-slate-500">
-      Endpoint: <code class="font-mono">GET /api/v1/admin/settings</code> dan
-      <code class="font-mono">PUT /api/v1/admin/settings</code>. Menyimpan di sini langsung mengubah
+      Endpoint: <code class="font-mono">GET /api/site-setting-read/</code> dan
+      <code class="font-mono">POST /api/site-setting-create</code>. Menyimpan di sini langsung mengubah
       seluruh website karena frontend publik membaca sumber yang sama.
     </div>
   </div>

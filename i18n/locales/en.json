@@ -1,9 +1,11 @@
-{
+﻿{
   "nav": {
     "home": "Home",
     "profile": "Profile",
     "products": "Products",
     "services": "Services",
+    "projects": "Projects",
+    "units": "Fleet",
     "customers": "Clients",
     "blog": "Blog",
     "career": "Career",
@@ -40,6 +42,7 @@
     "servicesTitle": "Services",
     "categoriesTitle": "Business lines",
     "categoriesBody": "LMP mining, civil construction, and heavy equipment rental divisions.",
+    "servicesBody": "Comprehensive technical services for mining and construction that deliver best-in-class results.",
     "customersTitle": "A few of our clients",
     "blogTitle": "Latest articles",
     "promoTitle": "Promotions and programs",
@@ -88,6 +91,39 @@
     "relatedTitle": "Other services",
     "contactCta": "Need this service? Discuss it with our team."
   },
+  "units": {
+    "title": "Fleet & units",
+    "eyebrow": "Fleet",
+    "heading": "Fleet & units",
+    "intro": "Heavy equipment, dump trucks, and trucking units ready to operate for mining, construction, and rental projects.",
+    "homeIntro": "Registered units with their readiness status. Contact our team for availability and rental schemes.",
+    "summary": "{total} registered units, {available} ready to operate.",
+    "empty": "No units to display yet.",
+    "status": "Status",
+    "statusAvailable": "Available",
+    "statusMaintenance": "Maintenance",
+    "statusInactive": "Inactive",
+    "ctaHeading": "Need equipment for your project?",
+    "ctaBody": "Tell us the equipment type, work volume, and rental period. The LMP team will prepare a fleet recommendation and quotation."
+  },
+  "projects": {
+    "title": "Projects",
+    "heading": "Project experience",
+    "intro": "Mining and civil construction projects delivered by PT Lobunta Mandiri Persada with their owners, locations, and contract values.",
+    "empty": "No projects to display yet.",
+    "client": "Project owner",
+    "location": "Location",
+    "year": "Year",
+    "contractValue": "Contract value",
+    "backToProjects": "Back to projects",
+    "viewFleet": "View fleet",
+    "relatedTitle": "Other projects",
+    "ctaHeading": "Have a similar project?",
+    "ctaBody": "Send us the location, work volume, and production target. The LMP team will prepare the work approach and fleet plan.",
+    "docMining": "Mining & Plant",
+    "docCivil": "Civil Construction",
+    "docGeneral": "General"
+  },
   "customers": {
     "title": "Our clients",
     "heading": "Our clients",
@@ -123,10 +159,13 @@
     "contactTitle": "Contact and operational information",
     "fax": "Fax",
     "legalName": "Legal entity",
+    "legalityTitle": "Corporate legality",
+    "legalityBody": "Legal entity documents and licences of PT Lobunta Mandiri Persada per division, taken from the official company profile.",
+    "legalityDivision": "Division",
+    "kbliTitle": "Special business licences (KBLI)",
     "aboutTitle": "About us",
     "businessLines": "Business lines",
     "founded": "Founded",
-    "agency": "Agency number",
     "categories": "Product categories",
     "customers": "Clients",
     "valuesTitle": "Values & commitment",
@@ -206,7 +245,7 @@
     {
       "year": "1995",
       "title": "Jagorawi Toll Road",
-      "description": "Road development of the Jagorawi Toll Road (TMII – Cibubur) for PT Jasa Marga (Persero)."
+      "description": "Road development of the Jagorawi Toll Road (TMII â€“ Cibubur) for PT Jasa Marga (Persero)."
     },
     {
       "year": "2014",
@@ -221,7 +260,7 @@
   ],
   "staticPages": {
     "faq": {
-      "title": "FAQ — PT Lobunta Mandiri Persada",
+      "title": "FAQ â€” PT Lobunta Mandiri Persada",
       "heading": "Frequently asked questions",
       "intro": "Questions we most often receive from project owners and partners.",
       "body": "<details><summary>Which business lines does PT Lobunta Mandiri Persada run?</summary><p>We run three divisions: the Mining & Plant Division (ore and coal mining contracting), the Civil Construction Division (general contracting for roads, bridges, irrigation, buildings, and site development), and heavy equipment rental with trucking. We also provide general supply, crushing plant, and mixer plant.</p></details>\n<details><summary>Do you hold a mining service licence?</summary><p>Yes. PT Lobunta Mandiri Persada holds mining service licence No. 26032401765630001 with NIB 9120002171281 and Grade 6 civil work contractor qualification.</p></details>\n<details><summary>Which equipment is available for rental?</summary><p>Bulldozers, compactor dozers, excavators, wheel loaders, track loaders, vibrating rollers, pad foot rollers, motor graders, hydraulic breakers, 6x4 20 and 24 ton dump trucks, and barges for large volume delivery. Unit availability is maintained at a minimum of 85%.</p></details>\n<details><summary>Do you take site development work?</summary><p>Yes. We have delivered smelter site development in Kendawangan for PT Well Harvest Wining Alumina Refinery and PT Kayong Aluminium Nusantara, plus the PLTU Pasuruan power plant site development with PLN and Mitsubishi Corporation.</p></details>\n<details><summary>How long has the company been operating?</summary><p>It started as CV. Lobunta on 27 January 1973 and became PT. Lobunta Kencana Raya on 30 September 1977. LMP is the mining and civil construction division of the LOBUNTA Group.</p></details>\n<details><summary>How do I request a quotation or the company profile?</summary><p>Send your project details through the Contact page or WhatsApp, or download our official company profile for procurement and partnership purposes.</p></details>"

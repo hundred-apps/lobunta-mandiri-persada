@@ -7,6 +7,8 @@ const countable = [
   { key: 'product-categories', label: 'Kategori Produk', icon: 'delivery' },
   { key: 'products', label: 'Produk', icon: 'lab' },
   { key: 'services', label: 'Layanan', icon: 'lab' },
+  { key: 'projects', label: 'Proyek', icon: 'target' },
+  { key: 'units', label: 'Unit', icon: 'truck' },
   { key: 'articles', label: 'Artikel', icon: 'document' },
   { key: 'customers', label: 'Klien', icon: 'factory' }
 ]

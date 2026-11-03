@@ -1,4 +1,5 @@
-import type {
+﻿import type {
+  CompanyProfileDoc,
   CustomerItem,
   HeroBlock,
   HomeContent,
@@ -7,8 +8,11 @@ import type {
   PostItem,
   ProductCategory,
   ProductItem,
+  ProjectItem,
   ServiceItem,
-  SiteSettings
+  SiteSettings,
+  UnitItem,
+  UnitStatus
 } from '~/types/content'
 
 /**
@@ -34,6 +38,8 @@ export type ResourceName =
   | 'products'
   | 'customers'
   | 'posts'
+  | 'projects'
+  | 'units'
 
 /** Pemetaan resource frontend -> nama resource API. */
 /**
@@ -43,6 +49,12 @@ export type ResourceName =
  */
 const FULL_LIST_LIMIT = 500
 
+/**
+ * Batas khusus endpoint `project`/`unit`: backend menolak limit di atas 100
+ * (`limit harus berupa bilangan bulat antara 1 dan 100`).
+ */
+const PAGED_LIST_LIMIT = 100
+
 const API_RESOURCE: Record<ResourceName, string> = {
   settings: 'site-setting',
   home: 'home-hero',
@@ -50,7 +62,9 @@ const API_RESOURCE: Record<ResourceName, string> = {
   'product-categories': 'product-category',
   products: 'product',
   customers: 'customer',
-  posts: 'post'
+  posts: 'post',
+  projects: 'project',
+  units: 'unit'
 }
 
 const EMPTY_SETTINGS: SiteSettings = {
@@ -58,7 +72,6 @@ const EMPTY_SETTINGS: SiteSettings = {
   legalName: '',
   tagline: { id: '', en: '' },
   description: { id: '', en: '' },
-  agencyNumber: '',
   foundedYear: '',
   address: { id: '', en: '' },
   phone: [],
@@ -67,7 +80,7 @@ const EMPTY_SETTINGS: SiteSettings = {
   officeHours: { id: '', en: '' },
   logo: '',
   profile: '',
-  companyProfile: '',
+  companyProfiles: [],
   gallery: [],
   social: {},
   menuVisibility: {}
@@ -86,7 +99,9 @@ const EMPTY_DEFAULTS: Record<ResourceName, unknown> = {
   'product-categories': [],
   products: [],
   customers: [],
-  posts: []
+  posts: [],
+  projects: [],
+  units: []
 }
 
 function loc(id: unknown, en: unknown): Localized {
@@ -113,12 +128,12 @@ export function useMediaUrl() {
 
 function mapSettings(row: Record<string, unknown>, media: (v: unknown) => string): SiteSettings {
   const logo = row.logoMedia as { url?: string } | null
+  const profiles = Array.isArray(row.companyProfiles) ? row.companyProfiles : []
   return {
     companyName: loc(row.companyNameId, row.companyNameEn),
     legalName: String(row.legalName || ''),
     tagline: loc(row.taglineId, row.taglineEn),
     description: loc(row.descriptionId, row.descriptionEn),
-    agencyNumber: String(row.agencyNumber || ''),
     foundedYear: String(row.foundedYear || ''),
     address: loc(row.addressId, row.addressEn),
     phone: row.phone ? [String(row.phone)] : [],
@@ -127,7 +142,17 @@ function mapSettings(row: Record<string, unknown>, media: (v: unknown) => string
     officeHours: loc(row.officeHoursId, row.officeHoursEn),
     logo: media(logo),
     profile: media(row.profileMedia ?? row.imageMedia ?? row.image),
-    companyProfile: media(row.companyProfileMedia),
+    companyProfiles: profiles
+      .map((item) => {
+        const doc = item as { mediaId?: number; media?: unknown; titleId?: string; titleEn?: string; type?: string }
+        return {
+          mediaId: Number(doc.mediaId || 0),
+          title: loc(doc.titleId, doc.titleEn),
+          type: String(doc.type || 'general'),
+          file: media(doc.media)
+        } satisfies CompanyProfileDoc
+      })
+      .filter((doc) => Boolean(doc.file)),
     gallery: Array.isArray(row.galleryImages)
       ? (row.galleryImages as Array<{ media?: unknown; mediaId?: number } | null>)
         .map((item) => media(item?.media))
@@ -237,6 +262,41 @@ function mapService(row: Record<string, unknown>, media: (v: unknown) => string)
     highlights: { id: [], en: [] },
     image: media(firstImage || (row.media as { url?: string } | null)),
     featured: Boolean(row.featured)
+  }
+}
+
+function mapProject(row: Record<string, unknown>, media: (v: unknown) => string): ProjectItem {
+  const images = Array.isArray(row.images)
+    ? (row.images as Array<{ media?: unknown } | null>).map((item) => media(item?.media)).filter(Boolean)
+    : []
+  const name = loc(row.nameId ?? row.name, row.nameEn ?? row.name)
+  return {
+    id: Number(row.id),
+    slug: String(row.slug || '') || slugify(name.en || name.id),
+    name,
+    clientName: String(row.clientName || ''),
+    siteAddress: String(row.siteAddress || ''),
+    year: Number(row.year || 0),
+    description: loc(row.descriptionId, row.descriptionEn),
+    contractValue: Number(row.contractValue || 0),
+    image: images[0] || '',
+    images
+  }
+}
+
+const UNIT_STATUSES: UnitStatus[] = ['available', 'maintenance', 'inactive']
+
+function mapUnit(row: Record<string, unknown>, media: (v: unknown) => string): UnitItem {
+  const images = Array.isArray(row.images)
+    ? (row.images as Array<{ media?: unknown } | null>).map((item) => media(item?.media)).filter(Boolean)
+    : []
+  const status = String(row.status || '') as UnitStatus
+  return {
+    id: Number(row.id),
+    name: String(row.name || ''),
+    status: UNIT_STATUSES.includes(status) ? status : 'available',
+    image: images[0] || '',
+    images
   }
 }
 
@@ -362,6 +422,17 @@ export function useContentSource() {
           const rows = await getList('customer', { limit: FULL_LIST_LIMIT })
           return rows.map((r) => mapCustomer(r, media)) as T
         }
+        case 'projects': {
+          const rows = await getList('project', { limit: PAGED_LIST_LIMIT })
+          // Urutkan terbaru dulu supaya halaman tidak bergantung pada urutan backend.
+          return rows
+            .map((r) => mapProject(r, media))
+            .sort((a, b) => b.year - a.year || a.id - b.id) as T
+        }
+        case 'units': {
+          const rows = await getList('unit', { limit: PAGED_LIST_LIMIT })
+          return rows.map((r) => mapUnit(r, media)) as T
+        }
         default:
           return EMPTY_DEFAULTS[name] as T
       }
@@ -388,15 +459,28 @@ export function useContentSource() {
 
 /**
  * Ambil satu resource. `key` wajib unik per kombinasi resource + argumen.
+ *
+ * Tidak async: useAsyncData mengembalikan ref yang terisi setelah SSR selesai.
+ * Halaman yang perlu memastikan data sudah ada sebelum memutuskan 404
+ * (mis. detail proyek) memakai `await useCmsReady(...)`.
  */
 export function useCms<T>(name: ResourceName, key: string, path = '', query: Record<string, string> = {}) {
   const { request, source } = useContentSource()
-  const { data } = useAsyncData<T>(`cms:${name}:${key}`, () => request<T>(name, path, query))
+  const asyncData = useAsyncData<T>(`cms:${name}:${key}`, () => request<T>(name, path, query))
 
   return {
-    data: computed(() => data.value ?? (EMPTY_DEFAULTS[name] as T)),
+    data: computed(() => asyncData.data.value ?? (EMPTY_DEFAULTS[name] as T)),
+    /** Tripel useAsyncData, untuk halaman yang harus menunggu data. */
+    asyncData,
     source
   }
+}
+
+/** Tunggu satu resource selesai dimuat (dipakai halaman detail). */
+export async function useCmsReady<T>(name: ResourceName, key: string) {
+  const result = useCms<T>(name, key)
+  await result.asyncData
+  return result
 }
 
 export function useCompany() {

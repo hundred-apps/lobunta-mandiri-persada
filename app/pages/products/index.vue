@@ -6,7 +6,7 @@ const route = useRoute()
 
 const { data: categories } = await useCms<ProductCategory[]>('product-categories', 'all')
 const { data: products } = await useCms<ProductItem[]>('products', 'published')
-const { data: settings } = await useCompany()
+const { data: settings } = useStaticCompany()
 
 const keyword = ref('')
 const activeCategory = ref(typeof route.query.category === 'string' ? route.query.category : 'all')
@@ -104,7 +104,7 @@ useSeoMeta({
             </p>
           </div>
           <div class="flex flex-wrap gap-3">
-            <a href="/docs/company-profile.pdf" download class="btn-outline">
+            <a v-if="settings" :href="`/${locale}/profile`" class="btn-outline">
               <UiIcon name="download" :size="16" />
               {{ $t('common.downloadProfile') }}
             </a>

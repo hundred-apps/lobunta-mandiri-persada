@@ -36,9 +36,12 @@ function emptyValue(field: FieldDef): unknown {
   switch (field.kind) {
     case 'toggle': return false
     case 'number': return 0
-    case 'repeater': return []
-    case 'pair': return []
-    case 'tags': return []
+    case 'repeater':
+    case 'pair':
+    case 'tags':
+    case 'gallery':
+    case 'list':
+      return []
     case 'image': return ''
     case 'password': return ''
     default:
