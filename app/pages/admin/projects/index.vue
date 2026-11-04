@@ -9,7 +9,8 @@ const columns: ColumnDef[] = [
   { key: 'clientName', label: 'Pemilik proyek', width: 'w-56' },
   { key: 'siteAddress', label: 'Lokasi', width: 'w-48' },
   { key: 'year', label: 'Tahun', kind: 'number', width: 'w-20' },
-  { key: 'contractValue', label: 'Nilai kontrak', width: 'w-40' }
+  { key: 'contractValue', label: 'Nilai kontrak', width: 'w-40' },
+  { key: 'type', label: 'Jenis', kind: 'status', width: 'w-32' }
 ]
 </script>
 

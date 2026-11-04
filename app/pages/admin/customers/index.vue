@@ -5,7 +5,8 @@ definePageMeta({ layout: 'admin' })
 
 const columns: ColumnDef[] = [
   { key: 'image', label: 'Gambar', kind: 'image', width: 'w-20' },
-  { key: 'name', label: 'Nama', kind: 'text' }
+  { key: 'name', label: 'Nama', kind: 'text' },
+  { key: 'type', label: 'Jenis', kind: 'status', width: 'w-32' }
 ]
 </script>
 
