@@ -49,15 +49,14 @@ useSeoMeta({
     <section v-if="showScopeOfWork" class="section">
       <div class="container-page">
         <UiSectionHeading
-          :eyebrow="$t('nav.services')"
-          :heading="$t('home.servicesTitle')"
-          :body="$t('home.servicesBody')"
+          :heading="$t('home.scopeTitle')"
+          :body="$t('home.scopeBody')"
         />
         
         <!-- Mining Services -->
         <div class="mb-12">
           <h3 class="text-2xl font-bold mb-6">
-            {{ locale === 'en' ? 'Mining Services' : 'Layanan Pertambangan' }}
+            {{ $t('home.scopeMining') }}
           </h3>
           <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             <div
@@ -79,7 +78,7 @@ useSeoMeta({
         <!-- Civil Services -->
         <div>
           <h3 class="text-2xl font-bold mb-6">
-            {{ locale === 'en' ? 'Civil Construction Services' : 'Layanan Konstruksi Teknik' }}
+            {{ $t('home.scopeCivil') }}
           </h3>
           <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             <div

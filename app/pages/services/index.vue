@@ -5,7 +5,6 @@ const { t } = useI18n()
 
 const { data: apiServices } = useCms<ServiceItem[]>('services', 'all')
 const services = useStaticServices(apiServices)
-const { data: settings } = useStaticCompany()
 
 useSeoMeta({
   title: () => `${t('services.title')} | PT Lobunta Mandiri Persada`,
@@ -33,7 +32,7 @@ useSeoMeta({
 
     <CtaBanner
       :heading="t('services.contactCta')"
-      :body="settings ? pick(settings.description) : ''"
+      :body="t('services.contactBody')"
       :button-label="t('nav.contact')"
       button-to="/contact"
     />
