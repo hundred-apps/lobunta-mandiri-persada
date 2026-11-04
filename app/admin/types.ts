@@ -6,6 +6,8 @@
  * AdminResourceForm.
  */
 
+import type { Localized } from '~/types/content'
+
 export type FieldKind =
   | 'text'
   | 'textarea'
@@ -26,7 +28,8 @@ export type FieldKind =
 
 export interface FieldOption {
   value: string
-  label: string
+  /** Opsi bisa berupa teks tunggal atau label bilingual ({ id, en }). */
+  label: string | Localized
 }
 
 /** Kolom satu baris pada field `list` (daftar dokumen/berkas). */

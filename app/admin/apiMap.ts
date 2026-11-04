@@ -96,13 +96,14 @@ const MAPS: Record<string, Record<string, FieldMap>> = {
     gallery: { api: 'galleryImages', kind: 'gallery', file: 'galleryMedia', connect: 'galleryImagesId' }
   },
   projects: {
-    name: { api: 'name', kind: 'bilingual' },
+    name: { api: 'name', kind: 'plain' },
     clientName: { api: 'clientName', kind: 'plain' },
     siteAddress: { api: 'siteAddress', kind: 'plain' },
     year: { api: 'year', kind: 'number' },
     contractValue: { api: 'contractValue', kind: 'plain' },
     description: { api: 'description', kind: 'bilingual' },
-    images: { api: 'images[0].media', kind: 'media', file: 'media', connect: 'mediaId' }
+    images: { api: 'images[0].media', kind: 'media', file: 'media', connect: 'mediaId' },
+    type: { api: 'type', kind: 'plain' }
   },
   units: {
     name: { api: 'name', kind: 'plain' },
@@ -130,7 +131,8 @@ const MAPS: Record<string, Record<string, FieldMap>> = {
     name: { api: 'name', kind: 'plain' },
     quote: { api: 'quote', kind: 'bilingual' },
     image: { api: 'media', kind: 'media', file: 'media', connect: 'mediaId' },
-    order: { api: 'sortOrder', kind: 'number' }
+    order: { api: 'sortOrder', kind: 'number' },
+    type: { api: 'type', kind: 'plain' }
   },
   'admin-users': {
     name: { api: 'name', kind: 'plain' },

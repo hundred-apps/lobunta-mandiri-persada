@@ -69,6 +69,8 @@ export interface ProjectItem {
   contractValue: number
   image: string
   images: string[]
+  /** Jenis pekerjaan: civil | mining. */
+  type?: string
 }
 
 export type UnitStatus = 'available' | 'maintenance' | 'inactive'
@@ -153,6 +155,8 @@ export interface CustomerItem {
   image?: string
   industry?: Localized
   order: number
+  /** Jenis usaha / bidang: civil | mining. */
+  type?: string
 }
 
 export interface CustomerImage {

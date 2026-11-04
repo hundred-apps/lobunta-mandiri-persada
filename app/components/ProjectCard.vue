@@ -41,6 +41,7 @@ function formatValue(value: number): string {
     <div class="flex flex-1 flex-col p-5">
       <div class="flex flex-wrap items-center gap-2 text-xs text-ink-mute">
         <span v-if="project.year" class="chip">{{ project.year }}</span>
+        <span v-if="project.type" class="chip">{{ project.type === 'mining' ? $t('projects.typeMining') : $t('projects.typeCivil') }}</span>
         <span>{{ project.siteAddress }}</span>
       </div>
       <h3 class="mt-2 text-base">

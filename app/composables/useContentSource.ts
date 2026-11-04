@@ -244,7 +244,8 @@ function mapCustomer(row: Record<string, unknown>, media: (v: unknown) => string
     logo: media(logo),
     image: media(logo),
     industry: loc(row.quoteId, row.quoteEn),
-    order: Number(row.sortOrder || 0)
+    order: Number(row.sortOrder || 0),
+    type: row.type ? String(row.type) : undefined
   }
 }
 
@@ -280,7 +281,8 @@ function mapProject(row: Record<string, unknown>, media: (v: unknown) => string)
     description: loc(row.descriptionId, row.descriptionEn),
     contractValue: Number(row.contractValue || 0),
     image: images[0] || '',
-    images
+    images,
+    type: row.type ? String(row.type) : undefined
   }
 }
 

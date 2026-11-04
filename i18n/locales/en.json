@@ -121,13 +121,17 @@
     "ctaBody": "Send us the location, work volume, and production target. The LMP team will prepare the work approach and fleet plan.",
     "docMining": "Mining & Plant",
     "docCivil": "Civil Construction",
-    "docGeneral": "General"
+    "docGeneral": "General",
+    "typeCivil": "Earthwork & Civil Construction",
+    "typeMining": "Mining Contractor & Mine-Supporting Civil Works"
   },
   "customers": {
     "title": "Our clients",
     "heading": "Our clients",
     "intro": "Project owners and contractors who entrust their mining and civil construction work to LMP.",
-    "viewAll": "See other clients"
+    "viewAll": "See other clients",
+    "typeCivil": "Earthwork & Civil Construction",
+    "typeMining": "Mining Contractor & Mine-Supporting Civil Works"
   },
   "blog": {
     "title": "Blog",

@@ -5,7 +5,7 @@ definePageMeta({ layout: 'admin' })
 
 const columns: ColumnDef[] = [
   { key: 'images', label: 'Gambar', kind: 'image', width: 'w-20' },
-  { key: 'name', label: 'Nama proyek', kind: 'bilingual' },
+  { key: 'name', label: 'Nama proyek', kind: 'text' },
   { key: 'clientName', label: 'Pemilik proyek', width: 'w-56' },
   { key: 'siteAddress', label: 'Lokasi', width: 'w-48' },
   { key: 'year', label: 'Tahun', kind: 'number', width: 'w-20' },

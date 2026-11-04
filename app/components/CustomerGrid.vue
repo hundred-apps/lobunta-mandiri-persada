@@ -15,9 +15,15 @@ defineProps<{ items: CustomerItem[] }>()
         <img v-if="item.logo" :src="item.logo" :alt="item.name" class="h-full w-full object-contain p-2" loading="lazy">
         <span v-else>{{ item.name.slice(0, 2).toUpperCase() }}</span>
       </span>
-      <span>
+      <span class="flex min-w-0 flex-col">
         <span class="block font-semibold text-brand-900 dark:text-white">{{ item.name }}</span>
         <span class="block text-xs text-ink-soft dark:text-slate-400">{{ pick(item.industry) }}</span>
+        <span
+          v-if="item.type"
+          class="mt-1.5 inline-flex self-start rounded-full bg-brand-50 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-brand-700 dark:bg-white/10 dark:text-brand-300"
+        >
+          {{ item.type === 'mining' ? $t('customers.typeMining') : $t('customers.typeCivil') }}
+        </span>
       </span>
     </li>
   </ul>

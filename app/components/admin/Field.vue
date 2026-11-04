@@ -1,5 +1,6 @@
 ﻿<script setup lang="ts">
 import type { FieldDef } from "~/admin/types";
+import type { Localized } from "~/types/content";
 
 const props = defineProps<{
   field: FieldDef;
@@ -9,7 +10,7 @@ const props = defineProps<{
 
 const emit = defineEmits<{ "update:modelValue": [value: unknown] }>();
 
-const options = ref<Array<{ value: string; label: string }>>([]);
+const options = ref<Array<{ value: string; label: string | Localized }>>([]);
 const loadingOptions = ref(false);
 
 const isBilingual = computed(() => Boolean(props.field.bilingual));
@@ -456,7 +457,7 @@ function abs(url: string): string {
         :key="option.value"
         :value="option.value"
       >
-        {{ option.label || option.value }}
+        {{ typeof option.label === 'string' ? option.label : pick(option.label) || option.value }}
       </option>
     </select>
 

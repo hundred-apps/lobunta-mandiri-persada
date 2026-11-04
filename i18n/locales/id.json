@@ -47,7 +47,7 @@
     "contactTitle": "Hubungi kami",
     "aboutHeading": "Sejarah kami",
     "aboutBody": "Berdiri sejak 1973 dan berkembang menjadi salah satu kontraktor pekerjaan tanah dan konstruksi terkemuka di Indonesia.",
-    "ctaHeading": "Butuh mitra earth works, pertambangan, atau konstruksi teknik?",
+    "ctaHeading": "Butuh mitra pekerjaan tanah, pertambangan, atau konstruksi teknik?",
     "ctaBody": "Kirimkan detail proyek, lokasi, dan target produksi Anda. Tim LMP akan menyusun approach pekerjaan dan rencana armada yang sesuai.",
     "ctaButton": "Hubungi Kami",
     "divisionsTitle": "Bidang usaha kami",
@@ -121,13 +121,17 @@
     "ctaBody": "Kirimkan detail lokasi, volume pekerjaan, dan target produksi. Tim LMP akan menyusun pendekatan kerja dan rencana armada.",
     "docMining": "Pertambangan & Plant",
     "docCivil": "Konstruksi Teknik",
-    "docGeneral": "Umum"
+    "docGeneral": "Umum",
+    "typeCivil": "Pekerjaan Tanah & Konstruksi Teknik",
+    "typeMining": "Kontraktor Pertambangan & Konstruksi Teknik Penunjang Pertambangan"
   },
   "customers": {
     "title": "Klien kami",
     "heading": "Klien kami",
     "intro": "Pemilik proyek dan kontraktor yang mempercayakan pekerjaan pertambangan dan konstruksi teknik kepada LMP.",
-    "viewAll": "Lihat klien lainnya"
+    "viewAll": "Lihat klien lainnya",
+    "typeCivil": "Pekerjaan Tanah & Konstruksi Teknik",
+    "typeMining": "Kontraktor Pertambangan & Konstruksi Teknik Penunjang Pertambangan"
   },
   "blog": {
     "title": "Blog",
