@@ -1,5 +1,5 @@
 ﻿<script setup lang="ts">
-import type { HomeContent, ProjectItem, ServiceItem } from '~/types/content'
+import type { HomeContent, ProjectItem } from '~/types/content'
 import { useScopeOfWork } from '~/composables/useScopeOfWork'
 
 const { locale, t } = useI18n()
@@ -7,7 +7,6 @@ const milestones = useMilestones()
 const { divisions: scopeDivisions, allServices } = useScopeOfWork()
 
 const { data: home } = await useCms<HomeContent>('home', 'home')
-const { data: services } = await useCms<ServiceItem[]>('services', 'all')
 const { data: projects } = await useCms<ProjectItem[]>('projects', 'all')
 const { data: settings } = await useCompany()
 
@@ -95,23 +94,6 @@ useSeoMeta({
               </p>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section v-if="services.length" class="section section-alt">
-      <div class="container-page">
-        <UiSectionHeading
-          :eyebrow="$t('nav.services')"
-          :heading="$t('services.heading')"
-          :body="$t('services.intro')"
-        />
-        <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          <ServiceCard
-            v-for="service in services"
-            :key="service.id"
-            :service="service"
-          />
         </div>
       </div>
     </section>

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { ColumnDef } from '~/admin/types'
 
+const { locale, t } = useI18n()
+
 defineProps<{
   columns: ColumnDef[]
   rows: Array<Record<string, unknown>>
@@ -33,14 +35,14 @@ function plain(value: unknown): string {
 }
 
 function booleanText(value: unknown): string {
-  return value ? 'Ya' : 'Tidak'
+  return value ? t('admin.yes') : t('admin.no')
 }
 
 function dateText(value: unknown): string {
   if (!value) return '-'
   const date = new Date(String(value))
   if (Number.isNaN(date.getTime())) return String(value)
-  return new Intl.DateTimeFormat('id-ID', { dateStyle: 'medium' }).format(date)
+  return new Intl.DateTimeFormat(locale.value === 'id' ? 'id-ID' : 'en-US', { dateStyle: 'medium' }).format(date)
 }
 
 function statusClass(value: unknown): string {
@@ -68,11 +70,11 @@ function previewUrl(url: string): string {
     </div>
 
     <div v-if="loading" class="px-5 py-10 text-center text-sm text-slate-500">
-      Memuat data...
+      {{ $t('admin.loading') }}
     </div>
 
     <div v-else-if="!rows.length" class="px-5 py-10 text-center text-sm text-slate-500">
-      Belum ada data.
+      {{ $t('admin.empty') }}
     </div>
 
     <div v-else class="overflow-x-auto">
@@ -88,7 +90,7 @@ function previewUrl(url: string): string {
               {{ column.label }}
             </th>
             <th class="w-28 px-4 py-3 text-right font-semibold">
-              Aksi
+              {{ $t('admin.actions') }}
             </th>
           </tr>
         </thead>

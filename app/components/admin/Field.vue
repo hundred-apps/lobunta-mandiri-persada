@@ -294,7 +294,7 @@ function abs(url: string): string {
         v-if="field.kind === 'select' && loadingOptions"
         class="text-xs text-slate-500"
       >
-        Memuat opsi...
+        {{ $t('admin.loadingOptions') }}
       </div>
     </div>
 
@@ -450,7 +450,7 @@ function abs(url: string): string {
       :disabled="disabled || loadingOptions"
     >
       <option value="">
-        {{ loadingOptions ? "Memuat opsi..." : "-- pilih --" }}
+        {{ loadingOptions ? $t('admin.loadingOptions') : $t('admin.selectPlaceholder') }}
       </option>
       <option
         v-for="option in options"
@@ -525,7 +525,7 @@ function abs(url: string): string {
         :disabled="disabled"
         @click="addListItem"
       >
-        Tambah
+        {{ $t('admin.addRow') }}
       </button>
     </div>
 
@@ -537,7 +537,7 @@ function abs(url: string): string {
       >
         <div class="flex items-center justify-between">
           <span class="text-xs font-semibold text-slate-500"
-            >Baris {{ index + 1 }}</span
+            >{{ $t('admin.rowNumber', { number: index + 1 }) }}</span
           >
           <button
             type="button"
@@ -545,7 +545,7 @@ function abs(url: string): string {
             :disabled="disabled"
             @click="removePair(index)"
           >
-            Hapus
+            {{ $t('admin.delete') }}
           </button>
         </div>
         <div class="mt-2 grid gap-2 sm:grid-cols-2">

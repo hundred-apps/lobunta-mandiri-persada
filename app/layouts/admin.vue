@@ -1,38 +1,43 @@
 ﻿<script setup lang="ts">
 const route = useRoute()
+const { t } = useI18n()
 const { profile, isAuthenticated, logout } = useAdminAuth()
 const { connected, lastError, baseUrl } = useAdminApi()
 const { data: company } = useStaticCompany()
+const { locale, locales, setLocale } = useI18n()
 
 const collapsed = ref(false)
+
+async function switchLocale(code: string) {
+  await setLocale(code as 'id' | 'en')
+}
 
 const isSuperUser = computed(() => profile.value?.role === 'superuser')
 
 const groups = computed(() => [
   {
-    label: 'Umum',
+    label: t('admin.navGeneral'),
     items: [
-      { to: '/admin', label: 'Dashboard', icon: 'target' },
-      { to: '/admin/settings', label: 'Pengaturan situs', icon: 'gear' }
+      { to: '/admin', label: t('admin.navDashboard'), icon: 'target' },
+      { to: '/admin/settings', label: t('admin.navSettings'), icon: 'gear' }
     ]
   },
   {
-    label: 'Konten',
+    label: t('admin.navContent'),
     items: [
-      { to: '/admin/home-hero', label: 'Hero Beranda', icon: 'target' },
-      { to: '/admin/product-categories', label: 'Kategori Produk', icon: 'delivery' },
-      { to: '/admin/products', label: 'Produk', icon: 'lab' },
-      { to: '/admin/services', label: 'Layanan', icon: 'lab' },
-      { to: '/admin/projects', label: 'Proyek', icon: 'target' },
-      { to: '/admin/units', label: 'Unit', icon: 'truck' },
-      { to: '/admin/articles', label: 'Artikel', icon: 'document' },
-      { to: '/admin/customers', label: 'Klien', icon: 'factory' }
+      { to: '/admin/home-hero', label: t('admin.navHomeHero'), icon: 'target' },
+      { to: '/admin/product-categories', label: t('admin.navProductCategories'), icon: 'delivery' },
+      { to: '/admin/products', label: t('admin.navProducts'), icon: 'lab' },
+      { to: '/admin/projects', label: t('admin.navProjects'), icon: 'target' },
+      { to: '/admin/units', label: t('admin.navUnits'), icon: 'truck' },
+      { to: '/admin/articles', label: t('admin.navArticles'), icon: 'document' },
+      { to: '/admin/customers', label: t('admin.navCustomers'), icon: 'factory' }
     ]
   },
   ...(isSuperUser.value ? [{
-    label: 'Sistem',
+    label: t('admin.navSystem'),
     items: [
-      { to: '/admin/admin-users', label: 'User admin', icon: 'engineer' }
+      { to: '/admin/admin-users', label: t('admin.navAdminUsers'), icon: 'engineer' }
     ]
   }] : [])
 ])
@@ -59,8 +64,8 @@ function isActive(to: string): boolean {
           >
           <UiIcon v-else name="oil" :size="28" class="text-brand-700 dark:text-brand-300" />
           <span v-if="!collapsed" class="leading-tight">
-            <span class="block font-display text-sm font-bold text-brand-900 dark:text-white">Lobunta CMS</span>
-            <span class="block text-[10px] uppercase tracking-wider text-slate-500">Panel admin</span>
+            <span class="block font-display text-sm font-bold text-brand-900 dark:text-white">{{ $t('admin.panelName') }}</span>
+            <span class="block text-[10px] uppercase tracking-wider text-slate-500">{{ $t('admin.panelTag') }}</span>
           </span>
         </div>
 
@@ -94,14 +99,14 @@ function isActive(to: string): boolean {
             @click="collapsed = !collapsed"
           >
             <UiIcon name="arrow-right" :size="16" :style="collapsed ? '' : 'transform: rotate(180deg)'" />
-            <span v-if="!collapsed">Tutup menu</span>
+            <span v-if="!collapsed">{{ $t('admin.navCollapse') }}</span>
           </button>
           <NuxtLink
             to="/"
             class="flex items-center gap-2 rounded-lg px-2 py-2 text-xs text-slate-500 hover:bg-slate-100 dark:hover:bg-white/10"
           >
             <UiIcon name="arrow-right" :size="16" style="transform: rotate(180deg)" />
-            <span v-if="!collapsed">Lihat website</span>
+            <span v-if="!collapsed">{{ $t('admin.navViewSite') }}</span>
           </NuxtLink>
         </div>
       </aside>
@@ -116,19 +121,32 @@ function isActive(to: string): boolean {
                 : 'bg-amber-50 text-amber-700 dark:bg-amber-500/10 dark:text-amber-300'"
             >
               <span class="h-2 w-2 rounded-full" :class="connected ? 'bg-emerald-500' : 'bg-amber-500'" />
-              {{ connected ? 'Backend terhubung' : 'Backend belum terhubung' }}
+              {{ connected ? $t('admin.navConnected') : $t('admin.navNotConnected') }}
             </span>
             <span v-if="!connected && lastError" class="hidden text-xs text-slate-500 sm:inline">
-              {{ lastError }}
+              {{ $t('admin.navLastError', { error: lastError }) }}
             </span>
           </div>
 
           <div class="flex items-center gap-3">
-            <span class="text-sm text-slate-600 dark:text-slate-300">
+            <div class="flex items-center rounded-lg border border-slate-200 p-0.5 dark:border-white/15">
+              <button
+                v-for="item in locales"
+                :key="item.code"
+                type="button"
+                class="rounded-md px-2 py-1 text-xs font-semibold uppercase transition"
+                :class="item.code === locale ? 'bg-brand-700 text-white' : 'text-slate-500 hover:text-brand-700 dark:text-slate-300'"
+                :aria-pressed="item.code === locale"
+                @click="switchLocale(item.code)"
+              >
+                {{ item.code }}
+              </button>
+            </div>
+            <span class="hidden text-sm text-slate-600 dark:text-slate-300 sm:inline">
               {{ profile?.name || profile?.email }}
             </span>
             <button type="button" class="btn-outline !py-2" @click="logout">
-              Keluar
+              {{ $t('admin.navLogout') }}
             </button>
           </div>
         </header>
@@ -137,9 +155,8 @@ function isActive(to: string): boolean {
           v-if="!connected"
           class="border-b border-amber-200 bg-amber-50 px-5 py-3 text-xs text-amber-800 dark:border-amber-500/20 dark:bg-amber-500/10 dark:text-amber-200"
         >
-          Panel berjalan tanpa data. Isi <code class="font-mono">{{ baseUrl || 'NUXT_PUBLIC_API_BASE' }}</code>
-          di <code class="font-mono">web/.env</code> lalu jalankan ulang dev server.
-          {{ lastError ? ` Error terakhir: ${lastError}` : '' }}
+          {{ $t('admin.navBackendHint') }}
+          {{ lastError ? ` ${$t('admin.navLastError', { error: lastError })}` : '' }}
         </div>
 
         <main class="p-5">

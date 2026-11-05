@@ -1,27 +1,28 @@
 <script setup lang="ts">
 import type { FieldDef } from '~/admin/types'
+const { t } = useI18n()
 
 definePageMeta({ layout: 'admin' })
 
-const fields: FieldDef[] = [
-  { name: 'title', label: 'Judul', kind: 'text', bilingual: true, required: true },
-  { name: 'slug', label: 'Slug URL', kind: 'slug', required: true },
-  { name: 'excerpt', label: 'Ringkasan', kind: 'textarea', bilingual: true, required: true, rows: 3, help: 'Tampil di kartu daftar artikel' },
-  { name: 'body', label: 'Isi (HTML)', kind: 'html', rows: 16, help: 'Satu isi untuk kedua bahasa' },
-  { name: 'coverMedia', label: 'Gambar cover', kind: 'image' },
-  { name: 'author', label: 'Penulis', kind: 'text', help: 'Nama penulis artikel' },
-  { name: 'category', label: 'Kategori', kind: 'text', bilingual: true, help: 'Kategori artikel (mis. Berita, News)' },
-  { name: 'tags', label: 'Tag', kind: 'tags', help: 'Pisahkan dengan koma, misalnya: "oli, diesel, pertamina"' },
-  { name: 'publishedAt', label: 'Tanggal terbit', kind: 'date' },
-  { name: 'status', label: 'Status', kind: 'toggle', help: 'Aktifkan untuk memublikasikan artikel' }
-]
+const fields = computed<FieldDef[]>(() => [
+  { name: 'title', label: t('admin.articlesName'), kind: 'text', bilingual: true, required: true },
+  { name: 'slug', label: t('admin.articlesSlug'), kind: 'slug', required: true },
+  { name: 'excerpt', label: t('admin.articlesExcerpt'), kind: 'textarea', bilingual: true, required: true, rows: 3, help: t('admin.articlesExcerptHelp') },
+  { name: 'body', label: t('admin.articlesBody'), kind: 'html', rows: 16, help: t('admin.articlesBodyHelp') },
+  { name: 'coverMedia', label: t('admin.articlesCover'), kind: 'image' },
+  { name: 'author', label: t('admin.articlesAuthor'), kind: 'text', help: t('admin.articlesAuthorHelp') },
+  { name: 'category', label: t('admin.articlesCategory'), kind: 'text', bilingual: true, help: t('admin.articlesCategoryHelp') },
+  { name: 'tags', label: t('admin.articlesTags'), kind: 'tags', help: t('admin.articlesTagsHelp') },
+  { name: 'publishedAt', label: t('admin.articlesPublishedAt'), kind: 'date' },
+  { name: 'status', label: t('admin.articlesStatus'), kind: 'toggle', help: t('admin.articlesStatusHelp') }
+])
 </script>
 
 <template>
   <AdminResourceForm
     resource="articles"
-    label="Artikel"
-    singular="Artikel"
+    :label="t('admin.articlesTitle')"
+    :singular="t('admin.articlesSingular')"
     base-path="/admin/articles"
     :fields="fields"
   />

@@ -4,22 +4,23 @@ import type { FieldDef } from '~/admin/types'
 definePageMeta({ layout: 'admin' })
 
 const { get, update, lastError } = useAdminApi()
+const { t } = useI18n()
 
-const fields: FieldDef[] = [
-  { name: 'eyebrow', label: 'Label kecil (eyebrow)', kind: 'text', bilingual: true, help: 'Teks kecil di atas judul, contoh: Distributor Resmi' },
-  { name: 'heading', label: 'Judul utama', kind: 'text', bilingual: true, required: true, help: 'Judul besar hero beranda' },
-  { name: 'description', label: 'Deskripsi', kind: 'textarea', bilingual: true, rows: 4, help: 'Teks deskripsi di bawah judul' },
-  { name: 'imageUrl', label: 'Gambar hero', kind: 'image', help: 'Gambar hero. Berkas dikirim saat menyimpan.' },
-  { name: 'imagePosition', label: 'Posisi gambar', kind: 'select', options: [
-    { value: 'left', label: 'Kiri' },
-    { value: 'right', label: 'Kanan' }
-  ], help: 'Posisi gambar di hero section' },
-  { name: 'ctaLabel', label: 'Label tombol utama', kind: 'text', bilingual: true, help: 'Teks tombol utama, contoh: Lihat Produk' },
-  { name: 'ctaTo', label: 'Link tombol utama', kind: 'text', help: 'URL tujuan tombol utama, contoh: /products' },
-  { name: 'ctaSecondaryLabel', label: 'Label tombol sekunder', kind: 'text', bilingual: true, help: 'Teks tombol sekunder, contoh: Konsultasi Gratis' },
-  { name: 'ctaSecondaryTo', label: 'Link tombol sekunder', kind: 'text', help: 'URL tujuan tombol sekunder, contoh: /contact' },
-  { name: 'isActive', label: 'Tampilkan hero', kind: 'toggle', help: 'Nonaktifkan untuk menyembunyikan hero' }
-]
+const fields = computed<FieldDef[]>(() => [
+  { name: 'eyebrow', label: t('admin.homeHeroEyebrow'), kind: 'text', bilingual: true, help: t('admin.homeHeroEyebrowHelp') },
+  { name: 'heading', label: t('admin.homeHeroHeading'), kind: 'text', bilingual: true, required: true, help: t('admin.homeHeroHeadingHelp') },
+  { name: 'description', label: t('admin.homeHeroDescription'), kind: 'textarea', bilingual: true, rows: 4, help: t('admin.homeHeroDescriptionHelp') },
+  { name: 'imageUrl', label: t('admin.homeHeroImage'), kind: 'image', help: t('admin.homeHeroImageHelp') },
+  { name: 'imagePosition', label: t('admin.homeHeroImagePos'), kind: 'select', options: [
+    { value: 'left', label: t('admin.homeHeroImagePosLeft') },
+    { value: 'right', label: t('admin.homeHeroImagePosRight') }
+  ], help: t('admin.homeHeroImagePosHelp') },
+  { name: 'ctaLabel', label: t('admin.homeHeroCta'), kind: 'text', bilingual: true, placeholder: { id: 'Contoh: Lihat Layanan', en: 'e.g. View Services' } },
+  { name: 'ctaTo', label: t('admin.homeHeroCtaTo'), kind: 'text', placeholder: { id: '/products', en: '/products' } },
+  { name: 'ctaSecondaryLabel', label: t('admin.homeHeroCtaSecondary'), kind: 'text', bilingual: true, placeholder: { id: 'Contoh: Konsultasi Gratis', en: 'e.g. Free Consultation' } },
+  { name: 'ctaSecondaryTo', label: t('admin.homeHeroCtaSecondaryTo'), kind: 'text', placeholder: { id: '/contact', en: '/contact' } },
+  { name: 'isActive', label: t('admin.homeHeroActive'), kind: 'toggle', help: t('admin.homeHeroActiveHelp') }
+])
 
 const model = ref<Record<string, unknown>>({})
 const loading = ref(true)
@@ -42,7 +43,7 @@ function emptyValue(field: FieldDef): unknown {
 
 function defaults(): Record<string, unknown> {
   const result: Record<string, unknown> = {}
-  for (const field of fields) result[field.name] = emptyValue(field)
+  for (const field of fields.value) result[field.name] = emptyValue(field)
   return result
 }
 
@@ -59,16 +60,16 @@ async function save() {
   const result = await update<Record<string, unknown>>('home-hero', id, model.value)
   saving.value = false
   if (result === null) {
-    notice.value = { type: 'error', text: lastError.value || 'Gagal menyimpan hero.' }
+    notice.value = { type: 'error', text: lastError.value || t('admin.homeHeroSaveError') }
     return
   }
   const fresh = await get<Record<string, unknown>>('home-hero', 'singleton')
   model.value = { ...defaults(), ...(fresh || {}) }
   await refreshNuxtData(['cms:home:home'])
-  notice.value = { type: 'ok', text: 'Hero beranda disimpan.' }
+  notice.value = { type: 'ok', text: t('admin.homeHeroSaved') }
 }
 
-useSeoMeta({ title: 'Hero Beranda | CMS Lobunta' })
+useSeoMeta({ title: () => `${t('admin.homeHeroTitle')} | CMS Lobunta` })
 </script>
 
 <template>
@@ -76,14 +77,14 @@ useSeoMeta({ title: 'Hero Beranda | CMS Lobunta' })
     <div class="flex flex-wrap items-end justify-between gap-3">
       <div>
         <h1 class="text-2xl">
-          Hero Beranda
+          {{ $t('admin.homeHeroTitle') }}
         </h1>
         <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">
-          Hero pada halaman beranda. Hanya satu data — perubahan langsung mengubah beranda.
+          {{ $t('admin.homeHeroBody') }}
         </p>
       </div>
       <button type="button" class="btn-primary" :disabled="saving || loading" @click="save">
-        {{ saving ? 'Menyimpan...' : 'Simpan' }}
+        {{ saving ? $t('admin.saving') : $t('admin.save') }}
       </button>
     </div>
 
@@ -99,7 +100,7 @@ useSeoMeta({ title: 'Hero Beranda | CMS Lobunta' })
     </p>
 
     <div v-if="loading" class="card px-5 py-10 text-center text-sm text-slate-500">
-      Memuat hero...
+      {{ $t('admin.homeHeroLoading') }}
     </div>
 
     <form v-else class="card space-y-6 p-6" @submit.prevent="save">

@@ -1,28 +1,30 @@
 <script setup lang="ts">
 import type { ColumnDef, FieldDef } from '~/admin/types'
+const { t } = useI18n()
 
 definePageMeta({ layout: 'admin' })
 
-const fields: FieldDef[] = [
-  { name: 'name', label: 'Nama kategori', kind: 'text', bilingual: true, required: true },
-  { name: 'slug', label: 'Slug URL', kind: 'slug', required: true },
-  { name: 'description', label: 'Deskripsi', kind: 'textarea', bilingual: true, required: true, rows: 4 },
-  { name: 'icon', label: 'Ikon', kind: 'icon' }
-]
+const fields = computed<FieldDef[]>(() => [
+  { name: 'name', label: t('admin.productCategoriesName'), kind: 'text', bilingual: true, required: true },
+  { name: 'slug', label: t('admin.productCategoriesSlug'), kind: 'slug', required: true },
+  { name: 'description', label: t('admin.productCategoriesDescription'), kind: 'textarea', bilingual: true, required: true, rows: 4 },
+  { name: 'icon', label: t('admin.productCategoriesIcon'), kind: 'icon' }
+])
 
 const route = useRoute()
 const router = useRouter()
+const { locale } = useI18n()
 const { list, remove, lastError } = useAdminApi()
 
 const categoryId = computed(() => String(route.params.id || ''))
 const isNew = computed(() => categoryId.value === 'new')
 
-const productColumns: ColumnDef[] = [
-  { key: 'image', label: 'Gambar', kind: 'image', width: 'w-16' },
-  { key: 'name', label: 'Nama produk', kind: 'bilingual' },
-  { key: 'sku', label: 'SKU', width: 'w-32' },
-  { key: 'status', label: 'Status', kind: 'toggle', width: 'w-24' }
-]
+const productColumns = computed<ColumnDef[]>(() => [
+  { key: 'image', label: t('admin.productCategoriesImage'), kind: 'image', width: 'w-16' },
+  { key: 'name', label: t('admin.productsSingular'), kind: 'bilingual' },
+  { key: 'sku', label: t('admin.productCategoriesSku'), width: 'w-32' },
+  { key: 'status', label: t('admin.productCategoriesStatus'), kind: 'toggle', width: 'w-24' }
+])
 
 const rows = ref<Array<Record<string, unknown>>>([])
 const loading = ref(false)
@@ -66,8 +68,9 @@ watch(categoryId, () => {
 <template>
   <AdminResourceForm
     resource="product-categories"
-    label="Kategori Produk"
-    singular="Kategori"
+    :label="t('admin.productCategoriesTitle')"
+    :singular="t('admin.productCategoriesSingular')"
+    :help="t('admin.productCategoriesBody')"
     base-path="/admin/product-categories"
     :fields="fields"
     cascade-resource="products"
@@ -78,10 +81,10 @@ watch(categoryId, () => {
         <div class="flex flex-wrap items-center justify-between gap-3">
           <div>
             <h2 class="text-lg">
-              Produk dalam kategori ini
+              {{ $t('admin.productCategoriesInCategory') }}
             </h2>
             <p class="text-xs text-slate-500">
-              {{ rows.length }} produk
+              {{ rows.length }} {{ $t('admin.productsTitle').toLowerCase() }}
             </p>
           </div>
           <div class="flex flex-wrap gap-2">
@@ -89,11 +92,11 @@ watch(categoryId, () => {
               v-model="keyword"
               type="search"
               class="field !w-56"
-              placeholder="Cari produk..."
+              :placeholder="t('admin.productCategoriesSearch')"
               @keyup.enter="loadProducts"
             >
-            <NuxtLink :to="`/admin/products/new?categoryId=${categoryId}`" class="btn-primary !py-2">
-              Tambah produk
+            <NuxtLink :to="`/${locale}/admin/products/new?categoryId=${categoryId}`" class="btn-primary !py-2">
+              {{ $t('admin.productCategoriesAddProduct') }}
             </NuxtLink>
           </div>
         </div>
@@ -103,7 +106,7 @@ watch(categoryId, () => {
           :rows="rows"
           :loading="loading"
           :error="lastError"
-          @edit="(id) => router.push(`/admin/products/${id}`)"
+          @edit="(id) => router.push(`/${locale}/admin/products/${id}`)"
           @remove="requestDelete"
         />
       </section>
@@ -114,17 +117,17 @@ watch(categoryId, () => {
     <div v-if="pendingDelete" class="fixed inset-0 z-50 grid place-items-center bg-slate-900/60 p-4">
       <div class="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl dark:bg-brand-950">
         <h2 class="text-lg">
-          Hapus produk?
+          {{ $t('admin.productCategoriesDeleteTitle') }}
         </h2>
         <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-          Tindakan ini tidak bisa dibatalkan di backend.
+          {{ $t('admin.productCategoriesDeleteBody') }}
         </p>
         <div class="mt-6 flex justify-end gap-2">
           <button type="button" class="btn-outline" :disabled="deleting" @click="pendingDelete = null">
-            Batal
+            {{ $t('admin.cancel') }}
           </button>
           <button type="button" class="btn-accent" :disabled="deleting" @click="confirmDelete">
-            {{ deleting ? 'Menghapus...' : 'Ya, hapus' }}
+            {{ deleting ? $t('admin.deleting') : $t('admin.confirmDeleteVerb') }}
           </button>
         </div>
       </div>

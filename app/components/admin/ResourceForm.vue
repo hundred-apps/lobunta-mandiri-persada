@@ -19,7 +19,11 @@ const props = withDefaults(defineProps<{
 
 const route = useRoute()
 const router = useRouter()
+const { locale, t } = useI18n()
 const { get, list, create, update, remove, lastError } = useAdminApi()
+
+/** basePath prop (mis. `/admin/products`) → path lengkap dengan prefix locale. */
+const fullPath = computed(() => `/${locale.value}${props.basePath}`)
 
 const rawId = computed(() => String(route.params.id || ''))
 const isNew = computed(() => rawId.value === 'new')
@@ -78,7 +82,7 @@ async function save() {
   saving.value = false
 
   if (result === null) {
-    notice.value = { type: 'error', text: lastError.value || 'Gagal menyimpan data.' }
+    notice.value = { type: 'error', text: lastError.value || t('admin.noticeSaveError') }
     return
   }
 
@@ -86,8 +90,8 @@ async function save() {
     await props.afterSave(result, model.value)
   }
 
-  notice.value = { type: 'ok', text: isNew.value ? 'Data dibuat.' : 'Perubahan disimpan.' }
-  await router.push(props.basePath)
+  notice.value = { type: 'ok', text: isNew.value ? t('admin.noticeCreated') : t('admin.noticeUpdated') }
+  await router.push(fullPath.value)
 }
 
 /**
@@ -110,13 +114,13 @@ async function confirmDestroy() {
   deleting.value = false
   deleteOpen.value = false
   if (done) {
-    await router.push(props.basePath)
+    await router.push(fullPath.value)
   } else {
-    notice.value = { type: 'error', text: lastError.value || 'Gagal menghapus data.' }
+    notice.value = { type: 'error', text: lastError.value || t('admin.noticeDeleteError') }
   }
 }
 
-useSeoMeta({ title: () => `${isNew.value ? 'Tambah' : 'Ubah'} ${props.singular} | CMS Lobunta` })
+useSeoMeta({ title: () => `${isNew.value ? t('admin.createTitle', { singular: props.singular }) : t('admin.editTitle', { singular: props.singular })} | CMS Lobunta` })
 </script>
 
 <template>
@@ -127,7 +131,7 @@ useSeoMeta({ title: () => `${isNew.value ? 'Tambah' : 'Ubah'} ${props.singular} 
           &larr; {{ label }}
         </NuxtLink>
         <h1 class="mt-1 text-2xl">
-          {{ isNew ? `Tambah ${singular.toLowerCase()}` : `Ubah ${singular.toLowerCase()}` }}
+          {{ isNew ? t('admin.createTitle', { singular: singular.toLowerCase() }) : t('admin.editTitle', { singular: singular.toLowerCase() }) }}
         </h1>
         <p v-if="!isNew" class="text-xs text-slate-500">
           ID {{ rawId }}
@@ -135,14 +139,14 @@ useSeoMeta({ title: () => `${isNew.value ? 'Tambah' : 'Ubah'} ${props.singular} 
       </div>
 
       <div class="flex flex-wrap gap-2">
-        <button v-if="!isNew" type="button" class="btn-ghost !px-3 !py-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-500/10" :title="'Hapus'" aria-label="Hapus" @click="deleteOpen = true">
+        <button v-if="!isNew" type="button" class="btn-ghost !px-3 !py-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-500/10" :title="$t('admin.delete')" :aria-label="$t('admin.delete')" @click="deleteOpen = true">
           <UiIcon name="trash" :size="16" />
         </button>
-        <button type="button" class="btn-outline" :disabled="saving" @click="router.push(basePath)">
-          Batal
+        <button type="button" class="btn-outline" :disabled="saving" @click="router.push(fullPath)">
+          {{ $t('admin.cancel') }}
         </button>
         <button type="button" class="btn-primary" :disabled="saving || loading" @click="save">
-          {{ saving ? 'Menyimpan...' : 'Simpan' }}
+          {{ saving ? $t('admin.saving') : $t('admin.save') }}
         </button>
       </div>
     </div>
@@ -159,7 +163,7 @@ useSeoMeta({ title: () => `${isNew.value ? 'Tambah' : 'Ubah'} ${props.singular} 
     </p>
 
     <div v-if="loading" class="card px-5 py-10 text-center text-sm text-slate-500">
-      Memuat data...
+      {{ $t('admin.loading') }}
     </div>
 
     <form v-else class="card space-y-6 p-6">
@@ -177,20 +181,20 @@ useSeoMeta({ title: () => `${isNew.value ? 'Tambah' : 'Ubah'} ${props.singular} 
       <div v-if="deleteOpen" class="fixed inset-0 z-50 grid place-items-center bg-slate-900/60 p-4">
         <div class="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl dark:bg-brand-950">
           <h2 class="text-lg">
-            Hapus {{ singular.toLowerCase() }}?
+            {{ $t('admin.delete') }} {{ singular.toLowerCase() }}?
           </h2>
           <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-            Tindakan ini tidak bisa dibatalkan. Lanjutkan hanya jika yakin.
+            {{ $t('admin.deleteCannotUndo') }}
           </p>
           <div v-if="cascadeResource" class="mt-3 rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-sm text-amber-800 dark:border-amber-500/40 dark:bg-amber-500/10 dark:text-amber-200">
-            Data terkait ikut terhapus bersama baris ini.
+            {{ $t('admin.deleteConfirmBody') }}
           </div>
           <div class="mt-6 flex justify-end gap-2">
             <button type="button" class="btn-outline" :disabled="deleting" @click="deleteOpen = false">
-              Batal
+              {{ $t('admin.cancel') }}
             </button>
             <button type="button" class="btn-accent" :disabled="deleting" @click="confirmDestroy">
-              {{ deleting ? 'Menghapus...' : 'Ya, hapus' }}
+              {{ deleting ? $t('admin.deleting') : $t('admin.confirmDeleteVerb') }}
             </button>
           </div>
         </div>

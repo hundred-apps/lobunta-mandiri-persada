@@ -1,24 +1,32 @@
 <script setup lang="ts">
 import type { FieldDef } from '~/admin/types'
+const { t } = useI18n()
 
 definePageMeta({ layout: 'admin' })
 
-const fields: FieldDef[] = [
-  { name: 'name', label: 'Nama proyek', kind: 'text', required: true },
-  { name: 'clientName', label: 'Pemilik proyek / pemberi kerja', kind: 'text', required: true },
-  { name: 'siteAddress', label: 'Lokasi proyek', kind: 'text', required: true, placeholder: { id: 'Contoh: Nagan Raya, Provinsi Aceh' } },
-  { name: 'year', label: 'Tahun', kind: 'number', min: 1970, max: 2100, required: true },
+const fields = computed<FieldDef[]>(() => [
+  { name: 'name', label: t('admin.projectsName'), kind: 'text', required: true },
+  {
+    name: 'clientName',
+    label: t('admin.projectsClientName'),
+    kind: 'select',
+    required: true,
+    optionsFrom: { resource: 'customers', labelKey: 'name', valueKey: 'name' },
+    help: t('admin.projectsClientHelp')
+  },
+  { name: 'siteAddress', label: t('admin.projectsSiteAddress'), kind: 'text', required: true, placeholder: { id: 'Contoh: Nagan Raya, Provinsi Aceh', en: 'e.g. Nagan Raya, Aceh' } },
+  { name: 'year', label: t('admin.projectsYear'), kind: 'number', min: 1970, max: 2100, required: true },
   {
     name: 'contractValue',
-    label: 'Nilai kontrak (Rp)',
+    label: t('admin.projectsContractValue'),
     kind: 'text',
-    help: 'Tulis angka saja tanpa titik atau Rp, contoh: 4300000000.'
+    help: t('admin.projectsContractValueHelp')
   },
-  { name: 'description', label: 'Deskripsi', kind: 'textarea', bilingual: true, rows: 5 },
-  { name: 'images', label: 'Foto proyek', kind: 'image', help: 'Opsional. Foto utama yang tampil di kartu dan halaman detail.' },
+  { name: 'description', label: t('admin.productCategoriesDescription'), kind: 'textarea', bilingual: true, rows: 5, help: t('admin.projectsDescriptionHelp') },
+  { name: 'images', label: t('admin.projectsImages'), kind: 'image', help: t('admin.projectsImagesHelp') },
   {
     name: 'type',
-    label: 'Jenis pekerjaan',
+    label: t('admin.projectsType'),
     kind: 'select',
     required: false,
     options: [
@@ -26,14 +34,14 @@ const fields: FieldDef[] = [
       { value: 'mining', label: { id: 'Kontraktor Pertambangan & Konstruksi Teknik Penunjang Pertambangan', en: 'Mining Contractor & Mine-Supporting Civil Works' } }
     ]
   }
-]
+])
 </script>
 
 <template>
   <AdminResourceForm
     resource="projects"
-    label="Proyek"
-    singular="Proyek"
+    :label="t('admin.projectsTitle')"
+    :singular="t('admin.projectsSingular')"
     base-path="/admin/projects"
     :fields="fields"
   />

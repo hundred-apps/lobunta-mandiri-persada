@@ -4,41 +4,42 @@ import type { FieldDef } from '~/admin/types'
 definePageMeta({ layout: 'admin' })
 
 const { get, update, remove, lastError } = useAdminApi()
+const { t } = useI18n()
 
 /** Pilihan divisi dokumen company profile. */
-const docTypes = [
-  { value: 'mining', label: 'Pertambangan & Plant' },
-  { value: 'civil', label: 'Konstruksi Teknik' },
-  { value: 'general', label: 'Umum / korporat' }
-]
+const docTypes = computed(() => [
+  { value: 'mining', label: t('projects.docMining') },
+  { value: 'civil', label: t('projects.docCivil') },
+  { value: 'general', label: t('projects.docGeneral') }
+])
 
-const fields: FieldDef[] = [
-  { name: 'companyName', label: 'Nama perusahaan', kind: 'text', bilingual: true, required: true },
-  { name: 'legalName', label: 'Badan hukum', kind: 'text', required: true, help: 'Dipakai di footer, contoh: PT. Lobunta Kencana Raya.' },
-  { name: 'tagline', label: 'Tagline', kind: 'text', bilingual: true, required: true },
-  { name: 'description', label: 'Deskripsi perusahaan', kind: 'textarea', bilingual: true, required: true, rows: 4, help: 'Tampil di aside profil dan meta description.' },
-{ name: 'foundedYear', label: 'Tahun berdiri', kind: 'text', required: true },
-  { name: 'address', label: 'Alamat', kind: 'textarea', bilingual: true, required: true, rows: 2 },
-  { name: 'phone', label: 'Nomor telepon', kind: 'repeater', required: true, help: 'Satu baris satu nomor. Baris pertama dipakai di header.' },
-  { name: 'whatsapp', label: 'Nomor WhatsApp', kind: 'text', required: true, help: 'Format internasional tanpa tanda plus, contoh: 6285282400976' },
-  { name: 'email', label: 'Email', kind: 'text', required: true },
-  { name: 'officeHours', label: 'Jam operasional', kind: 'text', bilingual: true, required: true },
-  { name: 'logo', label: 'Logo', kind: 'image', required: true, help: 'Wajib. Dipakai di header, footer, dan ikon tab browser (favicon).' },
+const fields = computed<FieldDef[]>(() => [
+  { name: 'companyName', label: t('admin.settingsCompanyName'), kind: 'text', bilingual: true, required: true },
+  { name: 'legalName', label: t('admin.settingsLegalName'), kind: 'text', required: true, help: t('admin.settingsLegalNameHelp') },
+  { name: 'tagline', label: t('admin.settingsTagline'), kind: 'text', bilingual: true, required: true },
+  { name: 'description', label: t('admin.settingsDescription'), kind: 'textarea', bilingual: true, required: true, rows: 4, help: t('admin.settingsDescriptionHelp') },
+  { name: 'foundedYear', label: t('admin.settingsFoundedYear'), kind: 'text', required: true },
+  { name: 'address', label: t('admin.settingsAddress'), kind: 'textarea', bilingual: true, required: true, rows: 2 },
+  { name: 'phone', label: t('admin.settingsPhone'), kind: 'repeater', required: true, help: t('admin.settingsPhoneHelp') },
+  { name: 'whatsapp', label: t('admin.settingsWhatsapp'), kind: 'text', required: true, help: t('admin.settingsWhatsappHelp') },
+  { name: 'email', label: t('admin.settingsEmail'), kind: 'text', required: true },
+  { name: 'officeHours', label: t('admin.settingsOfficeHours'), kind: 'text', bilingual: true, required: true },
+  { name: 'logo', label: t('admin.settingsLogo'), kind: 'image', required: true, help: t('admin.settingsLogoHelp') },
   {
     name: 'companyProfiles',
-    label: 'Company profile (PDF)',
+    label: t('admin.settingsCompanyProfiles'),
     kind: 'list',
     listMax: 10,
-    help: 'Unggah dokumen per divisi: Pertambangan & Plant atau Konstruksi Teknik. Dokumen tampil dikelompokkan per divisi di halaman profil.',
+    help: t('admin.settingsCompanyProfilesHelp'),
     listColumns: [
-      { name: 'file', label: 'Berkas PDF', kind: 'file', accept: 'application/pdf,.pdf' },
-      { name: 'title', label: 'Judul dokumen', kind: 'bilingual', placeholder: { id: 'Contoh: Profil Kontraktor Pertambangan', en: 'e.g. Mining Contractor Profile' } },
-      { name: 'type', label: 'Divisi', kind: 'select', options: docTypes }
+      { name: 'file', label: t('admin.settingsCompanyProfilesFile'), kind: 'file', accept: 'application/pdf,.pdf' },
+      { name: 'title', label: t('admin.settingsCompanyProfilesTitle'), kind: 'bilingual', placeholder: { id: 'Contoh: Profil Kontraktor Pertambangan', en: 'e.g. Mining Contractor Profile' } },
+      { name: 'type', label: t('admin.settingsCompanyProfilesType'), kind: 'select', options: docTypes.value }
     ]
   },
-  { name: 'profile', label: 'Gambar halaman profil', kind: 'image', help: 'Opsional. Gambar utama (hero) pada halaman profil.' },
-  { name: 'gallery', label: 'Galeri foto', kind: 'gallery', max: 10, help: 'Maksimal 10 foto. Bisa diurutkan; foto tampil di halaman profil.' }
-]
+  { name: 'profile', label: t('admin.settingsProfile'), kind: 'image', help: t('admin.settingsProfileHelp') },
+  { name: 'gallery', label: t('admin.settingsGallery'), kind: 'gallery', max: 10, help: t('admin.settingsGalleryHelp') }
+])
 
 const model = ref<Record<string, unknown>>({})
 const loading = ref(true)
@@ -47,7 +48,7 @@ const notice = ref<{ type: 'ok' | 'error'; text: string } | null>(null)
 
 function defaults(): Record<string, unknown> {
   const result: Record<string, unknown> = {}
-  for (const field of fields) {
+  for (const field of fields.value) {
     result[field.name] = field.kind === 'repeater' || field.kind === 'gallery' || field.kind === 'list'
       ? []
       : field.bilingual ? { id: '', en: '' } : field.kind === 'image' ? '' : ''
@@ -73,26 +74,26 @@ function isEmpty(field: FieldDef, value: unknown): boolean {
 
 async function save() {
   notice.value = null
-  const missing = fields.filter((field) => field.required && isEmpty(field, model.value[field.name]))
+  const missing = fields.value.filter((field) => field.required && isEmpty(field, model.value[field.name]))
   if (missing.length) {
-    notice.value = { type: 'error', text: `Lengkapi field wajib: ${missing.map((f) => f.label).join(', ')}.` }
+    notice.value = { type: 'error', text: t('admin.noticeSettingsRequired', { fields: missing.map((f) => f.label).join(', ') }) }
     return
   }
   saving.value = true
   const result = await update<Record<string, unknown>>('settings', 'site', model.value)
   saving.value = false
   if (result === null) {
-    notice.value = { type: 'error', text: lastError.value || 'Gagal menyimpan pengaturan.' }
+    notice.value = { type: 'error', text: lastError.value || t('admin.noticeSaveError') }
     return
   }
   // Muat ulang dari API supaya bentuk form (bilingual/media) tetap benar.
   const fresh = await get<Record<string, unknown>>('settings', 'site')
   model.value = { ...defaults(), ...(fresh || {}) }
   await refreshNuxtData(['cms:settings:site', 'cms:home:home'])
-  notice.value = { type: 'ok', text: 'Pengaturan disimpan.' }
+  notice.value = { type: 'ok', text: t('admin.noticeSettingsSaved') }
 }
 
-useSeoMeta({ title: 'Pengaturan situs | CMS Lobunta' })
+useSeoMeta({ title: () => `${t('admin.settingsTitle')} | CMS Lobunta` })
 </script>
 
 <template>
@@ -100,14 +101,14 @@ useSeoMeta({ title: 'Pengaturan situs | CMS Lobunta' })
     <div class="flex flex-wrap items-end justify-between gap-3">
       <div>
         <h1 class="text-2xl">
-          Pengaturan situs
+          {{ $t('admin.settingsTitle') }}
         </h1>
         <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">
-          Data perusahaan yang dipakai di header, footer, halaman kontak, dan meta tag.
+          {{ $t('admin.settingsBody') }}
         </p>
       </div>
       <button type="button" class="btn-primary" :disabled="saving || loading" @click="save">
-        {{ saving ? 'Menyimpan...' : 'Simpan' }}
+        {{ saving ? $t('admin.saving') : $t('admin.save') }}
       </button>
     </div>
 
@@ -123,7 +124,7 @@ useSeoMeta({ title: 'Pengaturan situs | CMS Lobunta' })
     </p>
 
     <div v-if="loading" class="card px-5 py-10 text-center text-sm text-slate-500">
-      Memuat pengaturan...
+      {{ $t('admin.settingsLoading') }}
     </div>
 
     <form v-else class="card space-y-6 p-6" @submit.prevent="save">
@@ -136,9 +137,7 @@ useSeoMeta({ title: 'Pengaturan situs | CMS Lobunta' })
     </form>
 
     <div class="card p-5 text-xs text-slate-500">
-      Endpoint: <code class="font-mono">GET /api/site-setting-read/</code> dan
-      <code class="font-mono">POST /api/site-setting-create</code>. Menyimpan di sini langsung mengubah
-      seluruh website karena frontend publik membaca sumber yang sama.
+      {{ $t('admin.settingsEndpointsHelp') }}
     </div>
   </div>
 </template>

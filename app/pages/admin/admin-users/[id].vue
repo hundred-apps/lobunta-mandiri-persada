@@ -1,25 +1,26 @@
 <script setup lang="ts">
 import type { FieldDef } from '~/admin/types'
+const { t } = useI18n()
 
 definePageMeta({ layout: 'admin' })
 
-const fields: FieldDef[] = [
-  { name: 'name', label: 'Nama', kind: 'text', required: true },
-  { name: 'email', label: 'Email', kind: 'text', required: true },
-  { name: 'phone', label: 'Nomor telepon', kind: 'text', required: true, help: 'Format: 08xxxxxxxxxx atau 628xxxxxxxxxx' },
-  { name: 'password', label: 'Password', kind: 'password', help: 'Kosongkan saat mengubah user yang sudah ada.' },
-  { name: 'role', label: 'Peran', kind: 'select', options: [
+const fields = computed<FieldDef[]>(() => [
+  { name: 'name', label: t('admin.adminUsersName'), kind: 'text', required: true },
+  { name: 'email', label: t('admin.adminUsersEmail'), kind: 'text', required: true },
+  { name: 'phone', label: t('admin.adminUsersPhone'), kind: 'text', required: true, help: t('admin.adminUsersPhoneHelp') },
+  { name: 'password', label: t('admin.adminUsersPassword'), kind: 'password', help: t('admin.adminUsersPasswordHelp') },
+  { name: 'role', label: t('admin.adminUsersRole'), kind: 'select', options: [
     { value: 'superuser', label: 'Super User' },
     { value: 'admin', label: 'Admin' }
   ] }
-]
+])
 </script>
 
 <template>
   <AdminResourceForm
     resource="admin-users"
-    label="User Admin"
-    singular="User Admin"
+    :label="t('admin.adminUsersTitle')"
+    :singular="t('admin.adminUsersTitle')"
     base-path="/admin/admin-users"
     :fields="fields"
   />

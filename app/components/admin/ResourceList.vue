@@ -27,7 +27,11 @@ const props = withDefaults(defineProps<{
 
 const router = useRouter()
 const route = useRoute()
+const { locale, t } = useI18n()
 const { list, remove, lastError } = useAdminApi()
+
+/** basePath prop (mis. `/admin/products`) → path lengkap dengan prefix locale. */
+const fullPath = computed(() => `/${locale.value}${props.basePath}`)
 
 const rows = ref<Array<Record<string, unknown>>>([])
 const total = ref(0)
@@ -75,7 +79,7 @@ function shortLabel(value: unknown): string {
 
 const newLink = computed(() => {
   const query = props.filter && filterValue.value ? { [props.filter.param]: filterValue.value } : {}
-  return { path: `${props.basePath}/new`, query }
+  return { path: `${fullPath.value}/new`, query }
 })
 
 const activeFilterLabel = computed(() => {
@@ -140,7 +144,7 @@ useSeoMeta({ title: () => `${props.label} | CMS Lobunta` })
           {{ help }}
         </p>
         <p class="mt-1 text-xs text-slate-500">
-          {{ total }} data
+          {{ total }} {{ $t('admin.totalData') }}
         </p>
       </div>
 
@@ -161,23 +165,22 @@ useSeoMeta({ title: () => `${props.label} | CMS Lobunta` })
           v-model="keyword"
           type="search"
           class="field !w-64"
-          placeholder="Cari data..."
+          :placeholder="t('admin.search')"
         >
         <button type="button" class="btn-outline !py-2" :disabled="loading" @click="load">
           <UiIcon name="check" :size="16" />
-          Muat ulang
+          {{ $t('admin.reload') }}
         </button>
         <NuxtLink v-if="!readOnly" :to="newLink" class="btn-primary !py-2">
-          Tambah {{ singular.toLowerCase() }}
+          {{ $t('admin.createTitle', { singular: singular.toLowerCase() }) }}
         </NuxtLink>
       </div>
     </div>
 
     <p v-if="filter && filterValue" class="rounded-lg bg-slate-100 px-4 py-2 text-sm text-slate-600 dark:bg-white/5 dark:text-slate-300">
-      Menampilkan {{ singular.toLowerCase() }} pada {{ filter.label }}
-      <strong>{{ activeFilterLabel }}</strong>.
+      {{ $t('admin.filterShowing', { singular: singular.toLowerCase(), label: filter.label, name: activeFilterLabel }) }}
       <button type="button" class="ml-2 text-brand-700 underline dark:text-brand-300" @click="filterValue = ''">
-        Tampilkan semua
+        {{ $t('admin.filterShowAll') }}
       </button>
     </p>
 
@@ -186,19 +189,19 @@ useSeoMeta({ title: () => `${props.label} | CMS Lobunta` })
       :rows="rows"
       :loading="loading"
       :error="lastError"
-      @edit="(id) => router.push(`${basePath}/${id}`)"
+      @edit="(id) => router.push(`${fullPath}/${id}`)"
       @remove="requestDelete"
     />
 
     <div v-if="pageCount > 1" class="flex items-center justify-between text-sm">
       <button type="button" class="btn-outline !py-2" :disabled="page <= 1" @click="page -= 1">
-        Sebelumnya
+        {{ $t('admin.previous') }}
       </button>
       <span class="text-slate-500">
-        Halaman {{ page }} dari {{ pageCount }}
+        {{ $t('admin.pagination', { current: page, total: pageCount }) }}
       </span>
       <button type="button" class="btn-outline !py-2" :disabled="page >= pageCount" @click="page += 1">
-        Berikutnya
+        {{ $t('admin.next') }}
       </button>
     </div>
 
@@ -206,28 +209,28 @@ useSeoMeta({ title: () => `${props.label} | CMS Lobunta` })
       <div v-if="pendingDelete" class="fixed inset-0 z-50 grid place-items-center bg-slate-900/60 p-4">
         <div class="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl dark:bg-brand-950">
           <h2 class="text-lg">
-            Hapus {{ singular.toLowerCase() }}?
+            {{ $t('admin.delete') }} {{ singular.toLowerCase() }}?
           </h2>
           <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-            Tindakan ini tidak bisa dibatalkan di backend. Lanjutkan hanya jika yakin.
+            {{ $t('admin.deleteCannotUndo') }}
           </p>
           <div v-if="cascadeResource" class="mt-3 rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-sm text-amber-800 dark:border-amber-500/40 dark:bg-amber-500/10 dark:text-amber-200">
             <p v-if="loadingDeleteInfo">
-              Memeriksa data terkait...
+              {{ $t('admin.filterChecking') }}
             </p>
             <p v-else-if="cascadeIds.length">
-              Baris ini berisi <strong>{{ cascadeIds.length }} data terkait</strong>. Semuanya akan ikut terhapus.
+              {{ $t('admin.filterRelatedCount', { count: cascadeIds.length }) }}
             </p>
             <p v-else>
-              Tidak ada data terkait. Baris akan langsung dihapus.
+              {{ $t('admin.filterNoRelated') }}
             </p>
           </div>
           <div class="mt-6 flex justify-end gap-2">
             <button type="button" class="btn-outline" :disabled="deleting" @click="pendingDelete = null">
-              Batal
+              {{ $t('admin.cancel') }}
             </button>
             <button type="button" class="btn-accent" :disabled="deleting || loadingDeleteInfo" @click="confirmDelete">
-              {{ deleting ? 'Menghapus...' : 'Ya, hapus' }}
+              {{ deleting ? $t('admin.deleting') : $t('admin.confirmDeleteVerb') }}
             </button>
           </div>
         </div>

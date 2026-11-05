@@ -1,5 +1,4 @@
 ﻿<script setup lang="ts">
-import type { ServiceItem } from "~/types/content";
 import { useScopeOfWork } from "~/composables/useScopeOfWork";
 
 const { locale, t } = useI18n();
@@ -16,7 +15,6 @@ function legalLabel(doc: { labelId: string; labelEn: string }): string {
 }
 
 const { data: settings } = await useCompany();
-const { data: services } = await useCms<ServiceItem[]>("services", "all");
 
 const heroImage = computed(
   () => settings.value?.profile || "/img/profile-hero.svg"
@@ -70,7 +68,7 @@ const stats = computed(() => [
   { label: t("profile.founded"), value: settings.value?.foundedYear || "—" },
   {
     label: t("profile.bidangUsaha"),
-    value: String(services.value?.length ?? 0),
+    value: String(scopeDivisions.reduce((total, division) => total + division.services.length, 0)),
   },
   { label: t("profile.dokumentasi"), value: String(gallery.value.length) },
 ]);

@@ -1,15 +1,16 @@
 ﻿<script setup lang="ts">
 import type { FieldDef } from '~/admin/types'
+const { t } = useI18n()
 
 definePageMeta({ layout: 'admin' })
 
-const fields: FieldDef[] = [
-  { name: 'name', label: 'Nama perusahaan', kind: 'text', required: true },
-  { name: 'quote', label: 'Kutipan/keterangan', kind: 'textarea', bilingual: true, rows: 3, help: 'Teks singkat di bawah nama, mis. bidang usaha.' },
-  { name: 'image', label: 'Logo (SVG atau PNG transparan)', kind: 'image' },
+const fields = computed<FieldDef[]>(() => [
+  { name: 'name', label: t('admin.customersName'), kind: 'text', required: true },
+  { name: 'quote', label: t('admin.customersQuote'), kind: 'textarea', bilingual: true, rows: 3, help: t('admin.customersQuoteHelp') },
+  { name: 'image', label: t('admin.customersLogo'), kind: 'image' },
   {
     name: 'type',
-    label: 'Jenis usaha / bidang',
+    label: t('admin.customersType'),
     kind: 'select',
     required: false,
     options: [
@@ -17,14 +18,14 @@ const fields: FieldDef[] = [
       { value: 'mining', label: { id: 'Kontraktor Pertambangan & Konstruksi Teknik Penunjang Pertambangan', en: 'Mining Contractor & Mine-Supporting Civil Works' } }
     ]
   }
-]
+])
 </script>
 
 <template>
   <AdminResourceForm
     resource="customers"
-    label="Klien"
-    singular="Klien"
+    :label="t('admin.customersTitle')"
+    :singular="t('admin.customersSingular')"
     base-path="/admin/customers"
     :fields="fields"
   />

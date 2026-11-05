@@ -1,24 +1,25 @@
 <script setup lang="ts">
 import type { ColumnDef } from '~/admin/types'
+const { t } = useI18n()
 
 definePageMeta({ layout: 'admin' })
 
-const columns: ColumnDef[] = [
-  { key: 'image', label: 'Gambar', kind: 'image', width: 'w-20' },
-  { key: 'name', label: 'Nama produk', kind: 'bilingual' },
-  { key: 'sku', label: 'SKU', width: 'w-32' },
-  { key: 'packaging', label: 'Kemasan', width: 'w-32' },
-  { key: 'weight', label: 'Berat/Volume', width: 'w-36' },
-  { key: 'status', label: 'Status', kind: 'toggle', width: 'w-28' }
-]
+const columns = computed<ColumnDef[]>(() => [
+  { key: 'image', label: t('admin.productCategoriesImage'), kind: 'image', width: 'w-20' },
+  { key: 'name', label: t('admin.productsSingular'), kind: 'bilingual' },
+  { key: 'sku', label: t('admin.productCategoriesSku'), width: 'w-32' },
+  { key: 'packaging', label: t('admin.productsPackaging'), width: 'w-32' },
+  { key: 'weight', label: t('admin.productsWeight'), width: 'w-36' },
+  { key: 'status', label: t('admin.productCategoriesStatus'), kind: 'toggle', width: 'w-28' }
+])
 </script>
 
 <template>
   <AdminResourceList
     resource="products"
-    label="Produk"
-    singular="Produk"
-    help="Katalog produk yang tampil di halaman produk publik."
+    :label="t('admin.productsTitle')"
+    :singular="t('admin.productsSingular')"
+    :help="t('admin.productsBody')"
     base-path="/admin/products"
     default-sort="sortOrder"
     :columns="columns"
@@ -26,8 +27,8 @@ const columns: ColumnDef[] = [
       resource: 'product-categories',
       param: 'categoryId',
       labelKey: 'name',
-      label: 'Kategori',
-      placeholder: 'Semua kategori'
+      label: t('admin.productsCategory'),
+      placeholder: t('admin.productsAllCategories')
     }"
   />
 </template>

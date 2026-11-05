@@ -1,5 +1,5 @@
 ﻿import { computed, type Ref } from 'vue'
-import type { CustomerItem, ServiceItem } from '~/types/content'
+import type { CustomerItem } from '~/types/content'
 import { useCompany } from '~/composables/useContentSource'
 
 /**
@@ -10,11 +10,6 @@ import { useCompany } from '~/composables/useContentSource'
 /** Identitas perusahaan. */
 export function useStaticCompany() {
   return useCompany()
-}
-
-/** Daftar layanan dari API. */
-export function useStaticServices(api: Ref<ServiceItem[] | undefined | null>) {
-  return computed<ServiceItem[]>(() => api.value ?? [])
 }
 
 /** Daftar klien dari API. */

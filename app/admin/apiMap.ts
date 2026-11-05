@@ -19,6 +19,11 @@ interface FieldMap {
   file?: string
   /** Nama field id media untuk connect media lama. Default: `${api}Id`. */
   connect?: string
+  /**
+   * Field bisa dikosongkan ke null di backend (kolom nullable).
+   * Kalau aktif, nilai kosong tetap dikirim ke API alih-alih dilewati.
+   */
+  nullable?: boolean
 }
 
 /** Definisi `kind: 'list'`: array baris dari endpoint yang sama. */
@@ -100,8 +105,8 @@ const MAPS: Record<string, Record<string, FieldMap>> = {
     clientName: { api: 'clientName', kind: 'plain' },
     siteAddress: { api: 'siteAddress', kind: 'plain' },
     year: { api: 'year', kind: 'number' },
-    contractValue: { api: 'contractValue', kind: 'plain' },
-    description: { api: 'description', kind: 'bilingual' },
+    contractValue: { api: 'contractValue', kind: 'plain', nullable: true },
+    description: { api: 'description', kind: 'bilingual', nullable: true },
     images: { api: 'images[0].media', kind: 'media', file: 'media', connect: 'mediaId' },
     type: { api: 'type', kind: 'plain' }
   },
@@ -403,6 +408,8 @@ export function buildPayload(entityKey: string, form: Record<string, unknown>): 
       set(def.api, value ? 'published' : 'draft')
     } else if (value !== undefined && value !== null && value !== '') {
       set(def.api, scalar(value))
+    } else if (def.nullable) {
+      set(def.api, '')
     }
   }
 

@@ -1,17 +1,17 @@
 ﻿<script setup lang="ts">
-import type { ServiceItem, SiteSettings } from '~/types/content'
+import type { ProductItem, SiteSettings } from '~/types/content'
 
 const props = defineProps<{ settings: SiteSettings | null }>()
 
 const { locale } = useI18n()
 
 const year = new Date().getFullYear()
-const { data: apiServices } = await useCms<ServiceItem[]>('services', 'all')
-const topServices = computed(() => (apiServices.value ?? []).slice(0, 6))
+const { data: apiProducts } = await useCms<ProductItem[]>('products', 'all')
+const topProducts = computed(() => (apiProducts.value ?? []).slice(0, 6))
 const explore = computed(() => [
   { label: 'nav.home', to: '/' },
   { label: 'nav.profile', to: '/profile' },
-  { label: 'nav.services', to: '/services' },
+  { label: 'nav.products', to: '/products' },
   { label: 'nav.projects', to: '/projects' },
   { label: 'nav.units', to: '/units' },
   { label: 'nav.customers', to: '/customers' },
@@ -76,12 +76,12 @@ const socials = computed(() => {
           {{ $t('footer.services') }}
         </h3>
         <ul class="mt-4 space-y-2.5 text-sm">
-          <li v-for="service in topServices" :key="service.slug">
+          <li v-for="product in topProducts" :key="product.slug">
             <NuxtLink
-              :to="`/${locale}/services/${service.slug}`"
+              :to="`/${locale}/products/${product.slug}`"
               class="text-brand-100 transition hover:text-white"
             >
-              {{ pick(service.title) }}
+              {{ pick(product.name) }}
             </NuxtLink>
           </li>
         </ul>

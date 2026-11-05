@@ -24,7 +24,13 @@
     }
   },
   routeRules: {
-    '/admin/**': { ssr: false }
+    '/admin/**': { ssr: false },
+    '/services': { redirect: '/products' },
+    '/services/**': { redirect: '/products' },
+    '/id/services': { redirect: '/id/products' },
+    '/id/services/**': { redirect: '/id/products' },
+    '/en/services': { redirect: '/en/products' },
+    '/en/services/**': { redirect: '/en/products' }
   },
   runtimeConfig: {
     public: {

@@ -35,8 +35,8 @@ useSeoMeta({
           :body="$t('home.divisionsBody')"
         />
         <div class="mt-8">
-          <NuxtLink :to="`/${locale}/services`" class="btn-primary">
-            {{ $t('nav.services') }}
+          <NuxtLink :to="`/${locale}/products`" class="btn-primary">
+            {{ $t('nav.products') }}
             <UiIcon name="arrow-right" :size="16" />
           </NuxtLink>
         </div>

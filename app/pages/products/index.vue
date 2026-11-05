@@ -110,7 +110,7 @@ useSeoMeta({
             </a>
             <a
               v-if="settings"
-              :href="whatsappLink(settings.whatsapp, 'Halo, saya ingin meminta katalog produk dan penawaran harga.')"
+              :href="whatsappLink(settings.whatsapp, 'Halo, saya ingin meminta katalog layanan dan penawaran harga.')"
               target="_blank"
               rel="noopener"
               class="btn-primary"

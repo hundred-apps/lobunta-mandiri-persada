@@ -1,11 +1,12 @@
 <script setup lang="ts">
+const { locale, t } = useI18n()
 definePageMeta({
   layout: false
 })
 
 const { post } = useAdminApi()
 
-useSeoMeta({ title: 'Lupa Password | CMS Lobunta' })
+useSeoMeta({ title: () => `${t('admin.forgotTitle')} | CMS Lobunta` })
 
 const form = reactive({ identifier: '', method: 'email' })
 const state = ref<'idle' | 'sending' | 'success' | 'error'>('idle')
@@ -21,12 +22,12 @@ async function submit() {
     })
     state.value = 'success'
     message.value = form.method === 'email'
-      ? 'Link reset password telah dikirim ke email Anda.'
-      : 'Kode reset password telah dikirim via WhatsApp.'
+      ? t('admin.forgotEmailMsg')
+      : t('admin.forgotWhatsappMsg')
   } catch (err) {
     const e = err as { statusCode?: number; data?: { error?: string; message?: string }; message?: string }
     state.value = 'error'
-    message.value = e.data?.error || e.data?.message || e.message || 'Gagal mengirim reset password.'
+    message.value = e.data?.error || e.data?.message || e.message || t('admin.forgotError')
   }
 }
 </script>
@@ -40,10 +41,10 @@ async function submit() {
         </span>
         <div>
           <h1 class="text-lg">
-            Lupa Password
+            {{ $t('admin.forgotTitle') }}
           </h1>
           <p class="text-xs text-slate-500 dark:text-slate-400">
-            Masukkan email atau nomor telepon yang terdaftar
+            {{ $t('admin.forgotBody') }}
           </p>
         </div>
       </div>
@@ -62,7 +63,7 @@ async function submit() {
 
         <label class="block">
           <span class="mb-1.5 block text-sm font-medium">
-            {{ form.method === 'email' ? 'Email' : 'Nomor Telepon' }}
+            {{ form.method === 'email' ? $t('admin.forgotEmail') : $t('admin.forgotPhone') }}
           </span>
           <input
             v-model="form.identifier"
@@ -74,7 +75,7 @@ async function submit() {
         </label>
 
         <button type="submit" class="btn-primary w-full" :disabled="state === 'sending'">
-          {{ state === 'sending' ? 'Mengirim...' : 'Kirim Link Reset' }}
+          {{ state === 'sending' ? $t('admin.forgotSending') : $t('admin.forgotSend') }}
         </button>
 
         <p
@@ -92,8 +93,8 @@ async function submit() {
       </form>
 
       <div class="mt-6 text-center">
-        <NuxtLink to="/admin/login" class="text-sm text-brand-700 hover:underline dark:text-brand-300">
-          Kembali ke login
+        <NuxtLink :to="`/${locale}/admin/login`" class="text-sm text-brand-700 hover:underline dark:text-brand-300">
+          {{ $t('admin.forgotBack') }}
         </NuxtLink>
       </div>
     </div>

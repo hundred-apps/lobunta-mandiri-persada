@@ -1,21 +1,22 @@
 <script setup lang="ts">
 import type { ColumnDef } from '~/admin/types'
+const { t } = useI18n()
 
 definePageMeta({ layout: 'admin' })
 
-const columns: ColumnDef[] = [
-  { key: 'images', label: 'Gambar', kind: 'image', width: 'w-20' },
-  { key: 'name', label: 'Nama unit', width: 'w-64' },
-  { key: 'status', label: 'Status', width: 'w-32' }
-]
+const columns = computed<ColumnDef[]>(() => [
+  { key: 'images', label: t('admin.productCategoriesImage'), kind: 'image', width: 'w-20' },
+  { key: 'name', label: t('admin.unitsName'), width: 'w-64' },
+  { key: 'status', label: t('admin.unitsStatus'), width: 'w-32' }
+])
 </script>
 
 <template>
   <AdminResourceList
     resource="units"
-    label="Unit"
-    singular="Unit"
-    help="Daftar unit/armada yang tampil di halaman publik /units."
+    :label="t('admin.unitsTitle')"
+    :singular="t('admin.unitsSingular')"
+    :help="t('admin.unitsHelp')"
     base-path="/admin/units"
     :columns="columns"
   />
