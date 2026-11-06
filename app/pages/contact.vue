@@ -84,32 +84,17 @@ useSeoMeta({
             </li>
           </ul>
 
-          <div
-            v-if="settings"
-            class="overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10"
-          >
-            <div class="flex h-full flex-col items-start justify-center gap-4 bg-brand-50 p-8 dark:bg-brand-900/40">
-              <span class="grid h-12 w-12 place-items-center rounded-xl bg-brand-600 text-white">
-                <UiIcon name="map-pin" :size="22" />
-              </span>
-              <div>
-                <p class="text-xs uppercase tracking-wider text-ink-mute">
-                  {{ $t("common.address") }}
-                </p>
-                <p class="mt-1 font-medium text-brand-900 dark:text-white">
-                  {{ pick(settings.address) }}
-                </p>
-              </div>
-              <a
-                class="btn-outline"
-                :href="`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(pick(settings.address))}`"
-                target="_blank"
-                rel="noopener"
-              >
-                {{ $t("common.viewOnMap") }}
-                <UiIcon name="arrow-right" :size="16" />
-              </a>
-            </div>
+          <div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.246638023245!2d106.98435867499015!3d-6.231181593757003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698c3d0d098271%3A0xa416a3f244473e80!2sPT.%20Lobunta%20Kencana%20Raya!5e0!3m2!1sid!2sid!4v1793880948009!5m2!1sid!2sid"
+              width="100%"
+              height="360"
+              style="border:0;"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              title="Google Maps — PT. Lobunta Kencana Raya"
+            />
           </div>
         </div>
 

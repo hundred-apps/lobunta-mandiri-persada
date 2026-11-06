@@ -1,13 +1,13 @@
 ﻿<script setup lang="ts">
-import type { ProductItem, SiteSettings } from '~/types/content'
+import type { ProductCategory, SiteSettings } from '~/types/content'
 
 const props = defineProps<{ settings: SiteSettings | null }>()
 
 const { locale } = useI18n()
 
 const year = new Date().getFullYear()
-const { data: apiProducts } = await useCms<ProductItem[]>('products', 'all')
-const topProducts = computed(() => (apiProducts.value ?? []).slice(0, 6))
+const { data: apiCategories } = await useCms<ProductCategory[]>('product-categories', 'all')
+const serviceCategories = computed(() => (apiCategories.value ?? []).slice(0, 6))
 const explore = computed(() => [
   { label: 'nav.home', to: '/' },
   { label: 'nav.profile', to: '/profile' },
@@ -76,12 +76,17 @@ const socials = computed(() => {
           {{ $t('footer.services') }}
         </h3>
         <ul class="mt-4 space-y-2.5 text-sm">
-          <li v-for="product in topProducts" :key="product.slug">
+          <li v-for="category in serviceCategories" :key="category.slug">
             <NuxtLink
-              :to="`/${locale}/products/${product.slug}`"
+              :to="`/${locale}/products?category=${category.slug}`"
               class="text-brand-100 transition hover:text-white"
             >
-              {{ pick(product.name) }}
+              {{ pick(category.name) }}
+            </NuxtLink>
+          </li>
+          <li v-if="!serviceCategories.length">
+            <NuxtLink :to="`/${locale}/products`" class="text-brand-100 transition hover:text-white">
+              {{ $t('nav.products') }}
             </NuxtLink>
           </li>
         </ul>

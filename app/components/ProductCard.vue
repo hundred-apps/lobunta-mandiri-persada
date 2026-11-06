@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { ProductItem } from '~/types/content'
+import type { ProductCategory, ProductItem } from '~/types/content'
 
 const props = defineProps<{ product: ProductItem; compact?: boolean }>()
 
-const { data: categories } = await useCms<import('~/types/content').ProductCategory[]>('product-categories', 'all')
+const { data: categories } = await useCms<ProductCategory[]>('product-categories', 'all')
 const { locale } = useI18n()
 
 function categoryName(slug: string) {
@@ -12,7 +12,7 @@ function categoryName(slug: string) {
 }
 
 /** Batas karakter deskripsi yang tampil di kartu. */
-const PREVIEW_LIMIT = 200
+const PREVIEW_LIMIT = 220
 
 const description = computed(() => pick(props.product.description).trim())
 
@@ -26,47 +26,43 @@ const hasMore = computed(() => description.value.length > PREVIEW_LIMIT)
 </script>
 
 <template>
-  <NuxtLink :to="`/${locale}/products/${product.slug}`" class="card flex flex-col overflow-hidden transition hover:-translate-y-1 hover:border-brand-300 hover:shadow-lg dark:hover:border-brand-500/50">
-    <div class="aspect-[4/3] w-full bg-brand-50 dark:bg-white/5">
+  <NuxtLink
+    :to="`/${locale}/products/${product.slug}`"
+    class="card group flex flex-col overflow-hidden transition hover:-translate-y-1 hover:border-brand-300 hover:shadow-lg dark:hover:border-brand-500/50"
+  >
+    <div class="aspect-[4/3] w-full overflow-hidden bg-brand-50 dark:bg-white/5">
       <img
         v-if="product.image"
         :src="product.image"
         :alt="pick(product.name)"
-        class="h-full w-full object-cover"
+        class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
         loading="lazy"
       >
-      <div v-else class="grid h-full w-full place-items-center text-brand-300 dark:text-white/20">
-        <UiIcon name="lab" :size="48" :stroke-width="1.2" />
+      <div
+        v-else
+        class="grid h-full w-full place-items-center text-brand-300 dark:text-white/20"
+      >
+        <UiIcon name="lab" :size="46" :stroke-width="1.3" />
       </div>
     </div>
-    <div class="flex flex-1 flex-col" :class="compact ? 'p-3' : 'p-5'">
-      <p class="text-[11px] font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+
+    <div class="flex flex-1 flex-col p-5">
+      <span v-if="categoryName(product.categorySlug)" class="chip">
         {{ categoryName(product.categorySlug) }}
-      </p>
-      <h3 :class="compact ? 'mt-1 text-sm' : 'mt-2 text-base'">
+      </span>
+      <h3 class="mt-3 text-base">
         {{ pick(product.name) }}
       </h3>
-      <p v-if="product.sku" class="mt-1 font-mono text-xs text-ink-mute">
-        {{ product.sku }}
+      <p v-if="description" class="prose-lkr mt-2 flex-1 line-clamp-4 text-sm">
+        {{ descriptionPreview }}
       </p>
-      <div v-if="!compact && description" class="mt-3 flex-1">
-        <p class="prose-lkr text-sm">
-          {{ descriptionPreview }}
-        </p>
-        <span
-          v-if="hasMore"
-          class="mt-2 inline-flex items-center gap-1 text-sm font-medium text-brand-600 dark:text-brand-400"
-        >
-          {{ $t('products.seeMore') }}
-          <UiIcon name="arrow-right" :size="14" />
-        </span>
-      </div>
-      <dl v-if="!compact && product.spec?.length" class="mt-4 space-y-1.5 border-t border-slate-100 pt-4 text-xs dark:border-white/10">
-        <div v-for="spec in product.spec" :key="spec.label.en" class="flex justify-between gap-4">
-          <dt class="text-ink-soft dark:text-slate-400">{{ pick(spec.label) }}</dt>
-          <dd class="text-right font-medium">{{ pick(spec.value) }}</dd>
-        </div>
-      </dl>
+      <span
+        v-if="hasMore"
+        class="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand-700 transition group-hover:text-brand-500 dark:text-brand-300"
+      >
+        {{ $t('products.seeMore') }}
+        <UiIcon name="arrow-right" :size="15" />
+      </span>
     </div>
   </NuxtLink>
 </template>
