@@ -1,6 +1,5 @@
 <script setup lang="ts">
-const { t } = useI18n()
-const { locale } = useI18n()
+const { t, locale } = useI18n()
 const { data: company } = useStaticCompany()
 
 const form = reactive({
@@ -58,10 +57,6 @@ async function submit() {
   }
 }
 
-/**
- * Backend belum menyediakan endpoint /contact, jadi pesan dialihkan ke
- * WhatsApp agar tetap terkirim.
- */
 function openWhatsappFallback() {
   const number = String(company.value?.whatsapp || '').replace(/[^0-9]/g, '')
   if (!number) return
@@ -81,49 +76,118 @@ function openWhatsappFallback() {
 </script>
 
 <template>
-  <form class="card p-6 sm:p-8" novalidate @submit.prevent="submit">
-    <h2 class="text-xl">
-      {{ $t('contact.formTitle') }}
-    </h2>
+  <form
+    class="rounded-2xl border border-stone-200/90 bg-[#fcfbfa] p-6 sm:p-8 shadow-card dark:border-white/10 dark:bg-brand-900/50"
+    novalidate
+    @submit.prevent="submit"
+  >
+    <div class="border-b border-stone-200/80 pb-5 dark:border-white/10">
+      <div class="inline-flex items-center gap-2 mb-1.5">
+        <span class="inline-block h-2 w-2 rounded-full bg-accent-500" />
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-accent-600 dark:text-accent-400">
+          {{ locale === 'en' ? 'INQUIRY & PROPOSAL' : 'KONSULTASI & PENAWARAN' }}
+        </span>
+      </div>
+      <h2 class="font-display text-xl sm:text-2xl font-extrabold text-brand-950 dark:text-white">
+        {{ $t('contact.formTitle') }}
+      </h2>
+      <p class="mt-1 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+        {{ locale === 'en' ? 'Fill out the form below and our team will get in touch promptly.' : 'Lengkapi formulir di bawah ini dan tim kami akan segera menghubungi Anda.' }}
+      </p>
+    </div>
 
     <div class="mt-6 grid gap-4 sm:grid-cols-2">
       <label class="block">
-        <span class="mb-1.5 block text-sm font-medium">{{ $t('contact.name') }}</span>
-        <input v-model="form.name" type="text" required class="field" :placeholder="$t('contact.namePlaceholder')">
+        <span class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+          {{ $t('contact.name') }} <span class="text-red-500">*</span>
+        </span>
+        <input
+          v-model="form.name"
+          type="text"
+          required
+          class="field rounded-xl"
+          :placeholder="$t('contact.namePlaceholder')"
+        >
       </label>
+
       <label class="block">
-        <span class="mb-1.5 block text-sm font-medium">{{ $t('contact.email') }}</span>
-        <input v-model="form.email" type="email" required class="field" :placeholder="$t('contact.emailPlaceholder')">
+        <span class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+          {{ $t('contact.email') }} <span class="text-red-500">*</span>
+        </span>
+        <input
+          v-model="form.email"
+          type="email"
+          required
+          class="field rounded-xl"
+          :placeholder="$t('contact.emailPlaceholder')"
+        >
       </label>
+
       <label class="block">
-        <span class="mb-1.5 block text-sm font-medium">{{ $t('contact.phone') }}</span>
-        <input v-model="form.phone" type="tel" class="field" :placeholder="$t('contact.phonePlaceholder')">
+        <span class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+          {{ $t('contact.phone') }}
+        </span>
+        <input
+          v-model="form.phone"
+          type="tel"
+          class="field rounded-xl"
+          :placeholder="$t('contact.phonePlaceholder')"
+        >
       </label>
+
       <label class="block">
-        <span class="mb-1.5 block text-sm font-medium">{{ $t('contact.company') }}</span>
-        <input v-model="form.company" type="text" class="field" :placeholder="$t('contact.companyPlaceholder')">
+        <span class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+          {{ $t('contact.company') }}
+        </span>
+        <input
+          v-model="form.company"
+          type="text"
+          class="field rounded-xl"
+          :placeholder="$t('contact.companyPlaceholder')"
+        >
       </label>
+
       <label class="block sm:col-span-2">
-        <span class="mb-1.5 block text-sm font-medium">{{ $t('contact.subject') }}</span>
-        <input v-model="form.subject" type="text" class="field" :placeholder="$t('contact.subjectPlaceholder')">
+        <span class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+          {{ $t('contact.subject') }}
+        </span>
+        <input
+          v-model="form.subject"
+          type="text"
+          class="field rounded-xl"
+          :placeholder="$t('contact.subjectPlaceholder')"
+        >
       </label>
+
       <label class="block sm:col-span-2">
-        <span class="mb-1.5 block text-sm font-medium">{{ $t('contact.message') }}</span>
-        <textarea v-model="form.message" rows="5" required class="field resize-y" :placeholder="$t('contact.messagePlaceholder')" />
+        <span class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+          {{ $t('contact.message') }} <span class="text-red-500">*</span>
+        </span>
+        <textarea
+          v-model="form.message"
+          rows="4"
+          required
+          class="field resize-y rounded-xl"
+          :placeholder="$t('contact.messagePlaceholder')"
+        />
       </label>
     </div>
 
     <div class="mt-6 flex flex-wrap items-center gap-3">
-      <button type="submit" class="btn-primary" :disabled="state === 'sending'">
+      <button
+        type="submit"
+        class="inline-flex items-center justify-center gap-2 rounded-xl bg-accent-500 px-6 py-3.5 text-sm font-bold text-brand-950 shadow-md transition hover:bg-accent-400 active:scale-[0.98] w-full sm:w-auto"
+        :disabled="state === 'sending'"
+      >
         <UiIcon name="check" :size="16" />
-        {{ state === 'sending' ? $t('contact.sending') : $t('contact.submit') }}
+        <span>{{ state === 'sending' ? $t('contact.sending') : $t('contact.submit') }}</span>
       </button>
     </div>
 
     <p
       v-if="feedback"
-      class="mt-4 rounded-lg px-4 py-3 text-sm"
-      :class="state === 'success' ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300' : 'bg-red-50 text-red-700 dark:bg-red-500/10 dark:text-red-300'"
+      class="mt-4 rounded-xl px-4 py-3 text-xs sm:text-sm font-medium"
+      :class="state === 'success' ? 'bg-emerald-50 text-emerald-800 border border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-300 dark:border-emerald-800/40' : 'bg-red-50 text-red-800 border border-red-200 dark:bg-red-950/40 dark:text-red-300 dark:border-red-800/40'"
       role="status"
     >
       {{ feedback }}

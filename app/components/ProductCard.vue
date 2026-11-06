@@ -11,8 +11,7 @@ function categoryName(slug: string) {
   return found ? pick(found.name) : ''
 }
 
-/** Batas karakter deskripsi yang tampil di kartu. */
-const PREVIEW_LIMIT = 220
+const PREVIEW_LIMIT = 200
 
 const description = computed(() => pick(props.product.description).trim())
 
@@ -28,41 +27,45 @@ const hasMore = computed(() => description.value.length > PREVIEW_LIMIT)
 <template>
   <NuxtLink
     :to="`/${locale}/products/${product.slug}`"
-    class="card group flex flex-col overflow-hidden transition hover:-translate-y-1 hover:border-brand-300 hover:shadow-lg dark:hover:border-brand-500/50"
+    class="group flex flex-col overflow-hidden rounded-2xl border border-stone-200/90 bg-[#fcfbfa] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent-400 hover:shadow-lg dark:border-white/10 dark:bg-brand-900/40"
   >
-    <div class="aspect-[4/3] w-full overflow-hidden bg-brand-50 dark:bg-white/5">
+    <div class="relative aspect-[16/10] w-full overflow-hidden bg-stone-200 dark:bg-brand-950">
       <img
         v-if="product.image"
         :src="product.image"
         :alt="pick(product.name)"
-        class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         loading="lazy"
       >
       <div
         v-else
-        class="grid h-full w-full place-items-center text-brand-300 dark:text-white/20"
+        class="grid h-full w-full place-items-center bg-brand-900 text-accent-400"
       >
-        <UiIcon name="lab" :size="46" :stroke-width="1.3" />
+        <UiIcon name="truck" :size="48" :stroke-width="1.3" />
+      </div>
+
+      <div v-if="categoryName(product.categorySlug)" class="absolute top-3 left-3">
+        <span class="inline-flex items-center rounded-lg bg-brand-950/80 px-2.5 py-1 text-[11px] font-bold text-accent-300 backdrop-blur-md">
+          {{ categoryName(product.categorySlug) }}
+        </span>
       </div>
     </div>
 
-    <div class="flex flex-1 flex-col p-5">
-      <span v-if="categoryName(product.categorySlug)" class="chip">
-        {{ categoryName(product.categorySlug) }}
-      </span>
-      <h3 class="mt-3 text-base">
-        {{ pick(product.name) }}
-      </h3>
-      <p v-if="description" class="prose-lkr mt-2 flex-1 line-clamp-4 text-sm">
-        {{ descriptionPreview }}
-      </p>
-      <span
-        v-if="hasMore"
-        class="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand-700 transition group-hover:text-brand-500 dark:text-brand-300"
-      >
-        {{ $t('products.seeMore') }}
-        <UiIcon name="arrow-right" :size="15" />
-      </span>
+    <div class="flex flex-1 flex-col p-5 sm:p-6 justify-between">
+      <div>
+        <h3 class="font-display text-base sm:text-lg font-bold text-brand-950 dark:text-white transition-colors group-hover:text-accent-600 dark:group-hover:text-accent-400 leading-snug">
+          {{ pick(product.name) }}
+        </h3>
+
+        <p v-if="description" class="mt-2.5 text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-300 line-clamp-3">
+          {{ descriptionPreview }}
+        </p>
+      </div>
+
+      <div class="mt-5 pt-3.5 border-t border-stone-200/60 dark:border-white/10 flex items-center justify-between text-xs font-bold text-accent-600 dark:text-accent-400">
+        <span>{{ locale === 'en' ? 'View Details' : 'Lihat Detail & Spesifikasi' }}</span>
+        <UiIcon name="arrow-right" :size="14" class="transition-transform group-hover:translate-x-1" />
+      </div>
     </div>
   </NuxtLink>
 </template>

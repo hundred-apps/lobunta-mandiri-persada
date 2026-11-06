@@ -9,27 +9,34 @@ export default <Partial<Config>>{
   theme: {
     extend: {
       colors: {
-        /* Hijau logo LMP (#00B050) sebagai warna utama website. */
+        /* Hijau hutan gelap LMP (#102A1D) sesuai desain */
         brand: {
-          50: '#eefaf3',
-          100: '#d5f3e1',
-          200: '#aee6c8',
-          300: '#78d3a8',
-          400: '#3fba82',
-          500: '#00b050',
-          600: '#009a43',
-          700: '#007a36',
-          800: '#02612c',
-          900: '#034d26',
-          950: '#012c17'
+          50: '#f2f7f4',
+          100: '#e1ede5',
+          200: '#c5dcce',
+          300: '#9ec4ad',
+          400: '#6fa584',
+          500: '#46835e',
+          600: '#326848',
+          700: '#265339',
+          800: '#1b3f2b',
+          850: '#153524',
+          900: '#102a1d',
+          950: '#0a1a12'
         },
-        /* Kuning logo LMP (#FFCC00) sebagai aksen. */
+        /* Kuning emas aksen LMP (#CCA052 / #C89F5B) sebagai aksen & tombol */
         accent: {
-          300: '#ffe484',
-          400: '#ffd452',
-          500: '#ffcc00',
-          600: '#d9a800',
-          700: '#a87f00'
+          50: '#fdfaf2',
+          100: '#f9f2df',
+          200: '#f1e2bc',
+          300: '#e7ce92',
+          400: '#d9b669',
+          500: '#cca052',
+          600: '#b88a41',
+          700: '#966d34',
+          800: '#7a572e',
+          900: '#654829',
+          950: '#392612'
         },
         ink: {
           DEFAULT: '#0f172a',

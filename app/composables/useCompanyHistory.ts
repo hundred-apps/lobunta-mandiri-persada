@@ -29,8 +29,8 @@ export const LMP_HISTORY: HistoryParagraph[] = [
     en: 'Over time, PT Lobunta Kencana Raya could no longer be used to carry out construction services under the risk-based business licensing regime set out in Government Regulation No. 5 of 2021. To comply with that regulation, PT Lobunta Mandiri Persada — a subsidiary of PT Lobunta Kencana Raya — was established in 2014 and strategically repositioned in 2024 as the entity carrying out mining contracting and mining-support civil construction works.'
   },
   {
-    id: 'Hari ini, didukung tenaga profesional yang ahli di bidangnya, PT Lobunta Mandiri Persada menempatkan kualitas sumber daya manusia, kreativitas, kemampuan belajar, kesediaan berubah, dan kerja keras sebagai prioritas utama. Dengan kualitas tersebut, perusahaan siap menghadapi tantangan persaingan global dengan memberikan yang terbaik kepada seluruh pelanggan.',
-    en: 'Today, backed by professionals who are experts in their respective fields, PT Lobunta Mandiri Persada places a premium on high-quality human resources, creativity, the ability to learn, the willingness to change, and hard work. With these qualities, the company is ready to face the challenges of global competition by delivering the best to all of its customers.'
+    id: 'Hari ini, PT Lobunta Mandiri Persada menempatkan keunggulan operasional, keandalan armada, efisiensi eksekusi, dan standar keselamatan kerja tinggi sebagai prioritas utama. Dengan kapabilitas terintegrasi tersebut, perusahaan senantiasa siap menjawab tantangan proyek skala besar dan memberikan hasil terbaik kepada seluruh mitra dan pelanggan.',
+    en: 'Today, PT Lobunta Mandiri Persada places operational excellence, fleet reliability, execution efficiency, and high safety standards at the forefront. With these integrated capabilities, the company is ever ready to undertake large-scale project challenges and deliver optimal results to all partners and clients.'
   }
 ]
 

@@ -1,5 +1,6 @@
-﻿<script setup lang="ts">
+<script setup lang="ts">
 import type { HomeContent, ProjectItem } from '~/types/content'
+import type { IntegratedServiceItem } from '~/components/IntegratedServiceCard.vue'
 import { useScopeOfWork } from '~/composables/useScopeOfWork'
 
 const { locale, t } = useI18n()
@@ -14,6 +15,49 @@ const featuredProjects = computed(() => projects.value.slice(0, 3))
 
 const showScopeOfWork = computed(() => scopeDivisions.length > 0 && allServices.length > 0)
 
+const integratedServices = computed<IntegratedServiceItem[]>(() => [
+  {
+    id: 'mining',
+    title: locale.value === 'en' ? 'Mining Contractor' : 'Kontraktor Pertambangan',
+    description: locale.value === 'en'
+      ? 'Mining contractor services backed by fleet capacity, expert personnel, and proven experience.'
+      : 'Jasa kontraktor pertambangan dengan dukungan armada, tenaga ahli, dan pengalaman yang andal.',
+    image: '/img/lmp/card-mining.jpg',
+    icon: 'mountain',
+    to: `/${locale.value}/products?category=pertambangan`
+  },
+  {
+    id: 'civil',
+    title: locale.value === 'en' ? 'Civil Construction' : 'Konstruksi Sipil',
+    description: locale.value === 'en'
+      ? 'Civil construction works to support infrastructure development in various regions of Indonesia.'
+      : 'Pekerjaan konstruksi sipil untuk mendukung pembangunan infrastruktur di berbagai wilayah Indonesia.',
+    image: '/img/lmp/card-civil.jpg',
+    icon: 'bridge',
+    to: `/${locale.value}/products?category=konstruksi-sipil`
+  },
+  {
+    id: 'rental',
+    title: locale.value === 'en' ? 'Heavy Equipment Rental' : 'Penyewaan Alat Berat',
+    description: locale.value === 'en'
+      ? 'Provision and rental of diverse heavy equipment to support mining and civil construction projects.'
+      : 'Penyediaan dan penyewaan berbagai alat berat untuk mendukung proyek pertambangan dan konstruksi sipil.',
+    image: '/img/lmp/card-rental.jpg',
+    icon: 'excavator',
+    to: `/${locale.value}/units`
+  },
+  {
+    id: 'hauling',
+    title: locale.value === 'en' ? 'Hauling & Mining Logistics' : 'Pengangkutan & Hauling',
+    description: locale.value === 'en'
+      ? 'Short-to-medium hauling and transport of mining materials with high-capacity dump truck fleets.'
+      : 'Layanan pengangkutan dan hauling material tambang jarak dekat hingga menengah dengan armada dump truck berkapasitas tinggi.',
+    image: '/img/lmp/card-hauling.jpg',
+    icon: 'truck-dump',
+    to: `/${locale.value}/products?category=hauling-logistik`
+  }
+])
+
 useSeoMeta({
   title: () => t('meta.homeTitle'),
   description: () => t('meta.homeDescription'),
@@ -27,18 +71,21 @@ useSeoMeta({
   <div>
     <HomeHero :hero="home.hero" />
 
-    <section v-if="home.categories.length" class="section">
+    <!-- Layanan Terintegrasi (4 Card Layanan Sesuai Desain) -->
+    <section class="section bg-[#faf9f5] dark:bg-brand-950/60 border-b border-stone-200/60 dark:border-white/5">
       <div class="container-page">
-        <UiSectionHeading
-          :eyebrow="$t('nav.primary')"
-          :heading="$t('home.divisionsTitle')"
-          :body="$t('home.divisionsBody')"
-        />
-        <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          <CategoryCard
-            v-for="category in home.categories"
-            :key="category.id"
-            :category="category"
+        <div>
+          <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-brand-950 dark:text-white">
+            {{ locale === 'en' ? 'Integrated Services' : 'Layanan Terintegrasi' }}
+          </h2>
+          <div class="mt-3 h-1 w-14 rounded-full bg-accent-500" />
+        </div>
+
+        <div class="mt-8 grid gap-5 sm:gap-6 md:grid-cols-2">
+          <IntegratedServiceCard
+            v-for="service in integratedServices"
+            :key="service.id"
+            :service="service"
           />
         </div>
       </div>
