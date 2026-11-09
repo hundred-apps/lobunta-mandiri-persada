@@ -151,19 +151,18 @@ useSeoMeta({
               <div class="flex items-center gap-2.5 px-4 py-3">
                 <span class="flex h-2.5 w-2.5 rounded-full bg-accent-500" />
                 <h3 class="font-display text-sm font-bold text-brand-950 dark:text-white">
-                  {{ locale === 'en' ? 'Workshop' : 'Workshop' }}
+                  {{ locale === 'en' ? 'Warehouse' : 'Warehouse' }}
                 </h3>
               </div>
-              <!-- TODO: Ganti WORKSHOP_EMBED_URL di bawah dengan src embed Google Maps workshop -->
               <iframe
-                src="WORKSHOP_EMBED_URL"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.285715161871!2d106.97748569999999!3d-6.3570509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e699300504d12bf%3A0x50acd2be59b79526!2sGudang%20Lobunta%20Kencana%20Raya!5e0!3m2!1sid!2sid!4v1794221260214!5m2!1sid!2sid"
                 width="100%"
                 height="220"
                 style="border:0; display:block;"
                 allowfullscreen
                 loading="lazy"
                 referrerpolicy="strict-origin-when-cross-origin"
-                :title="locale === 'en' ? 'Google Maps — Workshop' : 'Google Maps — Workshop'"
+                :title="locale === 'en' ? 'Google Maps — Warehouse' : 'Google Maps — Warehouse'"
               />
             </div>
           </div>

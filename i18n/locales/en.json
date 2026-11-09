@@ -545,6 +545,8 @@
     "projectsDescriptionHelp": "Leave empty to remove the description.",
     "settingsEndpointsHelp": "Endpoint: GET /api/site-setting-read/ and POST /api/site-setting-create. Saving here updates the whole website directly, because the public frontend reads the same source.",
     "homeHeroHeading2": "Main heading (line 2)",
-    "homeHeroHeading2Help": "Second hero heading line (optional, shown below the main heading)."
+    "homeHeroHeading2Help": "Second hero heading line (optional, shown below the main heading).",
+    "showOnHome": "Show on homepage",
+    "showOnHomeHelp": "Enable to display this item on the homepage."
   }
 }

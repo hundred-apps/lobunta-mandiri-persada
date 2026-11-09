@@ -71,6 +71,8 @@ export interface ProjectItem {
   images: string[]
   /** Jenis pekerjaan: civil | mining. */
   type?: string
+  /** Tampilkan di beranda (diatur dari admin). */
+  show?: boolean
 }
 
 export type UnitStatus = 'available' | 'maintenance' | 'inactive'
@@ -158,6 +160,8 @@ export interface CustomerItem {
   order: number
   /** Jenis usaha / bidang: civil | mining. */
   type?: string
+  /** Tampilkan di beranda (diatur dari admin). */
+  show?: boolean
 }
 
 export interface CustomerImage {

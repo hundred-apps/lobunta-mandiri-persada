@@ -112,6 +112,13 @@ function locHtml(id: unknown, en: unknown): LocalizedHtml {
   return { id: id == null ? '' : String(id), en: en == null ? '' : String(en) }
 }
 
+function toBool(value: unknown): boolean {
+  if (value === true || value === 1) return true
+  if (value === false || value === 0 || value == null || value === '') return false
+  const s = String(value).toLowerCase()
+  return s === 'true' || s === '1' || s === 'yes'
+}
+
 /** Ubah path media relatif (/files/x.png) jadi URL absolut. */
 export function useMediaUrl() {
   const config = useRuntimeConfig()
@@ -246,7 +253,8 @@ function mapCustomer(row: Record<string, unknown>, media: (v: unknown) => string
     image: media(logo),
     industry: loc(row.quoteId, row.quoteEn),
     order: Number(row.sortOrder || 0),
-    type: row.type ? String(row.type) : undefined
+    type: row.type ? String(row.type) : undefined,
+    show: toBool(row.show)
   }
 }
 
@@ -283,7 +291,8 @@ function mapProject(row: Record<string, unknown>, media: (v: unknown) => string)
     contractValue: Number(row.contractValue || 0),
     image: images[0] || '',
     images,
-    type: row.type ? String(row.type) : undefined
+    type: row.type ? String(row.type) : undefined,
+    show: toBool(row.show)
   }
 }
 

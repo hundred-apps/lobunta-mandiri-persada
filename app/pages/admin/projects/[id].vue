@@ -33,7 +33,8 @@ const fields = computed<FieldDef[]>(() => [
       { value: 'civil', label: { id: 'Earthworks & Konstruksi Teknik', en: 'EARTHWORK & CIVIL CONSTRUCTION' } },
       { value: 'mining', label: { id: 'Kontraktor Pertambangan & Konstruksi Teknik Penunjang Pertambangan', en: 'Mining Contractor & Mine-Supporting Civil Works' } }
     ]
-  }
+  },
+  { name: 'show', label: t('admin.showOnHome'), kind: 'toggle', help: t('admin.showOnHomeHelp') }
 ])
 </script>
 

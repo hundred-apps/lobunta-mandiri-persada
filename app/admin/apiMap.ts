@@ -109,7 +109,8 @@ const MAPS: Record<string, Record<string, FieldMap>> = {
     contractValue: { api: 'contractValue', kind: 'plain', nullable: true },
     description: { api: 'description', kind: 'bilingual', nullable: true },
     images: { api: 'images[0].media', kind: 'media', file: 'media', connect: 'mediaId' },
-    type: { api: 'type', kind: 'plain' }
+    type: { api: 'type', kind: 'plain' },
+    show: { api: 'show', kind: 'bool' }
   },
   units: {
     name: { api: 'name', kind: 'plain' },
@@ -138,7 +139,8 @@ const MAPS: Record<string, Record<string, FieldMap>> = {
     quote: { api: 'quote', kind: 'bilingual' },
     image: { api: 'media', kind: 'media', file: 'media', connect: 'mediaId' },
     order: { api: 'sortOrder', kind: 'number' },
-    type: { api: 'type', kind: 'plain' }
+    type: { api: 'type', kind: 'plain' },
+    show: { api: 'show', kind: 'bool' }
   },
   'admin-users': {
     name: { api: 'name', kind: 'plain' },

@@ -545,6 +545,8 @@
     "projectsDescriptionHelp": "Kosongkan untuk menghapus deskripsi.",
     "settingsEndpointsHelp": "Endpoint: GET /api/site-setting-read/ dan POST /api/site-setting-create. Menyimpan di sini langsung mengubah seluruh website karena frontend publik membaca sumber yang sama.",
     "homeHeroHeading2": "Judul utama (baris 2)",
-    "homeHeroHeading2Help": "Baris judul kedua di hero beranda (opsional, tampil di bawah judul utama)."
+    "homeHeroHeading2Help": "Baris judul kedua di hero beranda (opsional, tampil di bawah judul utama).",
+    "showOnHome": "Tampilkan di beranda",
+    "showOnHomeHelp": "Aktifkan untuk memilih item ini tampil di beranda."
   }
 }

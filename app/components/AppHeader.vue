@@ -4,6 +4,18 @@ import type { SiteSettings } from '~/types/content'
 const props = defineProps<{ settings: SiteSettings | null }>()
 
 const { locale, locales, setLocale } = useI18n()
+
+const whatsappHref = computed(() => {
+  const number = (props.settings?.whatsapp || '').replace(/[^0-9]/g, '')
+  if (!number) return ''
+  return `https://wa.me/${number}`
+})
+
+const whatsappDisplay = computed(() => {
+  const raw = String(props.settings?.whatsapp || '').replace(/[^0-9]/g, '')
+  if (!raw) return 'WhatsApp'
+  return raw.startsWith('62') ? `0${raw.slice(2)}` : raw
+})
 const open = ref(false)
 const route = useRoute()
 
@@ -50,6 +62,10 @@ const nav = computed(() => {
           <a :href="`tel:+62${settings.phone[0]?.replace(/^0/, '')}`" class="flex items-center gap-1.5 text-brand-200 hover:text-white">
             <UiIcon name="phone" :size="14" class="text-accent-400" />
             {{ settings.phone[0] }}
+          </a>
+          <a v-if="whatsappHref" :href="whatsappHref" target="_blank" rel="noopener" class="flex items-center gap-1.5 text-brand-200 hover:text-white">
+            <UiIcon name="whatsapp" :size="14" class="text-accent-400" :filled="true" />
+            {{ whatsappDisplay }}
           </a>
         </div>
       </div>

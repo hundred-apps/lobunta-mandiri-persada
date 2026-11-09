@@ -11,7 +11,8 @@ const columns = computed<ColumnDef[]>(() => [
   { key: 'siteAddress', label: t('admin.projectsSiteAddress'), width: 'w-48' },
   { key: 'year', label: t('admin.projectsYear'), kind: 'number', width: 'w-20' },
   { key: 'contractValue', label: t('admin.projectsContractValue'), width: 'w-40' },
-  { key: 'type', label: t('admin.projectsType'), kind: 'status', width: 'w-32' }
+  { key: 'type', label: t('admin.projectsType'), kind: 'status', width: 'w-32' },
+  { key: 'show', label: t('admin.showOnHome'), kind: 'toggle', width: 'w-28' }
 ])
 </script>
 

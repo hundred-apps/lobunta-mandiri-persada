@@ -5,6 +5,18 @@ const props = defineProps<{ settings: SiteSettings | null }>()
 
 const { locale } = useI18n()
 
+const whatsappHref = computed(() => {
+  const number = (props.settings?.whatsapp || '').replace(/[^0-9]/g, '')
+  if (!number) return ''
+  return `https://wa.me/${number}`
+})
+
+const whatsappDisplay = computed(() => {
+  const raw = String(props.settings?.whatsapp || '').replace(/[^0-9]/g, '')
+  if (!raw) return 'WhatsApp'
+  return raw.startsWith('62') ? `0${raw.slice(2)}` : raw
+})
+
 const year = new Date().getFullYear()
 const { data: apiCategories } = await useCms<ProductCategory[]>('product-categories', 'all')
 const serviceCategories = computed(() => (apiCategories.value ?? []).slice(0, 6))
@@ -46,14 +58,14 @@ const socials = computed(() => {
           <span v-else class="grid h-10 w-10 place-items-center rounded-lg bg-white font-display text-sm font-black text-brand-700">
             LL
           </span>
-          <span class="font-display text-base font-bold text-white">
+          <span class="font-display text-lg font-bold leading-snug text-white sm:text-xl">
             {{ settings ? pick(settings.companyName) : 'PT Lobunta Mandiri Persada' }}
           </span>
         </NuxtLink>
-        <p v-if="settings" class="mt-4 text-sm leading-relaxed text-brand-100">
+        <p v-if="settings" class="mt-4 text-base leading-relaxed text-brand-100">
           {{ pick(settings.tagline) }}
         </p>
-        <p v-if="settings" class="mt-3 text-xs text-brand-200">
+        <p v-if="settings" class="mt-3 text-sm text-brand-200">
           {{ settings.legalName }} &middot; {{ $t('footer.official') }}
         </p>
       </div>
@@ -96,21 +108,27 @@ const socials = computed(() => {
         <h3 class="text-sm font-semibold uppercase tracking-wider text-white">
           {{ $t('footer.contact') }}
         </h3>
-        <ul class="mt-4 space-y-3 text-sm text-brand-100">
-          <li class="flex gap-2.5">
-            <UiIcon name="map-pin" :size="18" class="mt-0.5" />
+        <ul class="mt-4 space-y-3.5 text-base text-brand-100">
+          <li class="flex gap-3">
+            <UiIcon name="map-pin" :size="20" class="mt-0.5 shrink-0" />
             <span>{{ pick(settings.address) }}</span>
           </li>
-          <li v-for="phone in settings.phone" :key="phone" class="flex gap-2.5">
-            <UiIcon name="phone" :size="18" class="mt-0.5" />
+          <li v-for="phone in settings.phone" :key="phone" class="flex gap-3">
+            <UiIcon name="phone" :size="20" class="mt-0.5 shrink-0" />
             <a :href="`tel:+62${phone.replace(/^0/, '')}`" class="hover:text-white">{{ phone }}</a>
           </li>
-          <li class="flex gap-2.5">
-            <UiIcon name="mail" :size="18" class="mt-0.5" />
+          <li v-if="whatsappHref" class="flex gap-3">
+            <UiIcon name="whatsapp" :size="20" class="mt-0.5 shrink-0" :filled="true" />
+            <a :href="whatsappHref" target="_blank" rel="noopener" class="hover:text-white">
+              {{ whatsappDisplay }}
+            </a>
+          </li>
+          <li class="flex gap-3">
+            <UiIcon name="mail" :size="20" class="mt-0.5 shrink-0" />
             <a :href="`mailto:${settings.email}`" class="hover:text-white">{{ settings.email }}</a>
           </li>
-          <li class="flex gap-2.5">
-            <UiIcon name="clock" :size="18" class="mt-0.5" />
+          <li class="flex gap-3">
+            <UiIcon name="clock" :size="20" class="mt-0.5 shrink-0" />
             <span>{{ pick(settings.officeHours) }}</span>
           </li>
         </ul>

@@ -37,12 +37,20 @@ const integratedServices = computed<IntegratedServiceItem[]>(() =>
   }))
 )
 
-const miningProjects = computed(() => projects.value.filter((p) => p.type === 'mining').slice(0, 4))
-const civilProjects = computed(() => projects.value.filter((p) => p.type === 'civil').slice(0, 4))
+/** Pilihan beranda: jika ada item dengan show=true, pakai yang dipilih; jika belum ada, tampilkan seperti biasa. */
+const homeProjects = computed(() =>
+  projects.value.some((p) => p.show) ? projects.value.filter((p) => p.show) : projects.value
+)
+const homeCustomers = computed(() =>
+  customers.value.some((c) => c.show) ? customers.value.filter((c) => c.show) : customers.value
+)
+
+const miningProjects = computed(() => homeProjects.value.filter((p) => p.type === 'mining').slice(0, 4))
+const civilProjects = computed(() => homeProjects.value.filter((p) => p.type === 'civil').slice(0, 4))
 const hasProjects = computed(() => miningProjects.value.length > 0 || civilProjects.value.length > 0)
 
-const miningCustomers = computed(() => customers.value.filter((c) => c.type === 'mining').slice(0, 4))
-const civilCustomers = computed(() => customers.value.filter((c) => c.type === 'civil').slice(0, 4))
+const miningCustomers = computed(() => homeCustomers.value.filter((c) => c.type === 'mining').slice(0, 4))
+const civilCustomers = computed(() => homeCustomers.value.filter((c) => c.type === 'civil').slice(0, 4))
 const hasCustomers = computed(() => miningCustomers.value.length > 0 || civilCustomers.value.length > 0)
 
 useSeoMeta({

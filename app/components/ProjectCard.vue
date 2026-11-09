@@ -31,18 +31,18 @@ const { locale } = useI18n()
     <!-- Content Card -->
     <div class="flex min-h-[168px] flex-1 flex-col justify-between p-5 sm:min-h-[180px] sm:p-6">
       <div>
-        <div class="flex min-h-[1.5rem] flex-wrap items-center gap-2">
+        <div class="min-w-0 space-y-2">
           <p class="truncate text-xs font-semibold uppercase tracking-wider text-accent-700 dark:text-accent-400">
             {{ project.clientName || '\u00A0' }}
           </p>
           <span
             v-if="project.type"
-            class="inline-flex shrink-0 items-center rounded-md px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider"
+            class="inline-flex max-w-full items-center rounded-md px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide leading-snug"
             :class="project.type === 'mining'
               ? 'bg-accent-100 text-accent-800 dark:bg-accent-950/60 dark:text-accent-300'
               : 'bg-brand-100 text-brand-800 dark:bg-brand-900 dark:text-brand-200'"
           >
-            {{ project.type === 'mining' ? $t('projects.typeMining') : $t('projects.typeCivil') }}
+            <span class="break-words">{{ project.type === 'mining' ? $t('projects.typeMining') : $t('projects.typeCivil') }}</span>
           </span>
         </div>
 
