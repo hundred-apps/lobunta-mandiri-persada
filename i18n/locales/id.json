@@ -543,6 +543,8 @@
     "adminUsersPhoneHelp": "Format: 08xxxxxxxxxx atau 628xxxxxxxxxx",
     "adminUsersPasswordHelp": "Kosongkan saat mengubah user yang sudah ada.",
     "projectsDescriptionHelp": "Kosongkan untuk menghapus deskripsi.",
-    "settingsEndpointsHelp": "Endpoint: GET /api/site-setting-read/ dan POST /api/site-setting-create. Menyimpan di sini langsung mengubah seluruh website karena frontend publik membaca sumber yang sama."
+    "settingsEndpointsHelp": "Endpoint: GET /api/site-setting-read/ dan POST /api/site-setting-create. Menyimpan di sini langsung mengubah seluruh website karena frontend publik membaca sumber yang sama.",
+    "homeHeroHeading2": "Judul utama (baris 2)",
+    "homeHeroHeading2Help": "Baris judul kedua di hero beranda (opsional, tampil di bawah judul utama)."
   }
 }

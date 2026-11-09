@@ -543,6 +543,8 @@
     "adminUsersPhoneHelp": "Format: 08xxxxxxxxxx or 628xxxxxxxxxx",
     "adminUsersPasswordHelp": "Leave empty when editing an existing user.",
     "projectsDescriptionHelp": "Leave empty to remove the description.",
-    "settingsEndpointsHelp": "Endpoint: GET /api/site-setting-read/ and POST /api/site-setting-create. Saving here updates the whole website directly, because the public frontend reads the same source."
+    "settingsEndpointsHelp": "Endpoint: GET /api/site-setting-read/ and POST /api/site-setting-create. Saving here updates the whole website directly, because the public frontend reads the same source.",
+    "homeHeroHeading2": "Main heading (line 2)",
+    "homeHeroHeading2Help": "Second hero heading line (optional, shown below the main heading)."
   }
 }

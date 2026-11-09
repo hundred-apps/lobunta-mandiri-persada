@@ -41,6 +41,7 @@ const MAPS: Record<string, Record<string, FieldMap>> = {
   'home-hero': {
     eyebrow: { api: 'eyebrow', kind: 'bilingual' },
     heading: { api: 'heading', kind: 'bilingual' },
+    heading2: { api: 'heading2', kind: 'bilingual' },
     description: { api: 'body', kind: 'bilingual' },
     imageUrl: { api: 'media', kind: 'media', file: 'media', connect: 'mediaId' },
     imagePosition: { api: 'imagePosition', kind: 'plain' },

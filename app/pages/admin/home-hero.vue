@@ -9,7 +9,7 @@ const { t } = useI18n()
 const fields = computed<FieldDef[]>(() => [
   { name: 'eyebrow', label: t('admin.homeHeroEyebrow'), kind: 'text', bilingual: true, help: t('admin.homeHeroEyebrowHelp') },
   { name: 'heading', label: t('admin.homeHeroHeading'), kind: 'text', bilingual: true, required: true, help: t('admin.homeHeroHeadingHelp') },
-  { name: 'heading2', label: t('admin.homeHeroHeading'), kind: 'text', bilingual: true, required: true, help: t('admin.homeHeroHeadingHelp') },
+  { name: 'heading2', label: t('admin.homeHeroHeading2'), kind: 'text', bilingual: true, help: t('admin.homeHeroHeading2Help') },
   { name: 'description', label: t('admin.homeHeroDescription'), kind: 'textarea', bilingual: true, rows: 4, help: t('admin.homeHeroDescriptionHelp') },
   { name: 'imageUrl', label: t('admin.homeHeroImage'), kind: 'image', help: t('admin.homeHeroImageHelp') },
   { name: 'imagePosition', label: t('admin.homeHeroImagePos'), kind: 'select', options: [

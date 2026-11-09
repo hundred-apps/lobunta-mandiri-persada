@@ -176,6 +176,7 @@ function mapHero(row: Record<string, unknown>, media: (v: unknown) => string): H
   return {
     eyebrow: loc(row.eyebrowId, row.eyebrowEn),
     heading: loc(row.headingId, row.headingEn),
+    heading2: loc(row.heading2Id, row.heading2En),
     subheading: loc(row.bodyId, row.bodyEn),
     description: loc(row.bodyId, row.bodyEn),
     image: media(row.media),

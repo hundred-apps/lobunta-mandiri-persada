@@ -86,6 +86,7 @@ export interface UnitItem {
 export interface HeroConfig {
   eyebrow?: Localized
   heading: Localized
+  heading2?: Localized
   subheading?: Localized
   image: string
   imagePosition?: 'left' | 'right'
