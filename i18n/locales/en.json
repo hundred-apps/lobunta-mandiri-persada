@@ -54,13 +54,14 @@
     "divisionsBody": "Mining contracting and civil construction services delivered by LMP across Indonesia.",
     "scopeTitle": "Scope of work",
     "scopeBody": "Mining and civil construction scopes delivered by LMP across Indonesia.",
-    "scopeMining": "Mining & Plant",
-    "scopeCivil": "Civil Construction",
+    "scopeMining": "Mine Contractor & Mine Support Civil Works",
+    "scopeCivil": "Earthworks and Civil Construction",
     "fleetTitle": "Fleet & documentation",
     "fleetBody": "Heavy equipment and dump trucks ready to operate for mining, construction, and rental projects.",
-    "projectsTitle": "Project experience",
+    "projectsTitle": "Project Experience",
     "projectsBody": "Project owners and contract values taken from the LMP company profile.",
-    "projectsAll": "See all project experience"
+    "projectsAll": "See all project experience",
+    "integratedTitle": "Lobunta Mandiri Persada Services"
   },
   "products": {
     "title": "Services",

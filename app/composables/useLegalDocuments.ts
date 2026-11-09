@@ -72,8 +72,8 @@ const SBU_DOCUMENT: LegalDocument = {
 export const LMP_DIVISION_LEGALITY: DivisionLegality[] = [
   {
     key: 'mining',
-    titleId: 'Pertambangan & Plant',
-    titleEn: 'Mining & Plant',
+    titleId: 'Kontraktor Tambang & Pekerjaan Sipil Penunjang Tambang',
+    titleEn: 'Mine Contractor & Mine Support Civil Works',
     descriptionId: 'Kelengkapan usaha untuk pekerjaan kontraktor pertambangan dan penunjangnya.',
     descriptionEn: 'Business credentials for mining contracting and its supporting works.',
     documents: [
@@ -99,8 +99,8 @@ export const LMP_DIVISION_LEGALITY: DivisionLegality[] = [
   },
   {
     key: 'civil',
-    titleId: 'Konstruksi Teknik',
-    titleEn: 'Civil Construction',
+    titleId: 'Pekerjaan Tanah & Konstruksi Sipil',
+    titleEn: 'Earthworks and Civil Construction',
     descriptionId: 'Kelengkapan usaha untuk pekerjaan konstruksi teknik.',
     descriptionEn: 'Business credentials for civil construction works.',
     documents: [

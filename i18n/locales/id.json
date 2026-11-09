@@ -54,13 +54,14 @@
     "divisionsBody": "Layanan pertambangan dan konstruksi teknik yang dikerjakan LMP di seluruh Indonesia.",
     "scopeTitle": "Ruang lingkup pekerjaan",
     "scopeBody": "Ruang lingkup pekerjaan pertambangan dan konstruksi teknik yang dikerjakan LMP di seluruh Indonesia.",
-    "scopeMining": "Pertambangan & Plant",
-    "scopeCivil": "Konstruksi Teknik",
+    "scopeMining": "Kontraktor Tambang & Pekerjaan Sipil Penunjang Tambang",
+    "scopeCivil": "Pekerjaan Tanah & Konstruksi Sipil",
     "fleetTitle": "Armada & dokumentasi",
     "fleetBody": "Alat berat dan dump truck siap dioperasikan untuk mendukung proyek pertambangan, konstruksi, dan penyewaan.",
-    "projectsTitle": "Pengalaman proyek",
+    "projectsTitle": "Pengalaman Proyek",
     "projectsBody": "Pemilik proyek dan nilai kontrak dari company profile LMP.",
-    "projectsAll": "Lihat semua pengalaman proyek"
+    "projectsAll": "Lihat semua pengalaman proyek",
+    "integratedTitle": "Layanan Lobunta Mandiri Persada"
   },
   "products": {
     "title": "Layanan",

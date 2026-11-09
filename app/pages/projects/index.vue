@@ -52,41 +52,58 @@ useSeoMeta({
           </div>
 
           <!-- Type Filter Tabs -->
-          <div class="flex flex-wrap items-center gap-2">
-            <button
-              type="button"
-              class="rounded-xl px-4 py-2 text-xs font-bold transition shadow-sm"
-              :class="activeFilter === 'all'
-                ? 'bg-brand-900 text-white dark:bg-accent-500 dark:text-brand-950'
-                : 'bg-stone-100 text-slate-700 hover:bg-stone-200 dark:bg-white/10 dark:text-slate-200'"
-              @click="activeFilter = 'all'"
-            >
-              {{ locale === 'en' ? 'All Projects' : 'Semua Proyek' }} ({{ statsCount.total }})
-            </button>
+          <div class="flex w-full flex-col gap-3 sm:w-auto sm:items-end">
+            <div class="inline-flex w-full overflow-x-auto rounded-xl border border-stone-200 bg-stone-100/80 p-1 dark:border-white/10 dark:bg-white/5 sm:w-auto" role="tablist" :aria-label="locale === 'en' ? 'Project filter' : 'Filter proyek'">
+              <button
+                type="button"
+                role="tab"
+                :aria-selected="activeFilter === 'all'"
+                class="whitespace-nowrap rounded-lg px-4 py-2 text-xs font-bold transition sm:text-sm"
+                :class="activeFilter === 'all'
+                  ? 'bg-white text-brand-950 shadow-sm ring-1 ring-stone-200/80 dark:bg-brand-900 dark:text-white dark:ring-white/10'
+                  : 'text-slate-600 hover:text-brand-900 dark:text-slate-300 dark:hover:text-white'"
+                @click="activeFilter = 'all'"
+              >
+                {{ locale === 'en' ? 'All' : 'Semua' }}
+                <span class="ml-1.5 rounded-md px-1.5 py-0.5 text-[10px] font-bold" :class="activeFilter === 'all' ? 'bg-brand-900/10 text-brand-800 dark:bg-accent-500/20 dark:text-accent-300' : 'bg-stone-200/80 text-slate-600 dark:bg-white/10 dark:text-slate-300'">
+                  {{ statsCount.total }}
+                </span>
+              </button>
 
-            <button
-              type="button"
-              class="rounded-xl px-4 py-2 text-xs font-bold transition shadow-sm"
-              :class="activeFilter === 'mining'
-                ? 'bg-brand-900 text-white dark:bg-accent-500 dark:text-brand-950'
-                : 'bg-stone-100 text-slate-700 hover:bg-stone-200 dark:bg-white/10 dark:text-slate-200'"
-              @click="activeFilter = 'mining'"
-            >
-              {{ $t('projects.typeMining') }} ({{ statsCount.mining }})
-            </button>
+              <button
+                type="button"
+                role="tab"
+                :aria-selected="activeFilter === 'mining'"
+                class="whitespace-nowrap rounded-lg px-4 py-2 text-xs font-bold transition sm:text-sm"
+                :class="activeFilter === 'mining'
+                  ? 'bg-white text-brand-950 shadow-sm ring-1 ring-stone-200/80 dark:bg-brand-900 dark:text-white dark:ring-white/10'
+                  : 'text-slate-600 hover:text-brand-900 dark:text-slate-300 dark:hover:text-white'"
+                @click="activeFilter = 'mining'"
+              >
+                {{ $t('projects.typeMining') }}
+                <span class="ml-1.5 rounded-md px-1.5 py-0.5 text-[10px] font-bold" :class="activeFilter === 'mining' ? 'bg-brand-900/10 text-brand-800 dark:bg-accent-500/20 dark:text-accent-300' : 'bg-stone-200/80 text-slate-600 dark:bg-white/10 dark:text-slate-300'">
+                  {{ statsCount.mining }}
+                </span>
+              </button>
 
-            <button
-              type="button"
-              class="rounded-xl px-4 py-2 text-xs font-bold transition shadow-sm"
-              :class="activeFilter === 'civil'
-                ? 'bg-brand-900 text-white dark:bg-accent-500 dark:text-brand-950'
-                : 'bg-stone-100 text-slate-700 hover:bg-stone-200 dark:bg-white/10 dark:text-slate-200'"
-              @click="activeFilter = 'civil'"
-            >
-              {{ $t('projects.typeCivil') }} ({{ statsCount.civil }})
-            </button>
+              <button
+                type="button"
+                role="tab"
+                :aria-selected="activeFilter === 'civil'"
+                class="whitespace-nowrap rounded-lg px-4 py-2 text-xs font-bold transition sm:text-sm"
+                :class="activeFilter === 'civil'
+                  ? 'bg-white text-brand-950 shadow-sm ring-1 ring-stone-200/80 dark:bg-brand-900 dark:text-white dark:ring-white/10'
+                  : 'text-slate-600 hover:text-brand-900 dark:text-slate-300 dark:hover:text-white'"
+                @click="activeFilter = 'civil'"
+              >
+                {{ $t('projects.typeCivil') }}
+                <span class="ml-1.5 rounded-md px-1.5 py-0.5 text-[10px] font-bold" :class="activeFilter === 'civil' ? 'bg-brand-900/10 text-brand-800 dark:bg-accent-500/20 dark:text-accent-300' : 'bg-stone-200/80 text-slate-600 dark:bg-white/10 dark:text-slate-300'">
+                  {{ statsCount.civil }}
+                </span>
+              </button>
+            </div>
 
-            <NuxtLink :to="`/${locale}/units`" class="btn-outline !py-2 !px-3.5 !text-xs !rounded-xl ml-1">
+            <NuxtLink :to="`/${locale}/units`" class="btn-outline !rounded-xl !px-3.5 !py-2 !text-xs self-start sm:self-auto">
               <UiIcon name="truck" :size="14" />
               {{ $t('projects.viewFleet') }}
             </NuxtLink>
@@ -94,7 +111,7 @@ useSeoMeta({
         </div>
 
         <!-- Project Cards Grid -->
-        <div v-if="filteredProjects.length" class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div v-if="filteredProjects.length" class="mt-8 grid auto-rows-fr gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <ProjectCard
             v-for="project in filteredProjects"
             :key="project.id"

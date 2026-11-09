@@ -156,16 +156,16 @@ export const CIVIL_SERVICES: Service[] = [
 export const LMP_DIVISION_SCOPE: DivisionScope[] = [
   {
     key: 'mining',
-    titleId: 'Pertambangan',
-    titleEn: 'Mining',
+    titleId: 'Kontraktor Tambang & Pekerjaan Sipil Penunjang Tambang',
+    titleEn: 'Mine Contractor & Mine Support Civil Works',
     descriptionId: 'Layanan teknis untuk ekstraksi dan pemrosesan mineral',
     descriptionEn: 'Technical services for mineral extraction and processing',
     services: MINING_SERVICES
   },
   {
     key: 'civil',
-    titleId: 'Konstruksi Teknik',
-    titleEn: 'Civil Construction',
+    titleId: 'Pekerjaan Tanah & Konstruksi Sipil',
+    titleEn: 'Earthworks and Civil Construction',
     descriptionId: 'Layanan konstruksi sipil untuk infrastruktur dan bangunan',
     descriptionEn: 'Civil construction services for infrastructure and buildings',
     services: CIVIL_SERVICES

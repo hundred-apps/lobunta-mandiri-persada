@@ -16,6 +16,13 @@ const headingText = computed(() => {
     : 'Kontraktor Pertambangan & Konstruksi Teknik')
 })
 
+const headingText2 = computed(() => {
+  const fromCms = pick(props.hero?.heading2)
+  return fromCms || (locale.value === 'en'
+    ? 'Mining Contractor & Civil Engineering'
+    : 'Kontraktor Pertambangan & Konstruksi Teknik')
+})
+
 const subheadingText = computed(() => {
   const fromCms = pick(props.hero?.subheading || props.hero?.description)
   return fromCms || (locale.value === 'en'
@@ -75,6 +82,10 @@ const secondaryTo = computed(() => {
         <!-- Main Headline -->
         <h1 class="mt-4 sm:mt-5 font-display text-2xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold leading-[1.18] sm:leading-[1.12] tracking-tight text-white">
           {{ headingText }}
+        </h1>
+
+        <h1 class="mt-4 sm:mt-5 font-display text-2xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold leading-[1.18] sm:leading-[1.12] tracking-tight text-white">
+          {{ headingText2 }}
         </h1>
 
         <!-- Subheading Paragraph -->

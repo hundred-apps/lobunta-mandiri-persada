@@ -29,7 +29,7 @@ const waInquiryLink = computed(() => {
 </script>
 
 <template>
-  <article class="group flex flex-col justify-between overflow-hidden rounded-2xl border border-stone-200/90 bg-[#fcfbfa] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent-400 hover:shadow-lg dark:border-white/10 dark:bg-brand-900/40">
+  <article class="group flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-stone-200/90 bg-[#fcfbfa] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent-400 hover:shadow-lg dark:border-white/10 dark:bg-brand-900/40">
     <div>
       <!-- Thumbnail Image -->
       <div class="relative aspect-[16/10] w-full overflow-hidden bg-stone-200 dark:bg-brand-950">

@@ -13,15 +13,6 @@ const project = computed(() => projects.value.find((item) => item.slug === slug.
 /** Proyek lain untuk tautan "proyek terkait". */
 const related = computed(() => projects.value.filter((item) => item.slug !== slug.value).slice(0, 3))
 
-function formatValue(value: number): string {
-  if (!value) return '—'
-  return new Intl.NumberFormat(locale.value === 'id' ? 'id-ID' : 'en-US', {
-    style: 'currency',
-    currency: 'IDR',
-    maximumFractionDigits: 0
-  }).format(value)
-}
-
 if (!project.value) {
   throw createError({ statusCode: 404, statusMessage: 'Project not found', fatal: true })
 }
@@ -44,7 +35,7 @@ useSeoMeta({
           <div class="grid lg:grid-cols-[1.1fr_0.9fr]">
             <div class="p-6 sm:p-8">
               <p class="eyebrow">
-                {{ $t('projects.title') }} &middot; {{ project.year }}
+                {{ $t('projects.title') }}
               </p>
               <h1 class="mt-3 text-3xl">
                 {{ pick(project.name) }}
@@ -61,14 +52,6 @@ useSeoMeta({
                 <div class="rounded-xl border border-slate-200 p-4 dark:border-white/10">
                   <dt class="text-xs uppercase tracking-wider text-ink-mute">{{ $t('projects.location') }}</dt>
                   <dd class="mt-1 text-sm font-medium">{{ project.siteAddress || '—' }}</dd>
-                </div>
-                <div class="rounded-xl border border-slate-200 p-4 dark:border-white/10">
-                  <dt class="text-xs uppercase tracking-wider text-ink-mute">{{ $t('projects.year') }}</dt>
-                  <dd class="mt-1 text-sm font-medium">{{ project.year || '—' }}</dd>
-                </div>
-                <div class="rounded-xl border border-slate-200 p-4 dark:border-white/10">
-                  <dt class="text-xs uppercase tracking-wider text-ink-mute">{{ $t('projects.contractValue') }}</dt>
-                  <dd class="mt-1 font-mono text-sm font-medium">{{ formatValue(project.contractValue) }}</dd>
                 </div>
               </dl>
 
@@ -97,7 +80,7 @@ useSeoMeta({
     <section v-if="related.length" class="section section-alt">
       <div class="container-page">
         <UiSectionHeading :heading="$t('projects.relatedTitle')" />
-        <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="mt-8 grid auto-rows-fr gap-5 sm:grid-cols-2 lg:grid-cols-3">
           <ProjectCard
             v-for="item in related"
             :key="item.id"
