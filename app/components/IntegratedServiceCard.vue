@@ -30,13 +30,9 @@ const { locale } = useI18n()
       >
     </div>
 
-    <!-- Right Content (Icon + Title + Description) -->
+    <!-- Right Content (Title + Description) -->
     <div class="flex flex-col justify-start py-1 flex-1 min-w-0 pr-1">
-      <div class="text-brand-950 dark:text-accent-400">
-        <UiIcon :name="service.icon" :size="28" :stroke-width="1.8" />
-      </div>
-
-      <h3 class="mt-2.5 text-base sm:text-lg font-bold font-display text-brand-950 dark:text-white leading-tight group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors">
+      <h3 class="text-base sm:text-lg font-bold font-display text-brand-950 dark:text-white leading-tight group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors">
         {{ service.title }}
       </h3>
 

@@ -242,24 +242,14 @@
       "description": "Berubah menjadi Perseroan Terbatas pada 30 September 1977 dan menjadi induk LOBUNTA Group."
     },
     {
-      "year": "1994",
-      "title": "Site Development PLTU Pasuruan",
-      "description": "Proyek site development pembangkit listrik PLTU Pasuruan bersama PLN dan Mitsubishi Corporation."
-    },
-    {
-      "year": "1995",
-      "title": "Jagorawi Toll Road",
-      "description": "Pembangunan jalan Tol Jagorawi (TMII – Cibubur) untuk PT Jasa Marga (Persero)."
-    },
-    {
       "year": "2014",
-      "title": "Site Development Smelter",
-      "description": "Pekerjaan site development 63,87 ha untuk PT Well Harvest Wining Alumina Refinery di Kendawangan."
+      "title": "Pendirian PT Lobunta Mandiri Persada",
+      "description": "PT Lobunta Mandiri Persada — anak perusahaan PT Lobunta Kencana Raya — dibentuk pada 2014"
     },
     {
-      "year": "2025",
-      "title": "Kayong Aluminium Nusantara",
-      "description": "Site development smelter dan penyewaan alat berat untuk PT Kayong Aluminium Nusantara di Kendawangan."
+      "year": "2024",
+      "title": "Regulasi PT Lobunta Mandiri Persada",
+      "description": "ireposisi secara strategis pada 2024 sebagai badan usaha yang menjalankan pekerjaan pertambangan serta konstruksi teknik penunjang pertambangan."
     }
   ],
   "staticPages": {
@@ -547,6 +537,15 @@
     "homeHeroHeading2": "Judul utama (baris 2)",
     "homeHeroHeading2Help": "Baris judul kedua di hero beranda (opsional, tampil di bawah judul utama).",
     "showOnHome": "Tampilkan di beranda",
-    "showOnHomeHelp": "Aktifkan untuk memilih item ini tampil di beranda."
+    "showOnHomeHelp": "Aktifkan untuk memilih item ini tampil di beranda.",
+    "navScopes": "Ruang Lingkup Pekerjaan",
+    "scopesTitle": "Ruang Lingkup Pekerjaan",
+    "scopesSingular": "Ruang Lingkup",
+    "scopesHelp": "Kelola daftar scope of work (ruang lingkup pekerjaan).",
+    "scopesName": "Judul",
+    "scopesDescription": "Deskripsi",
+    "scopesIcon": "Ikon",
+    "scopesIconHelp": "Pilih/cari ikon. Rekomendasi tambang: lucide:mountain, lucide:pickaxe, lucide:truck, lucide:drill, lucide:shovel, lucide:hard-hat. Sipil: lucide:construction, lucide:building-2, lucide:hammer, lucide:traffic-cone, lucide:wrench, lucide:factory.",
+    "noticeRequiredFields": "Field wajib diisi: {fields}"
   }
 }

@@ -71,8 +71,29 @@ onMounted(async () => {
   loading.value = false
 })
 
+function isEmptyValue(field: FieldDef, value: unknown): boolean {
+  if (field.bilingual) {
+    const bi = (value ?? {}) as { id?: unknown; en?: unknown }
+    return !String(bi.id ?? '').trim() && !String(bi.en ?? '').trim()
+  }
+  if (Array.isArray(value)) return value.length === 0
+  if (typeof value === 'boolean') return false
+  if (typeof value === 'number') return false
+  return !String(value ?? '').trim()
+}
+
 async function save() {
   notice.value = null
+
+  const missing = props.fields.filter((field) => field.required && isEmptyValue(field, model.value[field.name]))
+  if (missing.length) {
+    notice.value = {
+      type: 'error',
+      text: t('admin.noticeRequiredFields', { fields: missing.map((f) => f.label).join(', ') }) || `${missing.map((f) => f.label).join(', ')} wajib diisi`
+    }
+    return
+  }
+
   saving.value = true
   const payload = { ...model.value }
   delete payload.spec

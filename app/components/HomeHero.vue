@@ -19,8 +19,8 @@ const headingText = computed(() => {
 const headingText2 = computed(() => {
   const fromCms = pick(props.hero?.heading2)
   return fromCms || (locale.value === 'en'
-    ? 'Mining Contractor & Civil Engineering'
-    : 'Kontraktor Pertambangan & Konstruksi Teknik')
+    ? 'Earthworks & Civil Construction'
+    : 'Pekerjaan Tanah & Konstruksi Sipil')
 })
 
 const subheadingText = computed(() => {
@@ -80,16 +80,16 @@ const secondaryTo = computed(() => {
         </div>
 
         <!-- Main Headline -->
-        <h1 class="mt-4 sm:mt-5 font-display text-2xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold leading-[1.18] sm:leading-[1.12] tracking-tight text-white">
+        <h1 class="mt-4 sm:mt-5 font-display text-2xl sm:text-4xl md:text-5xl lg:text-[2.5rem] font-extrabold leading-[1.18] sm:leading-[1.12] tracking-tight text-white">
           {{ headingText }}
         </h1>
 
-        <h1 class="mt-4 sm:mt-5 font-display text-2xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold leading-[1.18] sm:leading-[1.12] tracking-tight text-white">
+        <h1 class="mt-4 sm:mt-8 font-display text-2xl sm:text-4xl md:text-5xl lg:text-[2.5rem] font-extrabold leading-[1.18] sm:leading-[1.12] tracking-tight text-white">
           {{ headingText2 }}
         </h1>
 
         <!-- Subheading Paragraph -->
-        <p class="mt-4 sm:mt-5 max-w-xl text-sm leading-relaxed text-slate-200/95 sm:text-base md:text-[17px]">
+        <p class="mt-4 sm:mt-8 max-w-xl text-sm leading-relaxed text-slate-200/95 sm:text-base md:text-[17px]">
           {{ subheadingText }}
         </p>
 

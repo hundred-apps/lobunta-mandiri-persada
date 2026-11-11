@@ -56,7 +56,7 @@ const MAPS: Record<string, Record<string, FieldMap>> = {
     name: { api: 'name', kind: 'bilingual' },
     slug: { api: 'slug', kind: 'plain' },
     description: { api: 'description', kind: 'bilingual' },
-    icon: { api: 'icon', kind: 'plain' },
+    image: { api: 'media', kind: 'media', file: 'media', connect: 'mediaId' },
     order: { api: 'sortOrder', kind: 'number' }
   },
   products: {
@@ -142,6 +142,12 @@ const MAPS: Record<string, Record<string, FieldMap>> = {
     type: { api: 'type', kind: 'plain' },
     show: { api: 'show', kind: 'bool' }
   },
+  scopes: {
+    title: { api: 'title', kind: 'plain' },
+    description: { api: 'description', kind: 'plain' },
+    icon: { api: 'icon', kind: 'plain' },
+    type: { api: 'type', kind: 'plain' }
+  },
   'admin-users': {
     name: { api: 'name', kind: 'plain' },
     email: { api: 'email', kind: 'plain' },
@@ -152,7 +158,7 @@ const MAPS: Record<string, Record<string, FieldMap>> = {
 }
 
 /** Entity yang payloadnya dikirim sebagai JSON (bukan FormData). */
-const JSON_ENTITIES = new Set(['product-categories', 'admin-users'])
+const JSON_ENTITIES = new Set(['admin-users', 'scopes'])
 
 export function hasApiMap(entityKey: string): boolean {
   return Boolean(MAPS[entityKey])

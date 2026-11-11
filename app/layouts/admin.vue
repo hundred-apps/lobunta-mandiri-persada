@@ -28,6 +28,7 @@ const groups = computed(() => [
       { to: '/admin/home-hero', label: t('admin.navHomeHero'), icon: 'target' },
       { to: '/admin/product-categories', label: t('admin.navProductCategories'), icon: 'delivery' },
       { to: '/admin/products', label: t('admin.navProducts'), icon: 'lab' },
+      { to: '/admin/scopes', label: t('admin.navScopes'), icon: 'check' },
       { to: '/admin/projects', label: t('admin.navProjects'), icon: 'target' },
       { to: '/admin/units', label: t('admin.navUnits'), icon: 'truck' },
       { to: '/admin/articles', label: t('admin.navArticles'), icon: 'document' },

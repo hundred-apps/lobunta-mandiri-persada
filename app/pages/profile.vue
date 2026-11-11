@@ -493,81 +493,90 @@ useSeoMeta({
           <article
             v-for="division in legalDivisions"
             :key="division.key"
-            class="group relative flex flex-col overflow-hidden rounded-2xl border border-stone-200/90 bg-white shadow-sm transition hover:shadow-lg dark:border-white/10 dark:bg-brand-900/60"
+            class="group relative flex flex-col overflow-hidden rounded-3xl border border-stone-200/80 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-brand-900/10 dark:border-white/10 dark:bg-brand-900/60 dark:hover:shadow-black/30"
           >
-            <!-- Accent top bar -->
-            <div class="h-1.5 w-full bg-gradient-to-r from-brand-900 via-brand-700 to-accent-500" />
-
-            <div class="flex flex-1 flex-col p-6 sm:p-7">
-              <!-- Division header -->
-              <div class="flex items-start justify-between gap-3">
-                <div class="flex items-center gap-3">
-                  <span class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-brand-900 text-accent-400 shadow-sm ring-4 ring-brand-900/5 dark:ring-white/5">
-                    <UiIcon :name="division.key === 'mining' ? 'mountain' : 'bridge'" :size="22" />
+            <div class="relative overflow-hidden bg-gradient-to-br from-brand-950 via-brand-900 to-brand-800 px-6 py-6 sm:px-7">
+              <div class="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-accent-500/20 blur-2xl" />
+              <div class="pointer-events-none absolute -left-6 bottom-0 h-28 w-28 rounded-full bg-white/10 blur-xl" />
+              <div class="relative flex items-start justify-between gap-4">
+                <div class="flex items-center gap-4">
+                  <span class="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-white/10 text-accent-300 ring-1 ring-white/20 backdrop-blur">
+                    <UiIcon :name="division.key === 'mining' ? 'mountain' : 'bridge'" :size="26" />
                   </span>
                   <div>
-                    <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-accent-600 dark:text-accent-400">
+                    <span class="inline-flex items-center rounded-full bg-accent-500/15 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-accent-300 ring-1 ring-accent-400/30">
                       {{ $t('profile.legalityDivision') }}
                     </span>
-                    <h3 class="font-display text-lg font-bold text-brand-950 dark:text-white sm:text-xl">
+                    <h3 class="mt-2 font-display text-lg font-bold leading-snug text-white sm:text-xl">
                       {{ locale === 'en' ? division.titleEn : division.titleId }}
                     </h3>
                   </div>
                 </div>
-                <span class="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-[11px] font-bold text-emerald-700 dark:border-emerald-500/30 dark:bg-emerald-500/10 dark:text-emerald-300">
-                  <span class="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                <span class="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-emerald-300/30 bg-emerald-400/15 px-3 py-1.5 text-[11px] font-bold text-emerald-100 backdrop-blur">
+                  <span class="relative flex h-2 w-2">
+                    <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-300 opacity-60" />
+                    <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-300" />
+                  </span>
                   {{ locale === 'en' ? 'Active' : 'Izin Aktif' }}
                 </span>
               </div>
-
-              <p class="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+              <p class="relative mt-4 max-w-2xl text-sm leading-relaxed text-brand-100/90">
                 {{ locale === 'en' ? division.descriptionEn : division.descriptionId }}
               </p>
+            </div>
 
+            <div class="flex flex-1 flex-col p-6 sm:p-7">
               <!-- Legal credentials -->
-              <div class="mt-6">
+              <div>
                 <h4 class="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
-                  <UiIcon name="document" :size="14" class="text-accent-500" />
+                  <span class="grid h-7 w-7 place-items-center rounded-lg bg-accent-500/10 text-accent-600 dark:text-accent-400">
+                    <UiIcon name="shield" :size="14" />
+                  </span>
                   {{ locale === 'en' ? 'Credentials & Licenses' : 'Dokumen & Perizinan' }}
                 </h4>
 
-                <ul class="mt-3 divide-y divide-stone-100 overflow-hidden rounded-xl border border-stone-200/80 bg-[#fcfbfa] dark:divide-white/5 dark:border-white/10 dark:bg-brand-950/40">
+                <ul class="mt-3 space-y-3">
                   <li
                     v-for="doc in division.documents"
                     :key="doc.labelId + doc.value"
-                    class="flex items-start gap-3 px-4 py-3.5"
+                    class="relative overflow-hidden rounded-2xl border border-stone-200/80 bg-gradient-to-br from-[#fcfbfa] to-white p-4 shadow-sm transition hover:border-accent-300 dark:border-white/10 dark:from-brand-950/60 dark:to-brand-900/40 dark:hover:border-accent-500/30"
                   >
-                    <span class="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-brand-900/5 text-brand-700 dark:bg-white/5 dark:text-accent-400">
-                      <UiIcon name="shield" :size="15" />
-                    </span>
-                    <div class="min-w-0 flex-1">
-                      <p class="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
-                        {{ legalLabel(doc) }}
-                      </p>
-                      <p class="mt-0.5 font-mono text-sm font-bold text-brand-950 break-words dark:text-white">
-                        {{ doc.value }}
-                      </p>
-                      <p v-if="doc.noteId" class="mt-1 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
-                        {{ locale === 'en' ? doc.noteEn : doc.noteId }}
-                      </p>
+                    <div class="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-accent-400 to-accent-600" />
+                    <div class="flex items-start gap-3 pl-2">
+                      <span class="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-brand-900 text-accent-400 shadow-sm dark:bg-white/10">
+                        <UiIcon name="document" :size="16" />
+                      </span>
+                      <div class="min-w-0 flex-1">
+                        <p class="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
+                          {{ legalLabel(doc) }}
+                        </p>
+                        <p class="mt-1 font-mono text-sm font-bold text-brand-950 break-words dark:text-white sm:text-[15px]">
+                          {{ doc.value }}
+                        </p>
+                        <p v-if="doc.noteId" class="mt-1.5 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+                          {{ locale === 'en' ? doc.noteEn : doc.noteId }}
+                        </p>
+                      </div>
                     </div>
                   </li>
                 </ul>
               </div>
 
               <!-- KBLI Licences -->
-              <div class="mt-6 flex-1">
+              <div class="mt-7 flex-1">
                 <h4 class="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
-                  <UiIcon name="check" :size="14" class="text-accent-500" />
+                  <span class="grid h-7 w-7 place-items-center rounded-lg bg-brand-900/5 text-brand-700 dark:bg-white/10 dark:text-accent-400">
+                    <UiIcon name="check" :size="14" />
+                  </span>
                   {{ $t('profile.kbliTitle') }}
                 </h4>
-                <ul class="mt-3 space-y-2">
+                <ul class="mt-3 grid gap-2.5 sm:grid-cols-1">
                   <li
                     v-for="licence in division.licences"
                     :key="licence.code"
-                    class="flex items-start gap-3 rounded-lg border border-stone-100 bg-white px-3 py-2.5 dark:border-white/5 dark:bg-white/[0.03]"
+                    class="group/item flex items-start gap-3 rounded-xl border border-stone-200/70 bg-white px-3.5 py-3 transition hover:border-accent-300 hover:bg-accent-50/30 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-accent-500/30 dark:hover:bg-accent-500/5"
                   >
-                    <span class="mt-0.5 inline-flex shrink-0 rounded-md bg-brand-900 px-2 py-0.5 font-mono text-[11px] font-bold text-accent-300">
+                    <span class="mt-0.5 inline-flex shrink-0 rounded-lg bg-gradient-to-br from-brand-900 to-brand-700 px-2.5 py-1 font-mono text-[11px] font-bold text-accent-200 shadow-sm">
                       {{ licence.code }}
                     </span>
                     <span class="text-xs leading-relaxed text-slate-700 dark:text-slate-300 sm:text-sm">
@@ -629,22 +638,34 @@ useSeoMeta({
               <div
                 v-for="service in division.services"
                 :key="service.code"
-                class="rounded-xl border border-stone-200/90 bg-[#fcfbfa] p-5 shadow-sm transition hover:border-accent-400 hover:shadow-md dark:border-white/10 dark:bg-brand-900/40"
+                class="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-stone-200/80 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent-400/70 hover:shadow-xl dark:border-white/10 dark:bg-brand-900/50"
               >
-                <div class="flex items-center justify-between">
-                  <span class="inline-block rounded-md bg-accent-100 dark:bg-accent-950/60 px-2.5 py-1 font-mono text-xs font-bold text-accent-700 dark:text-accent-300">
+                <span class="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-800 via-brand-600 to-accent-500 opacity-80 transition-opacity group-hover:opacity-100" />
+                <span class="pointer-events-none absolute -right-1 -top-3 select-none font-display text-6xl font-black leading-none text-brand-900/[0.04] transition-colors group-hover:text-accent-500/10 dark:text-white/[0.04]">
+                  {{ service.code }}
+                </span>
+
+                <div class="relative flex items-start justify-between gap-3">
+                  <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-brand-900 to-brand-700 text-accent-300 shadow-sm ring-4 ring-brand-900/5 transition-transform duration-300 group-hover:scale-105 dark:from-accent-500 dark:to-accent-600 dark:text-brand-950 dark:ring-white/5">
+                    <UiIcon :name="service.icon || 'target'" :size="20" />
+                  </span>
+                  <span class="inline-flex rounded-full border border-accent-200/70 bg-accent-50 px-2.5 py-1 font-mono text-[11px] font-bold text-accent-700 dark:border-accent-500/30 dark:bg-accent-950/40 dark:text-accent-300">
                     {{ service.code }}
                   </span>
-                  <span class="text-xs text-slate-400 uppercase font-medium">LMP Scope</span>
                 </div>
 
-                <h4 class="mt-3.5 font-display text-sm font-bold text-brand-950 dark:text-white leading-snug">
+                <h4 class="relative mt-4 font-display text-sm font-bold leading-snug text-brand-950 dark:text-white">
                   {{ locale === 'en' ? service.titleEn : service.titleId }}
                 </h4>
 
-                <p class="mt-2 text-xs leading-relaxed text-slate-600 dark:text-slate-400">
+                <p class="relative mt-2 flex-1 text-xs leading-relaxed text-slate-600 dark:text-slate-400">
                   {{ locale === 'en' ? service.descriptionEn : service.descriptionId }}
                 </p>
+
+                <div class="relative mt-4 flex items-center gap-2 border-t border-stone-100 pt-3 text-[11px] font-semibold uppercase tracking-wider text-brand-700/70 dark:border-white/10 dark:text-brand-300/70">
+                  <span class="h-1.5 w-1.5 rounded-full bg-accent-500" />
+                  <span>LMP Scope</span>
+                </div>
               </div>
             </div>
           </div>

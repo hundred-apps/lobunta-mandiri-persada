@@ -8,7 +8,7 @@ const fields = computed<FieldDef[]>(() => [
   { name: 'name', label: t('admin.productCategoriesName'), kind: 'text', bilingual: true, required: true },
   { name: 'slug', label: t('admin.productCategoriesSlug'), kind: 'slug', required: true },
   { name: 'description', label: t('admin.productCategoriesDescription'), kind: 'textarea', bilingual: true, required: true, rows: 4 },
-  { name: 'icon', label: t('admin.productCategoriesIcon'), kind: 'icon' }
+  { name: 'image', label: t('admin.productCategoriesImage'), kind: 'image' }
 ])
 
 const route = useRoute()

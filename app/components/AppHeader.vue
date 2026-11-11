@@ -77,7 +77,7 @@ const nav = computed(() => {
           v-if="settings?.logo"
           :src="settings.logo"
           :alt="pick(settings.companyName)"
-          class="h-11 w-auto max-w-[11rem] object-contain brightness-0 invert"
+          class="h-11 w-auto max-w-[11rem] object-contain"
         >
         <span v-else class="grid h-10 w-10 place-items-center rounded-lg bg-accent-500 font-display text-xs font-black text-brand-950">
           LMP

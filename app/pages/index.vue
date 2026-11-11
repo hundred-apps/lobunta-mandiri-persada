@@ -12,7 +12,7 @@ const { data: projects } = await useCms<ProjectItem[]>('projects', 'all')
 const { data: customers } = await useCms<CustomerItem[]>('customers', 'all')
 const { data: settings } = await useCompany()
 
-const showScopeOfWork = computed(() => scopeDivisions.length > 0 && allServices.length > 0)
+const showScopeOfWork = computed(() => scopeDivisions.value.length > 0 && allServices.value.length > 0)
 
 const LMP_SERVICE_IMAGES = [
   '/img/lmp/card-mining.jpg',
@@ -94,7 +94,7 @@ useSeoMeta({
           :body="$t('home.scopeBody')"
         />
 
-        <div class="mt-10 grid gap-8 lg:grid-cols-2">
+        <div class="mt-10 grid gap-20 lg:grid-cols-2">
           <!-- Mining -->
           <div>
             <h3 class="mb-5 text-xl font-bold sm:text-2xl">
@@ -104,15 +104,34 @@ useSeoMeta({
               <div
                 v-for="service in scopeDivisions.find(d => d.key === 'mining')?.services || []"
                 :key="service.code"
-                class="card p-4 transition-shadow hover:shadow-lg"
+                class="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-stone-200/80 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent-400/70 hover:shadow-xl dark:border-white/10 dark:bg-brand-900/50"
               >
-                <span class="chip font-mono">{{ service.code }}</span>
-                <h4 class="mt-3 text-sm font-semibold">
+                <span class="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-800 via-brand-600 to-accent-500 opacity-80 transition-opacity group-hover:opacity-100" />
+                <span class="pointer-events-none absolute -right-1 -top-3 select-none font-display text-6xl font-black leading-none text-brand-900/[0.04] transition-colors group-hover:text-accent-500/10 dark:text-white/[0.04]">
+                  {{ service.code }}
+                </span>
+
+                <div class="relative flex items-start justify-between gap-3">
+                  <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-brand-900 to-brand-700 text-accent-300 shadow-sm ring-4 ring-brand-900/5 transition-transform duration-300 group-hover:scale-105 dark:from-accent-500 dark:to-accent-600 dark:text-brand-950 dark:ring-white/5">
+                    <UiIcon :name="service.icon || 'target'" :size="20" />
+                  </span>
+                  <span class="inline-flex rounded-full border border-accent-200/70 bg-accent-50 px-2.5 py-1 font-mono text-[11px] font-bold text-accent-700 dark:border-accent-500/30 dark:bg-accent-950/40 dark:text-accent-300">
+                    {{ service.code }}
+                  </span>
+                </div>
+
+                <h4 class="relative mt-4 font-display text-sm font-bold leading-snug text-brand-950 dark:text-white">
                   {{ locale === 'en' ? service.titleEn : service.titleId }}
                 </h4>
-                <p class="mt-2 text-xs text-ink-soft dark:text-slate-400">
+
+                <p class="relative mt-2 flex-1 text-xs leading-relaxed text-slate-600 dark:text-slate-400">
                   {{ locale === 'en' ? service.descriptionEn : service.descriptionId }}
                 </p>
+
+                <div class="relative mt-4 flex items-center gap-2 border-t border-stone-100 pt-3 text-[11px] font-semibold uppercase tracking-wider text-brand-700/70 dark:border-white/10 dark:text-brand-300/70">
+                  <span class="h-1.5 w-1.5 rounded-full bg-accent-500" />
+                  <span>LMP Scope</span>
+                </div>
               </div>
             </div>
           </div>
@@ -126,15 +145,34 @@ useSeoMeta({
               <div
                 v-for="service in scopeDivisions.find(d => d.key === 'civil')?.services || []"
                 :key="service.code"
-                class="card p-4 transition-shadow hover:shadow-lg"
+                class="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-stone-200/80 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent-400/70 hover:shadow-xl dark:border-white/10 dark:bg-brand-900/50"
               >
-                <span class="chip font-mono">{{ service.code }}</span>
-                <h4 class="mt-3 text-sm font-semibold">
+                <span class="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-800 via-brand-600 to-accent-500 opacity-80 transition-opacity group-hover:opacity-100" />
+                <span class="pointer-events-none absolute -right-1 -top-3 select-none font-display text-6xl font-black leading-none text-brand-900/[0.04] transition-colors group-hover:text-accent-500/10 dark:text-white/[0.04]">
+                  {{ service.code }}
+                </span>
+
+                <div class="relative flex items-start justify-between gap-3">
+                  <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-brand-900 to-brand-700 text-accent-300 shadow-sm ring-4 ring-brand-900/5 transition-transform duration-300 group-hover:scale-105 dark:from-accent-500 dark:to-accent-600 dark:text-brand-950 dark:ring-white/5">
+                    <UiIcon :name="service.icon || 'target'" :size="20" />
+                  </span>
+                  <span class="inline-flex rounded-full border border-accent-200/70 bg-accent-50 px-2.5 py-1 font-mono text-[11px] font-bold text-accent-700 dark:border-accent-500/30 dark:bg-accent-950/40 dark:text-accent-300">
+                    {{ service.code }}
+                  </span>
+                </div>
+
+                <h4 class="relative mt-4 font-display text-sm font-bold leading-snug text-brand-950 dark:text-white">
                   {{ locale === 'en' ? service.titleEn : service.titleId }}
                 </h4>
-                <p class="mt-2 text-xs text-ink-soft dark:text-slate-400">
+
+                <p class="relative mt-2 flex-1 text-xs leading-relaxed text-slate-600 dark:text-slate-400">
                   {{ locale === 'en' ? service.descriptionEn : service.descriptionId }}
                 </p>
+
+                <div class="relative mt-4 flex items-center gap-2 border-t border-stone-100 pt-3 text-[11px] font-semibold uppercase tracking-wider text-brand-700/70 dark:border-white/10 dark:text-brand-300/70">
+                  <span class="h-1.5 w-1.5 rounded-full bg-accent-500" />
+                  <span>LMP Scope</span>
+                </div>
               </div>
             </div>
           </div>
@@ -156,7 +194,7 @@ useSeoMeta({
           </NuxtLink>
         </div>
 
-        <div class="mt-10 grid gap-8 lg:grid-cols-2">
+        <div class="mt-10 grid gap-20 lg:grid-cols-2">
           <div>
             <h3 class="mb-5 text-xl font-bold sm:text-2xl">
               {{ $t('home.scopeMining') }}
@@ -199,7 +237,7 @@ useSeoMeta({
           :heading="$t('customers.title')"
           :body="$t('customers.intro')"
         />
-        <div class="mt-10 grid gap-8 lg:grid-cols-2">
+        <div class="mt-10 grid gap-20 lg:grid-cols-2">
           <div>
             <h3 class="mb-5 text-xl font-bold sm:text-2xl">
               {{ $t('home.scopeMining') }}
@@ -208,22 +246,24 @@ useSeoMeta({
               <li
                 v-for="item in miningCustomers"
                 :key="item.id"
-                class="group flex h-full min-h-[168px] flex-col items-center gap-3 rounded-2xl border border-stone-200/90 bg-[#fcfbfa] p-4 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent-400 hover:shadow-lg dark:border-white/10 dark:bg-brand-900/40"
+                class="group relative flex h-full min-h-[168px] items-center justify-center overflow-hidden rounded-2xl border border-stone-200/90 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent-400 hover:shadow-xl dark:border-white/10 dark:bg-brand-950"
               >
-                <span class="grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-xl border border-stone-200/80 bg-white p-2 shadow-sm dark:border-white/10 dark:bg-brand-950">
-                  <img v-if="item.logo" :src="item.logo" :alt="item.name" class="h-full w-full object-contain" loading="lazy">
-                  <span v-else class="font-display text-sm font-extrabold text-brand-900 dark:text-accent-400">
-                    {{ item.name.slice(0, 2).toUpperCase() }}
-                  </span>
+                <img
+                  v-if="item.logo"
+                  :src="item.logo"
+                  :alt="item.name"
+                  class="absolute inset-0 h-full w-full object-contain p-6 transition-transform duration-500 ease-out group-hover:scale-105"
+                  loading="lazy"
+                >
+                <span v-else class="absolute inset-0 grid place-items-center font-display text-3xl font-extrabold text-brand-900/70 dark:text-accent-400/70">
+                  {{ item.name.slice(0, 2).toUpperCase() }}
                 </span>
-                <span class="flex min-w-0 flex-1 flex-col justify-center">
-                  <span class="block font-display text-sm font-bold leading-snug text-brand-950 transition-colors group-hover:text-accent-600 dark:text-white dark:group-hover:text-accent-400">
+                <div class="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-brand-950/90 via-brand-950/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div class="pointer-events-none absolute inset-x-0 bottom-0 translate-y-4 p-4 opacity-0 transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100">
+                  <p class="font-display text-sm font-bold leading-snug text-white sm:text-base">
                     {{ item.name }}
-                  </span>
-                  <span class="mt-1 block min-h-[2rem] text-xs text-slate-500 line-clamp-2 dark:text-slate-400">
-                    {{ pick(item.industry) || '\u00A0' }}
-                  </span>
-                </span>
+                  </p>
+                </div>
               </li>
               <li v-if="!miningCustomers.length" class="col-span-2 text-sm text-ink-soft dark:text-slate-400">
                 {{ $t('products.empty') }}
@@ -239,22 +279,24 @@ useSeoMeta({
               <li
                 v-for="item in civilCustomers"
                 :key="item.id"
-                class="group flex h-full min-h-[168px] flex-col items-center gap-3 rounded-2xl border border-stone-200/90 bg-[#fcfbfa] p-4 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent-400 hover:shadow-lg dark:border-white/10 dark:bg-brand-900/40"
+                class="group relative flex h-full min-h-[168px] items-center justify-center overflow-hidden rounded-2xl border border-stone-200/90 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent-400 hover:shadow-xl dark:border-white/10 dark:bg-brand-950"
               >
-                <span class="grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-xl border border-stone-200/80 bg-white p-2 shadow-sm dark:border-white/10 dark:bg-brand-950">
-                  <img v-if="item.logo" :src="item.logo" :alt="item.name" class="h-full w-full object-contain" loading="lazy">
-                  <span v-else class="font-display text-sm font-extrabold text-brand-900 dark:text-accent-400">
-                    {{ item.name.slice(0, 2).toUpperCase() }}
-                  </span>
+                <img
+                  v-if="item.logo"
+                  :src="item.logo"
+                  :alt="item.name"
+                  class="absolute inset-0 h-full w-full object-contain p-6 transition-transform duration-500 ease-out group-hover:scale-105"
+                  loading="lazy"
+                >
+                <span v-else class="absolute inset-0 grid place-items-center font-display text-3xl font-extrabold text-brand-900/70 dark:text-accent-400/70">
+                  {{ item.name.slice(0, 2).toUpperCase() }}
                 </span>
-                <span class="flex min-w-0 flex-1 flex-col justify-center">
-                  <span class="block font-display text-sm font-bold leading-snug text-brand-950 transition-colors group-hover:text-accent-600 dark:text-white dark:group-hover:text-accent-400">
+                <div class="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-brand-950/90 via-brand-950/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div class="pointer-events-none absolute inset-x-0 bottom-0 translate-y-4 p-4 opacity-0 transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100">
+                  <p class="font-display text-sm font-bold leading-snug text-white sm:text-base">
                     {{ item.name }}
-                  </span>
-                  <span class="mt-1 block min-h-[2rem] text-xs text-slate-500 line-clamp-2 dark:text-slate-400">
-                    {{ pick(item.industry) || '\u00A0' }}
-                  </span>
-                </span>
+                  </p>
+                </div>
               </li>
               <li v-if="!civilCustomers.length" class="col-span-2 text-sm text-ink-soft dark:text-slate-400">
                 {{ $t('products.empty') }}

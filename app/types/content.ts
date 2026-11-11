@@ -254,3 +254,14 @@ export interface CareerItem {
   isOpen: boolean
   postedAt: string
 }
+
+export interface ScopeWorkItem {
+  id: number
+  title: Localized
+  description: Localized
+  icon: string
+  /** civil | mining */
+  type?: string
+  code?: string
+  order?: number
+}

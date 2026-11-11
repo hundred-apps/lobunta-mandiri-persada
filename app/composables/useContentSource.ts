@@ -9,6 +9,7 @@
   ProductCategory,
   ProductItem,
   ProjectItem,
+  ScopeWorkItem,
   ServiceItem,
   SiteSettings,
   UnitItem,
@@ -40,6 +41,7 @@ export type ResourceName =
   | 'posts'
   | 'projects'
   | 'units'
+  | 'scopes'
 
 /** Pemetaan resource frontend -> nama resource API. */
 /**
@@ -64,7 +66,8 @@ const API_RESOURCE: Record<ResourceName, string> = {
   customers: 'customer',
   posts: 'post',
   projects: 'project',
-  units: 'unit'
+  units: 'unit',
+  scopes: 'scope'
 }
 
 const EMPTY_SETTINGS: SiteSettings = {
@@ -101,7 +104,8 @@ const EMPTY_DEFAULTS: Record<ResourceName, unknown> = {
   customers: [],
   posts: [],
   projects: [],
-  units: []
+  units: [],
+  scopes: []
 }
 
 function loc(id: unknown, en: unknown): Localized {
@@ -331,6 +335,24 @@ function mapPost(row: Record<string, unknown>, media: (v: unknown) => string): P
   }
 }
 
+function mapScope(row: Record<string, unknown>, _media: (v: unknown) => string): ScopeWorkItem {
+  const title = (row.titleId !== undefined || row.titleEn !== undefined)
+    ? loc(row.titleId, row.titleEn)
+    : loc(row.title, row.title)
+  const description = (row.descriptionId !== undefined || row.descriptionEn !== undefined)
+    ? loc(row.descriptionId, row.descriptionEn)
+    : loc(row.description, row.description)
+  return {
+    id: Number(row.id || 0),
+    title,
+    description,
+    icon: String(row.icon || ''),
+    type: row.type ? String(row.type) : undefined,
+    code: row.code != null ? String(row.code) : undefined,
+    order: row.sortOrder != null ? Number(row.sortOrder) : (row.order != null ? Number(row.order) : undefined)
+  }
+}
+
 export function useContentSource() {
   const config = useRuntimeConfig()
   const apiBase = String(config.public.apiBase || '').replace(/\/+$/, '')
@@ -444,6 +466,10 @@ export function useContentSource() {
         case 'units': {
           const rows = await getList('unit', { limit: PAGED_LIST_LIMIT })
           return rows.map((r) => mapUnit(r, media)) as T
+        }
+        case 'scopes': {
+          const rows = await getList('scope', { limit: FULL_LIST_LIMIT })
+          return rows.map((r) => mapScope(r, media)) as T
         }
         default:
           return EMPTY_DEFAULTS[name] as T

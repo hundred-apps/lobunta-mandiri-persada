@@ -242,24 +242,14 @@
       "description": "Became a limited liability company on 30 September 1977 and the parent of the LOBUNTA Group."
     },
     {
-      "year": "1994",
-      "title": "PLTU Pasuruan Site Development",
-      "description": "Site development for the PLTU Pasuruan power plant with PLN and Mitsubishi Corporation."
-    },
-    {
-      "year": "1995",
-      "title": "Jagorawi Toll Road",
-      "description": "Road development of the Jagorawi Toll Road (TMII – Cibubur) for PT Jasa Marga (Persero)."
-    },
-    {
       "year": "2014",
-      "title": "Smelter Site Development",
-      "description": "Site development of 63.87 ha for PT Well Harvest Wining Alumina Refinery in Kendawangan."
+      "title": "Establishment of PT Lobunta Mandiri Persada",
+      "description": "PT Lobunta Mandiri Persada — a subsidiary of PT Lobunta Kencana Raya — was established in 2014"
     },
     {
-      "year": "2025",
-      "title": "Kayong Aluminium Nusantara",
-      "description": "Smelter site development and heavy equipment rental for PT Kayong Aluminium Nusantara in Kendawangan."
+      "year": "2024",
+      "title": "Restructuring of PT Lobunta Mandiri Persada",
+      "description": "Strategically repositioned in 2024 as a business entity carrying out mining works as well as mining-supporting engineering construction."
     }
   ],
   "staticPages": {
@@ -547,6 +537,15 @@
     "homeHeroHeading2": "Main heading (line 2)",
     "homeHeroHeading2Help": "Second hero heading line (optional, shown below the main heading).",
     "showOnHome": "Show on homepage",
-    "showOnHomeHelp": "Enable to display this item on the homepage."
+    "showOnHomeHelp": "Enable to display this item on the homepage.",
+    "navScopes": "Scope of Work",
+    "scopesTitle": "Scope of Work",
+    "scopesSingular": "Scope",
+    "scopesHelp": "Manage scope of work items.",
+    "scopesName": "Title",
+    "scopesDescription": "Description",
+    "scopesIcon": "Icon",
+    "scopesIconHelp": "Pick/search an icon. Mining recommendations: lucide:mountain, lucide:pickaxe, lucide:truck, lucide:drill, lucide:shovel, lucide:hard-hat. Civil: lucide:construction, lucide:building-2, lucide:hammer, lucide:traffic-cone, lucide:wrench, lucide:factory.",
+    "noticeRequiredFields": "Required fields: {fields}"
   }
 }

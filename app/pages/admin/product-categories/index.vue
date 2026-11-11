@@ -5,6 +5,7 @@ const { t } = useI18n()
 definePageMeta({ layout: 'admin' })
 
 const columns = computed<ColumnDef[]>(() => [
+  { key: 'image', label: t('admin.productCategoriesImage'), kind: 'image', width: 'w-20' },
   { key: 'name', label: t('admin.productCategoriesName'), kind: 'bilingual' },
   { key: 'slug', label: t('admin.productCategoriesSlug') }
 ])
