@@ -18,6 +18,17 @@ function legalLabel(doc: { labelId: string; labelEn: string }): string {
   return locale.value === 'en' ? doc.labelEn : doc.labelId
 }
 
+function docIcon(doc: { labelId: string; labelEn: string }): string {
+  const key = `${doc.labelId} ${doc.labelEn}`.toLowerCase()
+  if (key.includes('nib')) return 'target'
+  if (key.includes('npwp') || key.includes('tax')) return 'document'
+  if (key.includes('iujp') || key.includes('mining')) return 'mountain'
+  if (key.includes('sbu') || key.includes('konstruksi') || key.includes('construction')) return 'shield'
+  if (key.includes('kta') || key.includes('member')) return 'check'
+  if (key.includes('akta')) return 'calendar'
+  return 'document'
+}
+
 const { data: settings } = await useCompany()
 
 const gallery = computed(() => settings.value?.gallery ?? [])
@@ -507,7 +518,7 @@ useSeoMeta({
                     <span class="inline-flex items-center rounded-full bg-accent-500/15 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-accent-300 ring-1 ring-accent-400/30">
                       {{ $t('profile.legalityDivision') }}
                     </span>
-                    <h3 class="mt-2 font-display text-lg font-bold leading-snug text-white sm:text-xl">
+                    <h3 class="mt-2 flex min-h-[5.25rem] items-start font-display text-lg font-bold leading-snug text-white sm:min-h-[3.75rem] sm:text-xl">
                       {{ locale === 'en' ? division.titleEn : division.titleId }}
                     </h3>
                   </div>
@@ -520,9 +531,9 @@ useSeoMeta({
                   {{ locale === 'en' ? 'Active' : 'Izin Aktif' }}
                 </span>
               </div>
-              <p class="relative mt-4 max-w-2xl text-sm leading-relaxed text-brand-100/90">
+              <!-- <p class="relative mt-4 max-w-2xl text-sm leading-relaxed text-brand-100/90">
                 {{ locale === 'en' ? division.descriptionEn : division.descriptionId }}
-              </p>
+              </p> -->
             </div>
 
             <div class="flex flex-1 flex-col p-6 sm:p-7">
@@ -535,16 +546,25 @@ useSeoMeta({
                   {{ locale === 'en' ? 'Credentials & Licenses' : 'Dokumen & Perizinan' }}
                 </h4>
 
-                <ul class="mt-3 space-y-3">
+                <ul class="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
                   <li
-                    v-for="doc in division.documents"
+                    v-for="(doc, idx) in division.documents"
                     :key="doc.labelId + doc.value"
-                    class="relative overflow-hidden rounded-2xl border border-stone-200/80 bg-gradient-to-br from-[#fcfbfa] to-white p-4 shadow-sm transition hover:border-accent-300 dark:border-white/10 dark:from-brand-950/60 dark:to-brand-900/40 dark:hover:border-accent-500/30"
+                    class="relative overflow-hidden rounded-2xl border p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+                    :class="idx % 2 === 0
+                      ? 'border-stone-200/80 bg-gradient-to-br from-[#fcfbfa] to-white hover:border-accent-300 dark:border-white/10 dark:from-brand-950/60 dark:to-brand-900/40 dark:hover:border-accent-500/30'
+                      : 'border-brand-100 bg-gradient-to-br from-brand-50/70 to-accent-50/40 hover:border-accent-300 dark:border-accent-500/20 dark:from-brand-900/50 dark:to-accent-950/20 dark:hover:border-accent-500/40'"
                   >
-                    <div class="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-accent-400 to-accent-600" />
+                    <div
+                      class="absolute left-0 top-0 h-full w-1"
+                      :class="idx % 2 === 0 ? 'bg-gradient-to-b from-accent-400 to-accent-600' : 'bg-gradient-to-b from-brand-700 to-accent-500'"
+                    />
                     <div class="flex items-start gap-3 pl-2">
-                      <span class="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-brand-900 text-accent-400 shadow-sm dark:bg-white/10">
-                        <UiIcon name="document" :size="16" />
+                      <span
+                        class="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-xl shadow-sm"
+                        :class="idx % 2 === 0 ? 'bg-brand-900 text-accent-400 dark:bg-white/10' : 'bg-accent-500 text-brand-950 dark:bg-accent-500/90 dark:text-brand-950'"
+                      >
+                        <UiIcon :name="docIcon(doc)" :size="16" />
                       </span>
                       <div class="min-w-0 flex-1">
                         <p class="text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
@@ -570,13 +590,21 @@ useSeoMeta({
                   </span>
                   {{ $t('profile.kbliTitle') }}
                 </h4>
-                <ul class="mt-3 grid gap-2.5 sm:grid-cols-1">
+                <ul class="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
                   <li
-                    v-for="licence in division.licences"
+                    v-for="(licence, idx) in division.licences"
                     :key="licence.code"
-                    class="group/item flex items-start gap-3 rounded-xl border border-stone-200/70 bg-white px-3.5 py-3 transition hover:border-accent-300 hover:bg-accent-50/30 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-accent-500/30 dark:hover:bg-accent-500/5"
+                    class="group/item flex items-start gap-3 rounded-xl border px-3.5 py-3 transition hover:-translate-y-0.5 hover:shadow-sm"
+                    :class="idx % 2 === 0
+                      ? 'border-stone-200/70 bg-white hover:border-accent-300 hover:bg-accent-50/30 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-accent-500/30 dark:hover:bg-accent-500/5'
+                      : 'border-brand-100 bg-brand-50/50 hover:border-accent-300 hover:bg-accent-50/50 dark:border-accent-500/20 dark:bg-brand-900/40 dark:hover:border-accent-500/40 dark:hover:bg-accent-500/10'"
                   >
-                    <span class="mt-0.5 inline-flex shrink-0 rounded-lg bg-gradient-to-br from-brand-900 to-brand-700 px-2.5 py-1 font-mono text-[11px] font-bold text-accent-200 shadow-sm">
+                    <span
+                      class="mt-0.5 inline-flex shrink-0 rounded-lg px-2.5 py-1 font-mono text-[11px] font-bold shadow-sm"
+                      :class="idx % 2 === 0
+                        ? 'bg-gradient-to-br from-brand-900 to-brand-700 text-accent-200'
+                        : 'bg-gradient-to-br from-accent-500 to-accent-600 text-brand-950'"
+                    >
                       {{ licence.code }}
                     </span>
                     <span class="text-xs leading-relaxed text-slate-700 dark:text-slate-300 sm:text-sm">
@@ -616,7 +644,7 @@ useSeoMeta({
               v-for="division in scopeDivisions"
               :key="division.key"
               type="button"
-              class="rounded-lg px-5 py-2.5 text-xs sm:text-sm font-bold transition flex items-center gap-2"
+              class="flex min-h-[2.75rem] items-center gap-2 rounded-lg px-5 py-2.5 text-left text-xs font-bold transition sm:min-h-[3rem] sm:text-sm"
               :class="activeScopeTab === division.key
                 ? 'bg-brand-900 text-white shadow-sm dark:bg-accent-500 dark:text-brand-950'
                 : 'text-slate-600 hover:text-brand-900 dark:text-slate-300'"

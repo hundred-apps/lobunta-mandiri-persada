@@ -48,15 +48,15 @@ const COMPANY_DOCUMENTS: LegalDocument[] = [
     labelId: 'Akta Pendirian',
     labelEn: 'Deed of Establishment',
     value: 'No. 16, 28 Januari 2014',
-    noteId: 'Notaris Kokoh Henry, S.H. — SK AHU-05800.AH.01.01.Tahun 2014, 11 Februari 2014',
-    noteEn: 'Notary Kokoh Henry, S.H. — SK AHU-05800.AH.01.01.2014, 11 February 2014'
+    noteId: 'SK AHU-05800.AH.01.01.Tahun 2014, 11 Februari 2014',
+    noteEn: 'SK AHU-05800.AH.01.01.2014, 11 February 2014'
   },
   {
     labelId: 'Akta Perubahan',
     labelEn: 'Deed of Amendment',
     value: 'No. 40, 21 Maret 2024',
-    noteId: 'Notaris Benny Nur Chaniago, S.H. — SK AHU-0018742.AH.01.02.Tahun 2024, 22 Maret 2024',
-    noteEn: 'Notary Benny Nur Chaniago, S.H. — SK AHU-0018742.AH.01.02.2024, 22 March 2024'
+    noteId: 'SK AHU-0018742.AH.01.02.Tahun 2024, 22 Maret 2024',
+    noteEn: 'SK AHU-0018742.AH.01.02.2024, 22 March 2024'
   }
 ]
 

@@ -97,7 +97,7 @@ useSeoMeta({
         <div class="mt-10 grid gap-20 lg:grid-cols-2">
           <!-- Mining -->
           <div>
-            <h3 class="mb-5 text-xl font-bold sm:text-2xl">
+            <h3 class="mb-5 min-h-[3.5rem] text-xl font-bold sm:min-h-[4rem] sm:text-2xl">
               {{ $t('home.scopeMining') }}
             </h3>
             <div class="grid gap-4 sm:grid-cols-2">
@@ -138,7 +138,7 @@ useSeoMeta({
 
           <!-- Civil -->
           <div>
-            <h3 class="mb-5 text-xl font-bold sm:text-2xl">
+            <h3 class="mb-5 min-h-[3.5rem] text-xl font-bold sm:min-h-[4rem] sm:text-2xl">
               {{ $t('home.scopeCivil') }}
             </h3>
             <div class="grid gap-4 sm:grid-cols-2">
@@ -196,7 +196,7 @@ useSeoMeta({
 
         <div class="mt-10 grid gap-20 lg:grid-cols-2">
           <div>
-            <h3 class="mb-5 text-xl font-bold sm:text-2xl">
+            <h3 class="mb-5 min-h-[3.5rem] text-xl font-bold sm:min-h-[4rem] sm:text-2xl">
               {{ $t('home.scopeMining') }}
             </h3>
             <div class="grid auto-rows-fr grid-cols-2 gap-4 sm:gap-5">
@@ -212,7 +212,7 @@ useSeoMeta({
           </div>
 
           <div>
-            <h3 class="mb-5 text-xl font-bold sm:text-2xl">
+            <h3 class="mb-5 min-h-[3.5rem] text-xl font-bold sm:min-h-[4rem] sm:text-2xl">
               {{ $t('home.scopeCivil') }}
             </h3>
             <div class="grid auto-rows-fr grid-cols-2 gap-4 sm:gap-5">
@@ -239,7 +239,7 @@ useSeoMeta({
         />
         <div class="mt-10 grid gap-20 lg:grid-cols-2">
           <div>
-            <h3 class="mb-5 text-xl font-bold sm:text-2xl">
+            <h3 class="mb-5 min-h-[3.5rem] text-xl font-bold sm:min-h-[4rem] sm:text-2xl">
               {{ $t('home.scopeMining') }}
             </h3>
             <ul class="grid auto-rows-fr grid-cols-2 gap-4">
@@ -272,7 +272,7 @@ useSeoMeta({
           </div>
 
           <div>
-            <h3 class="mb-5 text-xl font-bold sm:text-2xl">
+            <h3 class="mb-5 min-h-[3.5rem] text-xl font-bold sm:min-h-[4rem] sm:text-2xl">
               {{ $t('home.scopeCivil') }}
             </h3>
             <ul class="grid auto-rows-fr grid-cols-2 gap-4">

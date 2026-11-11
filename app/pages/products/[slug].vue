@@ -22,7 +22,7 @@ const related = useState<ProductItem[]>(`related:${slug.value}`, () => {
     copy[i] = copy[j] as ProductItem
     copy[j] = tmp
   }
-  return copy.slice(0, 5)
+  return copy.slice(0, 4)
 })
 
 if (!product.value) {
@@ -91,8 +91,8 @@ onMounted(() => {
 
     <section v-if="related.length" class="section section-alt">
       <div class="container-page">
-        <UiSectionHeading :heading="$t('products.relatedTitle')" />
-        <div class="mx-auto mt-8 grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        <UiSectionHeading :heading="$t('products.relatedTitle')" align="left" />
+        <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <ProductCard
             v-for="item in related"
             :key="item.id"
